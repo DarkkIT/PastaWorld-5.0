@@ -1,0 +1,29 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <LangVersion>latest</LangVersion>
+  </PropertyGroup>
+
+  <PropertyGroup>
+    <CodeAnalysisRuleSet>..\..\Rules.ruleset</CodeAnalysisRuleSet>
+  </PropertyGroup>
+  <ItemGroup>
+    <AdditionalFiles Include="..\..\stylecop.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="StyleCop.Analyzers" Version="1.2.0-beta.312" PrivateAssets="all">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Data\PastaWorld.Data.Common\PastaWorld.Data.Common.csproj" />
+    <ProjectReference Include="..\..\Data\PastaWorld.Data.Models\PastaWorld.Data.Models.csproj" />
+    <ProjectReference Include="..\..\PastaWorld.Common\PastaWorld.Common.csproj" />
+    <ProjectReference Include="..\..\Web\PastaWorld.Web.ViewModels\PastaWorld.Web.ViewModels.csproj" />
+    <ProjectReference Include="..\PastaWorld.Services.Mapping\PastaWorld.Services.Mapping.csproj" />
+  </ItemGroup>
+
+</Project>

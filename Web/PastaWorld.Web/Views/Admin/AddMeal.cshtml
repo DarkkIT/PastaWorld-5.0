@@ -1,0 +1,53 @@
+﻿@using PastaWorld.Web.ViewModels.Admins
+@model AddMealInputModel
+@{
+    this.ViewData["Title"] = "Add Meal";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div class="text-hide mt-5">
+    <p>MoveDown</p>
+</div>
+
+<h1 class="text-center mt-5">Add Meal</h1>
+
+<form method="post" class="col-md-7 offset-4 text-center" enctype="multipart/form-data">
+
+    <div asp-validation-summary="ModelOnly" class="text-danger col-md-12"></div>
+
+    <div class="col-md-7">
+        <label asp-for="Name"></label>
+        <input asp-for="Name" class="form-control" />
+        <span asp-validation-for="Name" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-7">
+        <label asp-for="Price"></label>
+        <input asp-for="Price" class="form-control" />
+        <span asp-validation-for="Price" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-7">
+        <label asp-for="Description"></label>
+        <textarea asp-for="Description" class="form-control"></textarea>
+        <span asp-validation-for="Description" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-7">
+        <label asp-for="ImageName"></label>
+        <input asp-for="ImageName" class="form-control" />
+        <span asp-validation-for="ImageName" class="text-danger"></span>
+    </div>
+
+    <div class="col-md-7">
+        <label asp-for="Image"></label>
+        <input asp-for="Image" class="form-control" />
+        <span asp-validation-for="Image" class="text-danger"></span>
+    </div>
+
+    <input type="submit" class="btn btn-primary mt-4" />
+
+</form>

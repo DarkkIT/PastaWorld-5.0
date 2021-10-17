@@ -1,0 +1,81 @@
+﻿@model PastaWorld.Web.ViewModels.News.NewsListViewModel;
+@using PastaWorld.Common
+
+@{
+    this.ViewData["Title"] = "EditAllNews";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div class="text-hide mt-5">
+    <p>MoveDown</p>
+</div>
+
+<h1 class="text-center">All News</h1>
+
+<div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Image</th>
+                <th scope="col">Id</th>
+                <th scope="col">Name</th>
+                <th scope="col">IsDeleted</th>
+                <th scope="col">DeletedOn</th>
+                <th scope="col">Edit</th>
+                <th scope="col">UnDelete</th>
+                <th scope="col">Delete</th>
+            </tr>
+        </thead>
+
+        @foreach (var news in Model.NewsList)
+        {
+            <tbody>
+
+                <tr>
+                    <td><img src="@news.MainImagePath" style="max-height: 60px;" alt="image" /></td>
+                    <td>@news.Id</td>
+                    <td>@news.Name</td>
+                    <td>@news.IsDeleted</td>
+                    <td>@news.DeletedOn</td>
+                    <td>
+                        <a class="btn btn-success" asp-controller="Admin" asp-action="EditNews" asp-route-id="@news.Id">Edit News</a>
+                    </td>
+                    @if (@news.IsDeleted)
+                    {
+                        <td>
+                            <a class="btn btn-primary" asp-controller="Admin" asp-action="UnDeleteNews" asp-route-id="@news.Id">UnDelete</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a class="btn btn-primary disabled" asp-controller="Admin" asp-action="UnDeleteNews" asp-route-id="@news.Id">UnDelete</a>
+                        </td>
+                    }
+
+                    @if (@news.IsDeleted)
+                    {
+                        <td>
+                            <a class="btn btn-danger disabled" asp-controller="Admin" asp-action="DeleteNews" asp-route-id="@news.Id">Delete</a>
+                        </td>
+                    }
+                    else
+                    {
+                        <td>
+                            <a class="btn btn-danger" asp-controller="Admin" asp-action="DeleteNews" asp-route-id="@news.Id">Delete</a>
+                        </td>
+                    }
+
+                </tr>
+
+            </tbody>
+        }
+    </table>
+</div>
+
+
+
