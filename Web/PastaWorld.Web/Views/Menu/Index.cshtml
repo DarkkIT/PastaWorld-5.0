@@ -4,23 +4,28 @@
     this.ViewData["Title"] = "Menu Page";
 }
 
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+</head>
+
 <div class="text-center">
-    <h1 class="display-4">Menu</h1>
+    <h1 class="display-4" style="font-family: 'Pattaya', sans-serif;">Приготвено с любов за вас</h1>
 </div>
-
-<form asp-action="Index" method="get">
-    <div class="form-actions no-color col justify-content-center">
-        <p class="ml-5">Find by name</p>
-        <p>
-            <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
-        </p>
-        <p>
-            <input type="submit" value="Search" class="btn btn-default" /> |
-            <a asp-action="Index">Back to Full List</a>
-        </p>
-    </div>
-</form>
-
+<div class="row justify-content-center">
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color col justify-content-center">
+            <p class="ml-5">Find by name</p>
+            <p>
+                <input type="text" name="SearchString" value="@ViewData["CurrentFilter"]" />
+            </p>
+            <p>
+                <input type="submit" value="Search" class="btn btn-default" /> |
+                <a asp-action="Index">Back to Full List</a>
+            </p>
+        </div>
+    </form>
+</div>
 <hr size="15" width="90%" color="black">
 
 <div class="row justify-content-center">
