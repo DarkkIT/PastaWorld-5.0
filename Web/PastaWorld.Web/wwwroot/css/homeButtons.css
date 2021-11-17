@@ -1,0 +1,12 @@
+﻿
+.nav-link {
+    font-weight: 600;
+    color: black !important;
+    
+}
+
+.nav-link:hover{
+    color: white !important;
+    background-color: red;
+    border-radius: 100px 10px / 120px;
+}
