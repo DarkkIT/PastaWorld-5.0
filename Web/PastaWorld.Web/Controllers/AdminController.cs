@@ -88,7 +88,7 @@
 
             await this.mealService.AddMealAsync(input);
 
-            return this.View();
+            return this.RedirectToAction(nameof(this.Success));
         }
 
         public IActionResult AllNews()

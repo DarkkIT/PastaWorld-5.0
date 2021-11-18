@@ -17,7 +17,10 @@
         [Required]
         public string Description { get; set; }
 
-        public DateTime NewsDate => DateTime.UtcNow;
+        [MaxLength(100)]
+        public string Type { get; set; }
+
+        public DateTime CreateDate => DateTime.Now;
 
         [Required]
         public IFormFile Image { get; set; }

@@ -17,8 +17,8 @@
 
 
     @*Меню Паста*@
-    <a id="tag-1" class="text-dark" asp-controller="Menu" asp-action="Index" asp-route-enemyName="">Паста</a>
-    <a class="text-dark" asp-controller="Menu" asp-action="Index" asp-route-enemyName="">
+    <a id="tag-1" class="text-dark" asp-controller="Meal" asp-action="Index" asp-route-typeName="meal">Паста</a>
+    <a class="text-dark" asp-controller="Meal" asp-action="Index" asp-route-typeName="meal">
         <div id="anchor-1">
             <img class="img-fluid justify-content-center" src="~/images/buttons/паста.jpg" alt="Alternate Text" />
         </div>
@@ -30,8 +30,8 @@
 
 
     @*Меню Напитки*@
-    <a id="tag-2" class="text-dark" asp-controller="Menu" asp-action="Index" asp-route-enemyName="">Напитки</a>
-    <a class="text-dark" asp-controller="Menu" asp-action="Index" asp-route-enemyName="">
+    <a id="tag-2" class="text-dark" asp-controller="Meal" asp-action="Index" asp-route-typeName="drink">Напитки</a>
+    <a class="text-dark" asp-controller="Meal" asp-action="Index" asp-route-typeName="drink">
         <div id="anchor-2">
             <img class="img-fluid justify-content-center" src="~/images/buttons/напитки.jpg" alt="Alternate Text" />
         </div>
@@ -43,8 +43,8 @@
 
 
     @*Меню Десерти*@
-    <a id="tag-3" class="text-dark" asp-controller="Menu" asp-action="Index" asp-route-enemyName="">Десерти</a>
-    <a class="text-dark" asp-controller="Menu" asp-action="Index" asp-route-enemyName="">
+    <a id="tag-3" class="text-dark" asp-controller="Meal" asp-action="Index" asp-route-typeName="dessert">Десерти</a>
+    <a class="text-dark" asp-controller="Meal" asp-action="Index" asp-route-typeName="dessert">
         <div id="anchor-3">
             <img class="img-fluid justify-content-center" src="~/images/buttons/десерти.jpg" alt="Alternate Text" />
         </div>
@@ -58,12 +58,16 @@
 
 <div>
 
-    @*Меню Предложения на седмицата*@
-    <a id="tag-4" class="text-dark" asp-controller="Menu" asp-action="Index" asp-route-enemyName="">Предложение на седмицата</a>
-    <a class="text-dark" asp-controller="Menu" asp-action="Index" asp-route-enemyName="">
+    @*Детско Меню*@
+    <a id="tag-4" class="text-dark" asp-controller="Menu" asp-action="Index" asp-route-typeName="kids">Детско меню</a>
+    <a class="text-dark" asp-controller="Meal" asp-action="Index" asp-route-typeName="kids">
         <div id="anchor-4">
-            <img class="img-fluid justify-content-center" src="~/images/buttons/седмично-меню.jpg" alt="Alternate Text" />
+            <img class="img-fluid justify-content-center" src="~/images/buttons/kidsMenu.jpg" alt="Alternate Text" />
         </div>
     </a>
+    @*<div id="icon-3">
+        <img class="img-fluid justify-content-center" src="~/images/icons/star-1.png" alt="Alternate Text" />
+    </div>
+    <div id="logo-3">Наслада за завършек</div>*@
 
 </div>

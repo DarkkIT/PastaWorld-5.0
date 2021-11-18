@@ -1,0 +1,54 @@
+﻿@model PastaWorld.Web.ViewModels.Meals.MealListViewModel
+@using PastaWorld.Common
+@{
+    this.ViewData["Title"] = "Menu Page";
+}
+
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+</head>
+
+<div class="text-center">
+    <h1 class="display-4" style="font-family: 'Pattaya', sans-serif;">@Model.PageName</h1>
+</div>
+<div class="row justify-content-center">
+    <form asp-action="Index" method="get">
+        <div class="form-actions no-color col justify-content-center">
+            <p class="ml-5">Find by name</p>
+            <p>
+                <input type="text" name="SearchString" id="meal" value="@ViewData["CurrentFilter"]" />
+                <input type="submit" name="typeName" value="@Model.TypeName" hidden />
+            </p>
+            <p>
+                <input type="submit" value="Search" class="btn btn-default" /> |
+                <a asp-action="Index">Back to Full List</a>
+            </p>
+        </div>
+    </form>
+</div>
+<hr size="15" width="90%" color="black">
+
+<div class="row justify-content-center">
+    @if (Model.MealList != null)
+    {
+        @foreach (var meal in Model.MealList)
+        {
+            <div id="newsHomeCard" class="card m-3 mt-5 col-md-3">
+                <div class="thumbnail">
+                    <img class="card-img" src=@meal.MainImagePath alt="news">
+                </div>
+                <div class="card-body">
+                    <span class="badge badge-success">News</span>
+                    <h4 class="card-title mt-2">@meal.Name</h4>
+                    <p class="card-text">@meal.Description</p>
+                </div>
+
+                <div class="card-footer row justify-content-md-end">
+                    <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                </div>
+
+            </div>
+        }
+    }
+</div>

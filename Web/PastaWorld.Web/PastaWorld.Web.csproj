@@ -40,8 +40,4 @@
     <ProjectReference Include="..\PastaWorld.Web.Infrastructure\PastaWorld.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\PastaWorld.Web.ViewModels\PastaWorld.Web.ViewModels.csproj" />
   </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="wwwroot\images\meals\" />
-  </ItemGroup>
 </Project>

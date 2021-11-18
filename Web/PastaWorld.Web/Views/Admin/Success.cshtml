@@ -1,10 +1,20 @@
-﻿<h1>Success</h1>
+﻿
+<div class="row justify-content-center m-5">
+    <h1>Success</h1>
+</div>
 
-<div class=" alert alert-success">
+<div class="row justify-content-center alert alert-success">
     Recipe has been successfully added to the Database
 </div>
 
 <div class="mb-5">
-    <a asp-controller="Home" asp-action="Index"><button class="btn btn-primary">Go Home</button></a>
-    <a asp-controller="Admin" asp-action="Index"><button class="btn btn-primary">Return to Admin Area</button></a>
+    <div class="row justify-content-center m-3">
+        <a asp-controller="Admin" asp-action="AddMeal"><button class="btn btn-primary">Добави нова рецепта</button></a>
+    </div>
+    <div class="row justify-content-center m-3">
+        <a asp-controller="Home" asp-action="Index"><button class="btn btn-primary">Go Home</button></a>
+    </div>
+    <div class="row justify-content-center m-3">
+        <a asp-controller="Admin" asp-action="Index"><button class="btn btn-primary">Return to Admin Area</button></a>
+    </div>
 </div>

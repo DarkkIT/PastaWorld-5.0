@@ -16,6 +16,8 @@
 
         public string Description { get; set; }
 
+        public string Type { get; set; }
+
         public DateTime NewsDate { get; set; }
 
         public string Publisher { get; set; }

@@ -21,6 +21,8 @@
 
         public string Description { get; set; }
 
+        public string Type { get; set; }
+
         public virtual ICollection<MealIngredients> MealIngredients { get; set; }
     }
 }

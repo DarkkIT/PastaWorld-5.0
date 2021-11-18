@@ -14,11 +14,23 @@
 
         Task EditMealAsync(EditMealInputModel input, int id);
 
-        IEnumerable<MealViewModel> GetAllMeal<T>(int page, int itemsPerPage);
+        IEnumerable<MealViewModel> GetAllMeals<T>(int page, int itemsPerPage);
+
+        IEnumerable<MealViewModel> GetAllDrinks<T>(int page, int itemsPerPage);
+
+        IEnumerable<MealViewModel> GetAllDesserts<T>(int page, int itemsPerPage);
+
+        IEnumerable<MealViewModel> GetAllKids<T>(int page, int itemsPerPage);
 
         IEnumerable<MealViewModel> GetAllMealWithDeleted<T>(int page, int itemsPerPage);
 
-        IEnumerable<MealViewModel> GetAllSearchedBikes<T>(int page, int itemsPerPage, string searchString);
+        IEnumerable<MealViewModel> GetAllSearchedMeals<T>(int page, int itemsPerPage, string searchString);
+
+        IEnumerable<MealViewModel> GetAllSearchedDrinks<T>(int page, int itemsPerPage, string searchString);
+
+        IEnumerable<MealViewModel> GetAllSearchedDesserts<T>(int page, int itemsPerPage, string searchString);
+
+        IEnumerable<MealViewModel> GetAllSearchedKids<T>(int page, int itemsPerPage, string searchString);
 
         int GetCount();
 

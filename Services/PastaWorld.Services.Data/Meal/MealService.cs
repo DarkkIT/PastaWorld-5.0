@@ -21,9 +21,30 @@
             this.mealRepository = mealRepository;
         }
 
-        public IEnumerable<MealViewModel> GetAllSearchedBikes<T>(int page, int itemsPerPage, string searchString)
+        public IEnumerable<MealViewModel> GetAllSearchedMeals<T>(int page, int itemsPerPage, string searchString)
         {
-            var model = this.mealRepository.All().Where(x => x.Name.Contains(searchString)).OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
+            var model = this.mealRepository.All().Where(x => x.Name.Contains(searchString) && x.Type == "Основно").OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
+
+            return model;
+        }
+
+        public IEnumerable<MealViewModel> GetAllSearchedDrinks<T>(int page, int itemsPerPage, string searchString)
+        {
+            var model = this.mealRepository.All().Where(x => x.Name.Contains(searchString) && x.Type == "Напитка").OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
+
+            return model;
+        }
+
+        public IEnumerable<MealViewModel> GetAllSearchedDesserts<T>(int page, int itemsPerPage, string searchString)
+        {
+            var model = this.mealRepository.All().Where(x => x.Name.Contains(searchString) && x.Type == "Десерт").OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
+
+            return model;
+        }
+
+        public IEnumerable<MealViewModel> GetAllSearchedKids<T>(int page, int itemsPerPage, string searchString)
+        {
+            var model = this.mealRepository.All().Where(x => x.Name.Contains(searchString) && x.Type == "Детско").OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
 
             return model;
         }
@@ -36,6 +57,7 @@
                 Description = input.Description,
                 ImageName = input.ImageName,
                 Price = input.Price,
+                Type = input.Type,
             };
 
             await this.mealRepository.AddAsync(meal);
@@ -70,9 +92,30 @@
             await this.mealRepository.SaveChangesAsync();
         }
 
-        public IEnumerable<MealViewModel> GetAllMeal<T>(int page, int itemsPerPage)
+        public IEnumerable<MealViewModel> GetAllMeals<T>(int page, int itemsPerPage)
         {
-            var model = this.mealRepository.All().OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
+            var model = this.mealRepository.All().Where(x => x.Type == "Основно").OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
+
+            return model;
+        }
+
+        public IEnumerable<MealViewModel> GetAllDrinks<T>(int page, int itemsPerPage)
+        {
+            var model = this.mealRepository.All().Where(x => x.Type == "Напитка").OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
+
+            return model;
+        }
+
+        public IEnumerable<MealViewModel> GetAllDesserts<T>(int page, int itemsPerPage)
+        {
+            var model = this.mealRepository.All().Where(x => x.Type == "Десерт").OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
+
+            return model;
+        }
+
+        public IEnumerable<MealViewModel> GetAllKids<T>(int page, int itemsPerPage)
+        {
+            var model = this.mealRepository.All().Where(x => x.Type == "Детско").OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
 
             return model;
         }

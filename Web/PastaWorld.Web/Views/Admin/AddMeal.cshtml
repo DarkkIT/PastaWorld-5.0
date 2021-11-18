@@ -37,6 +37,21 @@
     </div>
 
     <div class="col-md-7">
+
+        <label asp-for="Type"></label>
+
+        <select asp-for="Type" class="form-control">
+            <option value="Основно">Основно</option>
+            <option value="Десерт">Десерт</option>
+            <option value="Напитка">Напитка</option>
+            <option value="Детско">Детско Меню</option>
+        </select>
+
+        <span asp-validation-for="Type" class="text-danger"></span>
+
+    </div>
+
+    <div class="col-md-7">
         <label asp-for="ImageName"></label>
         <input asp-for="ImageName" class="form-control" />
         <span asp-validation-for="ImageName" class="text-danger"></span>

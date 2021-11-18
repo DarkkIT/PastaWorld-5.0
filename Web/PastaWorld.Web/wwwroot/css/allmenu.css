@@ -146,11 +146,10 @@ body {
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 37.5%;
+    left: 44.5%;
     top: 46.2%;
 }
 #anchor-4 {
-    background-image: url(/images/buttons//седмично-меню.jpg);
     background-size: 285px 110px;
     width: 40%;
     height: 15%;
@@ -158,6 +157,6 @@ body {
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 30%;
+    left: 34%;
     top: 50%;
 }
