@@ -1,0 +1,63 @@
+﻿
+body {
+    max-height: 1080px;
+}
+
+.base{
+    position: relative;
+}
+
+.base-list {
+    position: fixed;
+    list-style-type: none;
+    width: 10%;
+    left: 85.5%;
+    top: 26%;
+}
+
+.nav-link-menu {
+    font-weight: 700;
+    color: black !important;
+    border-radius: 100px 10px / 120px;
+    border-color: red !important;
+}
+
+.nav-link-menu:hover {
+    color: white !important;
+    background-color: red;
+    border-radius: 100px 10px / 120px;
+}
+
+.nav-link-menu-blue {
+    font-weight: 700;
+    color: black !important;
+    border-radius: 100px 10px / 120px;
+    border-color: dodgerblue !important;
+}
+
+.nav-link-menu-blue:hover {
+    color: white !important;
+    background-color: dodgerblue;
+    border-radius: 100px 10px / 120px;
+}
+
+.item {
+    margin-top: 2rem;
+    font-size: 1vw;
+    /*box-shadow: 10px 5px 5px grey;*/
+}
+
+.text-header {
+    font-size: 10vw;
+}
+
+.filter {
+    box-shadow: 10px 5px 5px grey;
+}
+
+.menu-list {
+}
+
+#newsHomeCard {
+    /*box-shadow: 10px 5px 5px grey;*/
+}

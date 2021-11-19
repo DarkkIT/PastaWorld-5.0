@@ -7,48 +7,73 @@
 
 <head>
     <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="~/css/menu.css" asp-append-version="true" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
-
-<div class="text-center">
-    <h1 class="display-4" style="font-family: 'Pattaya', sans-serif;">@Model.PageName</h1>
-</div>
-<div class="row justify-content-center">
-    <form asp-action="Index" method="get">
-        <div class="form-actions no-color col justify-content-center">
-            <p class="ml-5">Find by name</p>
-            <p>
-                <input type="text" name="SearchString" id="meal" value="@ViewData["CurrentFilter"]" />
-                <input type="submit" name="typeName" value="@Model.TypeName" hidden />
-            </p>
-            <p>
-                <input type="submit" value="Search" class="btn btn-default" /> |
-                <a asp-action="Index">Back to Full List</a>
-            </p>
-        </div>
-    </form>
-</div>
-<hr size="15" width="90%" color="black">
-
-<div class="row justify-content-center">
-    @if (Model.MealList != null)
-    {
-        @foreach (var meal in Model.MealList)
-        {
-            <div id="newsHomeCard" class="card m-3 mt-5 col-md-3">
-                <div class="thumbnail">
-                    <img class="card-img" src=@meal.MainImagePath alt="news">
-                </div>
-                <div class="card-body">
-                    <span class="badge badge-success">News</span>
-                    <h4 class="card-title mt-2">@meal.Name</h4>
-                    <p class="card-text">@meal.Description</p>
-                </div>
-
-                <div class="card-footer row justify-content-md-end">
-                    <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
-                </div>
-
+<div class="base">
+    <div class="text-header row justify-content-center">
+        <h1 class="display-4" style="font-family: 'Pattaya', sans-serif; font-size: 3vw;">@Model.PageName</h1>
+    </div>
+    <div class="filter row justify-content-center mt-2">
+        <form asp-action="Index" method="get">
+            <div class="form-actions no-color row justify-content-center">
+                <p class="mr-3">Намери по име</p>
+                <p>
+                    <input type="text" name="SearchString" id="meal" value="@ViewData["CurrentFilter"]" />
+                    <input type="submit" name="typeName" value="@Model.TypeName" hidden />
+                </p>
             </div>
+        </form>
+    </div>
+    @*<hr size="15" width="90%" color="black">*@
+
+    <div class="menu-list col-md-11 row justify-content-start">
+        @if (Model.MealList != null)
+        {
+            @foreach (var meal in Model.MealList)
+            {
+                <div id="newsHomeCard" class="card m-3 mt-5 col-md-2">
+                    <div class="thumbnail">
+                        <img class="card-img" src=@meal.MainImagePath alt="news">
+                    </div>
+                    <div class="card-body">
+                        <span class="badge badge-success">News</span>
+                        <h4 class="card-title mt-2">@meal.Name</h4>
+                        <p class="card-text">@meal.Description</p>
+                    </div>
+
+                    <div class="card-footer row justify-content-md-end">
+                        <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                    </div>
+
+                </div>
+            }
         }
-    }
+    </div>
+
+
+    <div class="col justify-content-start col-md-1">
+        <ul class="base-list">
+
+            <li class="item1">
+                <a class="nav-link-menu item btn btn-light btn-block btn-lg"  asp-controller="Meal" asp-action="Index" asp-route-typeName="meal">ПАСТА</a>
+            </li>
+            <li class="item2">
+                <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="drink">НАПИТКИ</a>
+            </li>
+            <li class="item3">
+                <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="dessert">ДЕСЕРТИ</a>
+            </li>
+            <li class="item4">
+                <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="kids">ДЕТСКО</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link-menu-blue item btn btn-light btn-block btn-lg" asp-area="" asp-controller="Information" asp-action="Index">ДОСТАВКИ</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link-menu-blue item btn btn-light btn-block btn-lg" asp-area="" asp-controller="Home" asp-action="Privacy">ЗА НАС</a>
+            </li>
+        </ul>
+    </div>
+
 </div>
