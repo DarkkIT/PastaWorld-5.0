@@ -18,6 +18,8 @@
 
         public string Type { get; set; }
 
+        public bool IsTop { get; set; }
+
         public DateTime NewsDate { get; set; }
 
         public string Publisher { get; set; }

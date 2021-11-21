@@ -11,7 +11,7 @@ body {
     position: fixed;
     list-style-type: none;
     width: 10%;
-    left: 85.5%;
+    left: 82.5%;
     top: 24%;
 }
 
@@ -56,8 +56,44 @@ body {
 }
 
 .menu-list {
+
 }
 
-#newsHomeCard {
-    /*box-shadow: 10px 5px 5px grey;*/
+.body {
+    border: 1px solid grey;
+    border-radius: 5px;
+    min-width: 250px;
+}
+
+.meal {
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+.image {
+    border: 1px solid grey;
+    border-radius: 5px;
+    min-width: 200px;
+    max-width: 300px;
+}
+
+.buttons {
+    border: 1px solid grey;
+    border-radius: 5px;
+}
+
+#topMeals {
+    border: 1px solid grey;
+    border-radius: 5px;
+    max-width: 17.4rem;
+}
+
+#topMealList {
+
+}
+
+.topMeal-button{
+    position: absolute;
+    left: 5%;
+    top: 80%;
 }

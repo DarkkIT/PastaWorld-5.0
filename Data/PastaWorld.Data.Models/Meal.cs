@@ -23,6 +23,8 @@
 
         public string Type { get; set; }
 
+        public bool IsTop { get; set; }
+
         public virtual ICollection<MealIngredients> MealIngredients { get; set; }
     }
 }

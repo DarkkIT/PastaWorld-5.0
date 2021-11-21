@@ -10,10 +10,15 @@
     <link rel="stylesheet" href="~/css/menu.css" asp-append-version="true" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 </head>
+
+
 <div class="base">
+
     <div class="text-header row justify-content-center">
         <h1 class="display-4" style="font-family: 'Pattaya', sans-serif; font-size: 3vw;">@Model.PageName</h1>
     </div>
+
+
     <div class="filter row justify-content-center mt-2">
         <form asp-action="Index" method="get">
             <div class="form-actions no-color row justify-content-center">
@@ -25,25 +30,56 @@
             </div>
         </form>
     </div>
-    @*<hr size="15" width="90%" color="black">*@
 
-    <div class="menu-list col-md-11 row justify-content-start">
+
+    <div id="topMealList" class="row justify-content-start col-md-10 ml-5">
+
         @if (Model.MealList != null)
         {
             @foreach (var meal in Model.MealList)
             {
-                <div id="newsHomeCard" class="card m-3 mt-5 col-md-2">
-                    <div class="thumbnail">
+                @if (meal.IsTop == true)
+                {
+                    <div id="topMeals" class="card m-2 mt-5">
+                        <div class="thumbnail">
+                            <img class="card-img" src=@meal.MainImagePath alt="news">
+                            <a class="topMeal-button btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                        </div>
+
+                    </div>
+                }
+            }
+        }
+
+    </div>
+
+
+    <div class="menu-list col-md-10 col justify-content-start">
+        @if (Model.MealList != null)
+        {
+            
+
+            @foreach (var meal in Model.MealList)
+            {
+                <div class="meal row justify-content-start m-5">
+                    <div class="image col-md-2 m-3">
                         <img class="card-img" src=@meal.MainImagePath alt="news">
                     </div>
-                    <div class="card-body">
-                        <span class="badge badge-success">News</span>
-                        <h4 class="card-title mt-2">@meal.Name</h4>
-                        <p class="card-text">@meal.Description</p>
-                    </div>
 
-                    <div class="card-footer row justify-content-md-end">
-                        <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                    <div class="body col justify-content-center m-3">
+                        <h4>@meal.Name</h4>
+                        <p>
+                            @meal.Description + TestTestTest TestTestTest
+                            TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest
+                        </p>
+                    </div>
+                    <div class="buttons col-md-1 col justify-end-center m-3">
+                        <div class="row justify-content-center mt-4">
+                            <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                        </div>
+                        <div class="row justify-content-center mt-3 mb-3">
+                            <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                        </div>
                     </div>
 
                 </div>
@@ -56,7 +92,7 @@
         <ul class="base-list">
 
             <li class="item1">
-                <a class="nav-link-menu item btn btn-light btn-block btn-lg"  asp-controller="Meal" asp-action="Index" asp-route-typeName="meal">ПАСТА</a>
+                <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="meal">ПАСТА</a>
             </li>
             <li class="item2">
                 <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="drink">НАПИТКИ</a>
