@@ -22,7 +22,7 @@
 
         IEnumerable<MealViewModel> GetAllKids<T>(int page, int itemsPerPage);
 
-        IEnumerable<MealViewModel> GetAllMealWithDeleted<T>(int page, int itemsPerPage);
+        IEnumerable<MealViewModel> GetAllMealWithDeleted<T>(int page, int itemsPerPage, string adminPageName);
 
         IEnumerable<MealViewModel> GetAllSearchedMeals<T>(int page, int itemsPerPage, string searchString);
 
@@ -41,5 +41,7 @@
         Task DeleteMeal(int id);
 
         Task UnDeleteMeal(int id);
+
+        Task MakeTop(int id);
     }
 }

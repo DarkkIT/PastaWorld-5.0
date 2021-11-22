@@ -120,9 +120,9 @@
             return model;
         }
 
-        public IEnumerable<MealViewModel> GetAllMealWithDeleted<T>(int page, int itemsPerPage)
+        public IEnumerable<MealViewModel> GetAllMealWithDeleted<T>(int page, int itemsPerPage, string adminPageName)
         {
-            var model = this.mealRepository.AllWithDeleted().OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
+            var model = this.mealRepository.AllWithDeleted().Where(x => x.Type == adminPageName).OrderByDescending(x => x.Id).Skip((page - 1) * itemsPerPage).Take(itemsPerPage).To<MealViewModel>().ToList();
 
             return model;
         }
@@ -144,6 +144,22 @@
             var model = this.mealRepository.All().OrderByDescending(x => x.CreatedOn).Take(3).To<MealViewModel>().ToList();
 
             return model;
+        }
+
+        public async Task MakeTop(int id)
+        {
+            var model = this.mealRepository.All().FirstOrDefault(x => x.Id == id);
+
+            if (model.IsTop)
+            {
+                model.IsTop = false;
+            }
+            else
+            {
+                model.IsTop = true;
+            }
+
+            await this.mealRepository.SaveChangesAsync();
         }
     }
 }

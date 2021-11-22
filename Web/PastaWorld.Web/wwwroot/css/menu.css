@@ -1,6 +1,6 @@
 ﻿
 body {
-    max-height: 1080px;
+    max-width: 1980px;
 }
 
 .base{
@@ -10,9 +10,14 @@ body {
 .base-list {
     position: fixed;
     list-style-type: none;
-    width: 10%;
-    left: 82.5%;
+    width: 12%;
+    left: 84%;
     top: 24%;
+}
+#image-tag1 {
+    position: fixed;
+    left: 86%;
+    top: 10%;
 }
 
 .nav-link-menu {
@@ -49,10 +54,6 @@ body {
 
 .text-header {
     font-size: 10vw;
-}
-
-.filter {
-    box-shadow: 10px 5px 5px grey;
 }
 
 .menu-list {

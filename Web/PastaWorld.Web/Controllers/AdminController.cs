@@ -44,10 +44,23 @@
             return this.View();
         }
 
+
+
+        public async Task<IActionResult> MakeTop(int id, string name)
+        {
+            await this.mealService.MakeTop(id);
+
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, name);
+            var viewModel = new MealListViewModel { TypeName = name, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+            return this.View(viewModel);
+        }
+
         public IActionResult Success()
         {
             return this.View();
         }
+
 
         [HttpPost]
         public async Task<IActionResult> AddNews(AddNewsInputModel input)
@@ -99,13 +112,46 @@
             return this.View(viewModel);
         }
 
-        public IActionResult AllMeals()
+        public IActionResult AllMeals(string adminPageName)
         {
-            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000);
-            var viewModel = new MealListViewModel { MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, adminPageName);
+            var viewModel = new MealListViewModel { TypeName = adminPageName, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
 
             return this.View(viewModel);
         }
+
+        public IActionResult GetPasta(string adminPageName)
+        {
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, adminPageName);
+            var viewModel = new MealListViewModel { TypeName = adminPageName, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult GetDrinks(string adminPageName)
+        {
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, adminPageName);
+            var viewModel = new MealListViewModel { TypeName = adminPageName, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult GetDesserts(string adminPageName)
+        {
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, adminPageName);
+            var viewModel = new MealListViewModel { TypeName = adminPageName, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult GetKids(string adminPageName)
+        {
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, adminPageName);
+            var viewModel = new MealListViewModel { TypeName = adminPageName, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+            return this.View(viewModel);
+        }
+
 
         public IActionResult EditNews(int id)
         {
@@ -156,11 +202,16 @@
             return this.RedirectToAction(nameof(this.AllNews));
         }
 
-        public async Task<IActionResult> DeleteMeal(int id)
+        public async Task<IActionResult> DeleteMeal(int id, string name)
         {
             await this.mealService.DeleteMeal(id);
 
-            return this.RedirectToAction(nameof(this.AllMeals));
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, name);
+            var viewModel = new MealListViewModel { TypeName = name, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+
+
+            return this.RedirectToAction(nameof(this.AllMeals), new { adminPageName = name });
         }
 
         public async Task<IActionResult> UnDeleteNews(int id)
@@ -170,11 +221,15 @@
             return this.RedirectToAction(nameof(this.AllNews));
         }
 
-        public async Task<IActionResult> UnDeleteMeal(int id)
+        public async Task<IActionResult> UnDeleteMeal(int id, string name)
         {
             await this.mealService.UnDeleteMeal(id);
 
-            return this.RedirectToAction(nameof(this.AllMeals));
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, name);
+            var viewModel = new MealListViewModel { TypeName = name, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+
+            return this.RedirectToAction(nameof(this.AllMeals), new { adminPageName = name });
         }
     }
 }

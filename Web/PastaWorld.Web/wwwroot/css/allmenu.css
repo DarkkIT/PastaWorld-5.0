@@ -1,6 +1,6 @@
 ﻿
 body {
-    max-height: 1080px;
+    max-width: 1980px;
 }
 
 #AllMenu {
@@ -20,7 +20,7 @@ body {
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 24%;
+    left: 17%;
     top: 8%;
 }
 #anchor-1 {
@@ -30,17 +30,8 @@ body {
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 17%;
+    left: 10%;
     top: 12%;
-}
-#icon-1 {
-    width: 4%;
-    height: 4%;
-    border: none;
-    position: absolute;
-    z-index: 99999;
-    left: 17.5%;
-    top: 26%;
 }
 #logo-1 {
     font-family: 'Pattaya', sans-serif;
@@ -50,8 +41,8 @@ body {
     border: none;
     position: absolute;
     z-index: 99999;
-    left: 25%;
-    top: 30%;
+    left: 19%;
+    top: 21%;
 }
 
 
@@ -63,7 +54,7 @@ body {
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 45.5%;
+    left: 41%;
     top: 8%;
 }
 #anchor-2 {
@@ -73,17 +64,8 @@ body {
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 40%;
+    left: 35%;
     top: 12%;
-}
-#icon-2 {
-    width: 4%;
-    height: 4%;
-    border: none;
-    position: absolute;
-    z-index: 99999;
-    left: 40.5%;
-    top: 26%;
 }
 #logo-2 {
     font-family: 'Pattaya', sans-serif;
@@ -92,8 +74,8 @@ body {
     border: none;
     position: absolute;
     z-index: 99999;
-    left: 48.5%;
-    top: 30%;
+    left: 44.5%;
+    top: 21%;
 }
 
 
@@ -105,8 +87,8 @@ body {
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 69%;
-    top: 8%;
+    left: 42%;
+    top: 31%;
 }
 #anchor-3 {
     width: 20%;
@@ -115,17 +97,8 @@ body {
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 63%;
-    top: 12%;
-}
-#icon-3 {
-    width: 4%;
-    height: 4%;
-    border: none;
-    position: absolute;
-    z-index: 99999;
-    left: 63.5%;
-    top: 26%;
+    left: 35%;
+    top: 35%;
 }
 #logo-3 {
     font-family: 'Pattaya', sans-serif;
@@ -134,8 +107,8 @@ body {
     border: none;
     position: absolute;
     z-index: 99999;
-    left: 72.5%;
-    top: 30%;
+    left: 45.5%;
+    top: 44%;
 }
 
 
@@ -146,17 +119,60 @@ body {
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 44.5%;
-    top: 46.2%;
+    left: 14.5%;
+    top: 31%;
 }
 #anchor-4 {
-    background-size: 285px 110px;
-    width: 40%;
+    width: 20%;
     height: 15%;
     border: 1px solid #FFFFFF;
     border-radius: 2%;
     position: absolute;
     z-index: 9999;
-    left: 34%;
-    top: 50%;
+    left: 10%;
+    top: 35%;
 }
+#logo-4 {
+    font-family: 'Pattaya', sans-serif;
+    font-size: 1vw;
+    width: 12%;
+    border: none;
+    position: absolute;
+    z-index: 99999;
+    left: 20%;
+    top: 44%;
+}
+
+
+#tag-5 {
+    font-family: 'Pattaya', sans-serif;
+    font-size: 2vw;
+    border: 1px solid #FFFFFF;
+    border-radius: 2%;
+    position: absolute;
+    z-index: 9999;
+    left: 64.5%;
+    top: 8%;
+}
+.proposalOfTheWeek {
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 30%;
+    height: 55%;
+    position: absolute;
+    z-index: 99999;
+    left: 62%;
+    top: 12%;
+}
+
+.comercial {
+    border: 1px solid grey;
+    border-radius: 5px;
+    width: 45%;
+    height: 10%;
+    position: absolute;
+    z-index: 99999;
+    left: 10%;
+    top: 57%;
+}
+

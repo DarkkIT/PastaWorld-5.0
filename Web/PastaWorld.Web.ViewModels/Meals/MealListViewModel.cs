@@ -9,5 +9,7 @@
         public string TypeName { get; set; }
 
         public string PageName { get; set; }
+
+        public string AdminPageName { get; set; }
     }
 }

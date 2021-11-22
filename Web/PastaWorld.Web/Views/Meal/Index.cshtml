@@ -12,85 +12,88 @@
 </head>
 
 
-<div class="base">
+<div class="base row justify-content-between">
 
-    <div class="text-header row justify-content-center">
-        <h1 class="display-4" style="font-family: 'Pattaya', sans-serif; font-size: 3vw;">@Model.PageName</h1>
-    </div>
+    <div class="col-md-10 col justify-content-start">
 
-
-    <div class="filter row justify-content-center mt-2">
-        <form asp-action="Index" method="get">
-            <div class="form-actions no-color row justify-content-center">
-                <p class="mr-3">Намери по име</p>
-                <p>
-                    <input type="text" name="SearchString" id="meal" value="@ViewData["CurrentFilter"]" />
-                    <input type="submit" name="typeName" value="@Model.TypeName" hidden />
-                </p>
-            </div>
-        </form>
-    </div>
+        <div class="text-header row justify-content-center">
+            <h1 class="display-4" style="font-family: 'Pattaya', sans-serif; font-size: 3vw;">@Model.PageName</h1>
+        </div>
 
 
-    <div id="topMealList" class="row justify-content-start col-md-10 ml-5">
+        <div class="filter row justify-content-center col-md-11 mt-2">
+            <form asp-action="Index" method="get">
+                <div class="form-actions no-color row justify-content-center">
+                    <p class="mr-3">Намери по име</p>
+                    <p>
+                        <input type="text" name="SearchString" id="meal" value="@ViewData["CurrentFilter"]" />
+                        <input type="submit" name="typeName" value="@Model.TypeName" hidden />
+                    </p>
+                </div>
+            </form>
+        </div>
 
-        @if (Model.MealList != null)
-        {
-            @foreach (var meal in Model.MealList)
+
+        <div id="topMealList" class="row justify-content-start col-md-12 ml-5">
+
+            @if (Model.MealList != null)
             {
-                @if (meal.IsTop == true)
+                @foreach (var meal in Model.MealList)
                 {
-                    <div id="topMeals" class="card m-2 mt-5">
-                        <div class="thumbnail">
+                    @if (meal.IsTop == true)
+                    {
+                        <div id="topMeals" class="card m-2 mt-5">
+                            <div class="thumbnail">
+                                <img class="card-img" src=@meal.MainImagePath alt="news">
+                                <a class="topMeal-button btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                            </div>
+
+                        </div>
+                    }
+                }
+            }
+
+        </div>
+
+
+        <div class="menu-list col-md-12 col justify-content-start">
+            @if (Model.MealList != null)
+            {
+
+
+                @foreach (var meal in Model.MealList)
+                {
+                    <div class="meal row justify-content-start m-5">
+                        <div class="image col-md-2 m-3">
                             <img class="card-img" src=@meal.MainImagePath alt="news">
-                            <a class="topMeal-button btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                        </div>
+
+                        <div class="body col justify-content-center m-3">
+                            <h4>@meal.Name</h4>
+                            <p>
+                                @meal.Description + TestTestTest TestTestTest
+                                TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest
+                            </p>
+                        </div>
+                        <div class="buttons col-md-1 col justify-end-center m-3">
+                            <div class="row justify-content-center mt-4">
+                                <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                            </div>
+                            <div class="row justify-content-center mt-3 mb-3">
+                                <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                            </div>
                         </div>
 
                     </div>
                 }
             }
-        }
+        </div>
 
     </div>
 
+    <div class=" col-md-2 col justify-content-start">
 
-    <div class="menu-list col-md-10 col justify-content-start">
-        @if (Model.MealList != null)
-        {
-            
-
-            @foreach (var meal in Model.MealList)
-            {
-                <div class="meal row justify-content-start m-5">
-                    <div class="image col-md-2 m-3">
-                        <img class="card-img" src=@meal.MainImagePath alt="news">
-                    </div>
-
-                    <div class="body col justify-content-center m-3">
-                        <h4>@meal.Name</h4>
-                        <p>
-                            @meal.Description + TestTestTest TestTestTest
-                            TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest
-                        </p>
-                    </div>
-                    <div class="buttons col-md-1 col justify-end-center m-3">
-                        <div class="row justify-content-center mt-4">
-                            <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
-                        </div>
-                        <div class="row justify-content-center mt-3 mb-3">
-                            <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
-                        </div>
-                    </div>
-
-                </div>
-            }
-        }
-    </div>
-
-
-    <div class="col justify-content-start col-md-1">
         <ul class="base-list">
-
             <li class="item1">
                 <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="meal">ПАСТА</a>
             </li>
@@ -110,6 +113,10 @@
                 <a class="nav-link-menu-blue item btn btn-light btn-block btn-lg" asp-area="" asp-controller="Home" asp-action="Privacy">ЗА НАС</a>
             </li>
         </ul>
+    </div>
+
+    <div id="image-tag1">
+        <img src="~/images/other/pastaTag-2.jpg" alt="Alternate Text" />
     </div>
 
 </div>

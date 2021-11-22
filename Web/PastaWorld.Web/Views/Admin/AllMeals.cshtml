@@ -15,6 +15,14 @@
 
 <h1 class="text-center">All Meals</h1>
 
+<div class=" row justify-content-center">
+    <a class="btn btn-info btn-lg m-4" asp-controller="Admin" asp-action="GetPasta" asp-route-adminPageName="Основно">PASTA</a>
+    <a class="btn btn-info btn-lg m-4" asp-controller="Admin" asp-action="GetDrinks" asp-route-adminPageName="Напитка">DRINKS</a>
+    <a class="btn btn-info btn-lg m-4" asp-controller="Admin" asp-action="GetDesserts" asp-route-adminPageName="Десерт">DESSERTS</a>
+    <a class="btn btn-info btn-lg m-4" asp-controller="Admin" asp-action="GetKids" asp-route-adminPageName="Детско">KIDS</a>
+</div>
+
+
 <div>
 
     <table class="table">
@@ -26,55 +34,87 @@
                 <th scope="col">Price</th>
                 <th scope="col">IsDeleted</th>
                 <th scope="col">DeletedOn</th>
+                <th scope="col">TopMeal</th>
                 <th scope="col">Edit</th>
                 <th scope="col">UnDelete</th>
                 <th scope="col">Delete</th>
             </tr>
         </thead>
-
-        @foreach (var meal in Model.MealList)
+        @if (Model != null)
         {
-            <tbody>
+            @foreach (var meal in Model.MealList)
+            {
+                <tbody>
 
-                <tr>
-                    <td><img src="@meal.MainImagePath" style="max-height: 60px;" alt="image" /></td>
-                    <td>@meal.Id</td>
-                    <td>@meal.Name</td>
-                    <td>@meal.Price</td>
-                    <td>@meal.IsDeleted</td>
-                    <td>@meal.DeletedOn</td>
-                    <td>
-                        <a class="btn btn-success" asp-controller="Admin" asp-action="EditMeal" asp-route-id="@meal.Id">Edit News</a>
-                    </td>
-                    @if (meal.IsDeleted)
-                    {
-                        <td>
-                            <a class="btn btn-primary" asp-controller="Admin" asp-action="UnDeleteMeal" asp-route-id="@meal.Id">UnDelete</a>
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            <a class="btn btn-primary disabled" asp-controller="Admin" asp-action="UnDeleteMeal" asp-route-id="@meal.Id">UnDelete</a>
-                        </td>
-                    }
+                    <tr>
+                        <td><img src="@meal.MainImagePath" style="max-height: 60px;" alt="image" /></td>
+                        <td>@meal.Id</td>
+                        <td>@meal.Name</td>
+                        <td>@meal.Price</td>
+                        <td>@meal.IsDeleted</td>
+                        <td>@meal.DeletedOn</td>
 
-                    @if (meal.IsDeleted)
-                    {
-                        <td>
-                            <a class="btn btn-danger disabled" asp-controller="Admin" asp-action="DeleteMeal" asp-route-id="@meal.Id">Delete</a>
-                        </td>
-                    }
-                    else
-                    {
-                        <td>
-                            <a class="btn btn-danger" asp-controller="Admin" asp-action="DeleteMeal" asp-route-id="@meal.Id">Delete</a>
-                        </td>
-                    }
+                        @if (meal.IsDeleted)
+                        {
+                            <td>
+                                <a class="btn btn-danger disabled" asp-controller="Admin" asp-action="MakeTop" asp-route-id="@meal.Id" asp-route-name="@Model.TypeName">Deleted</a>
+                            </td>
+                        }
+                        else if (meal.IsTop)
+                        {
+                            <td>
+                                <a class="btn btn-success" asp-controller="Admin" asp-action="MakeTop" asp-route-id="@meal.Id" asp-route-name="@Model.TypeName">Top Meal</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a class="btn btn-warning" asp-controller="Admin" asp-action="MakeTop" asp-route-id="@meal.Id" asp-route-name="@Model.TypeName">Make Top</a>
+                            </td>
+                        }
+                        @if (meal.IsDeleted)
+                        {
+                            <td>
+                                <a class="btn btn-danger disabled" asp-controller="Admin" asp-action="EditMeal" asp-route-id="@meal.Id">Edit News</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a class="btn btn-secondary" asp-controller="Admin" asp-action="EditMeal" asp-route-id="@meal.Id">Edit News</a>
+                            </td>
+                        }
 
-                </tr>
+                        @if (meal.IsDeleted)
+                        {
+                            <td>
+                                <a class="btn btn-primary" asp-controller="Admin" asp-action="UnDeleteMeal" asp-route-id="@meal.Id" asp-route-name="@Model.TypeName">UnDelete</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a class="btn btn-primary disabled" asp-controller="Admin" asp-action="UnDeleteMeal" asp-route-id="@meal.Id" asp-route-name="@Model.TypeName">UnDelete</a>
+                            </td>
+                        }
 
-            </tbody>
+                        @if (meal.IsDeleted)
+                        {
+                            <td>
+                                <a class="btn btn-danger disabled" asp-controller="Admin" asp-action="DeleteMeal" asp-route-id="@meal.Id" asp-route-name="@Model.TypeName">Delete</a>
+                            </td>
+                        }
+                        else
+                        {
+                            <td>
+                                <a class="btn btn-danger" asp-controller="Admin" asp-action="DeleteMeal" asp-route-id="@meal.Id" asp-route-name="@Model.TypeName">Delete</a>
+                            </td>
+                        }
+
+                    </tr>
+
+                </tbody>
+            }
         }
     </table>
 </div>

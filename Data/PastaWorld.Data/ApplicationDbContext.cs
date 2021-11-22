@@ -26,6 +26,8 @@
 
         public DbSet<Setting> Settings { get; set; }
 
+        public DbSet<MetaData> MetaData { get; set; }
+
         public DbSet<Meal> Meals { get; set; }
 
         public DbSet<Ingredient> Ingredients { get; set; }
