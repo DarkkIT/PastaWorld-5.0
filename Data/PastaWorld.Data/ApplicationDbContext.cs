@@ -24,6 +24,10 @@
         {
         }
 
+        public DbSet<MealUser> MealUsers { get; set; }
+
+        public DbSet<Cart> Carts { get; set; }
+
         public DbSet<Setting> Settings { get; set; }
 
         public DbSet<MetaData> MetaData { get; set; }
