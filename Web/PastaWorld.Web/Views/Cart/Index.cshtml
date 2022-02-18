@@ -1,0 +1,37 @@
+﻿@using PastaWorld.Data.Models
+@model IEnumerable<CartItem>
+
+    <div class="container d-inline-flex justify-content-center align-items-center">
+        
+<div class="">
+    <table>
+        <tr>
+            <th>
+                Name
+            </th>
+            <th>
+                Quantity
+            </th>
+            <th>
+                Price
+            </th>
+        </tr>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @item.Meal.Name
+                </td>
+                <td>
+                    @item.Quantity
+                </td>
+                <td>
+                    @(item.Meal.Price*@item.Quantity)
+                </td>
+            </tr>
+        }
+    </table>
+</div>
+
+
+    </div>

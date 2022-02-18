@@ -127,10 +127,15 @@
             return model;
         }
 
-        public MealViewModel GetById<T>(int id)
+        public T GetById<T>(int id)
         {
-            var model = this.mealRepository.All().To<MealViewModel>().FirstOrDefault(x => x.Id == id);
+            var model = this.mealRepository.All().Where(x => x.Id == id).To<T>().FirstOrDefault();
+            return model;
+        }
 
+        public MealViewModel GetById(int id)
+        {
+            var model = this.mealRepository.All().Where(x => x.Id == id).To<MealViewModel>().FirstOrDefault();
             return model;
         }
 
@@ -161,5 +166,6 @@
 
             await this.mealRepository.SaveChangesAsync();
         }
+
     }
 }

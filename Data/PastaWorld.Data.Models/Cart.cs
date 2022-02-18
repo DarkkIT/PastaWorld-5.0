@@ -7,12 +7,16 @@
 
     public class Cart : BaseModel<int>
     {
-        public string Address { get; set; }
+        public Cart()
+        {
+            this.Items = new HashSet<CartItem>();
+        }
 
-        public decimal Price { get; set; }
+        public ICollection<CartItem> Items { get; set; }
+
+        public string Address { get; set; }
 
         public decimal DeliveryPrice { get; set; }
 
-        public decimal FullPrice { get; set; }
     }
 }

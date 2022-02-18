@@ -259,18 +259,51 @@ namespace PastaWorld.Data.Migrations
                     b.Property<decimal>("DeliveryPrice")
                         .HasColumnType("decimal(18,2)");
 
-                    b.Property<decimal>("FullPrice")
-                        .HasColumnType("decimal(18,2)");
-
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
-
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
 
                     b.HasKey("Id");
 
                     b.ToTable("Carts");
+                });
+
+            modelBuilder.Entity("PastaWorld.Data.Models.CartItem", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int?>("CartId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("MealId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("CartId");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("MealId");
+
+                    b.ToTable("CartItem");
                 });
 
             modelBuilder.Entity("PastaWorld.Data.Models.Ingredient", b =>
@@ -568,6 +601,19 @@ namespace PastaWorld.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PastaWorld.Data.Models.CartItem", b =>
+                {
+                    b.HasOne("PastaWorld.Data.Models.Cart", null)
+                        .WithMany("Items")
+                        .HasForeignKey("CartId");
+
+                    b.HasOne("PastaWorld.Data.Models.Meal", "Meal")
+                        .WithMany()
+                        .HasForeignKey("MealId");
+
+                    b.Navigation("Meal");
+                });
+
             modelBuilder.Entity("PastaWorld.Data.Models.MealIngredients", b =>
                 {
                     b.HasOne("PastaWorld.Data.Models.Ingredient", "Ingredient")
@@ -620,6 +666,11 @@ namespace PastaWorld.Data.Migrations
                     b.Navigation("Logins");
 
                     b.Navigation("Roles");
+                });
+
+            modelBuilder.Entity("PastaWorld.Data.Models.Cart", b =>
+                {
+                    b.Navigation("Items");
                 });
 
             modelBuilder.Entity("PastaWorld.Data.Models.Ingredient", b =>
