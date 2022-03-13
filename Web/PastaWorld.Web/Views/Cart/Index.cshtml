@@ -1,5 +1,5 @@
-﻿@using PastaWorld.Data.Models
-@model IEnumerable<CartItem>
+﻿@using PastaWorld.Web.ViewModels.Cart
+@model IEnumerable<CartItemViewModel>
 
     <div class="container d-inline-flex justify-content-center align-items-center">
         
@@ -18,17 +18,23 @@
         </tr>
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @item.Meal.Name
-                </td>
-                <td>
-                    @item.Quantity
-                </td>
-                <td>
-                    @(item.Meal.Price*@item.Quantity)
-                </td>
-            </tr>
+    <tr>
+        <td>
+            @item.Meal.Name
+        </td>
+        <td>
+            @item.Quantity
+        </td>
+        <td>
+            @(item.Meal.Price*@item.Quantity)
+        </td>
+        <td>
+            <a class="btn btn-success" asp-controller="Cart" asp-action="Add" asp-route-id="@item.Meal.Id">+</a>
+        </td>
+        <td>
+            <a class="btn btn-success" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Meal.Id">-</a>
+        </td>
+    </tr>
         }
     </table>
 </div>
