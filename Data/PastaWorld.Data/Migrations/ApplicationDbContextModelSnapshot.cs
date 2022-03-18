@@ -243,34 +243,43 @@ namespace PastaWorld.Data.Migrations
                     b.ToTable("AspNetUsers");
                 });
 
-            modelBuilder.Entity("PastaWorld.Data.Models.Cart", b =>
+            modelBuilder.Entity("PastaWorld.Data.Models.CartItem", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("Address")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<DateTime>("CreatedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("DeliveryPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
 
-                    b.Property<decimal>("FullPrice")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<int?>("MealId")
+                        .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<decimal>("Price")
-                        .HasColumnType("decimal(18,2)");
+                    b.Property<int?>("OrderId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Quantity")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Carts");
+                    b.HasIndex("IsDeleted");
+
+                    b.HasIndex("MealId");
+
+                    b.HasIndex("OrderId");
+
+                    b.ToTable("CartItem");
                 });
 
             modelBuilder.Entity("PastaWorld.Data.Models.Ingredient", b =>
@@ -485,6 +494,59 @@ namespace PastaWorld.Data.Migrations
                     b.ToTable("News");
                 });
 
+            modelBuilder.Entity("PastaWorld.Data.Models.Order", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CliendId")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ClientId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<decimal>("DeliveryPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FamilyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("FirstName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("MealsPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Status")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<decimal>("TotalPrice")
+                        .HasColumnType("decimal(18,2)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ClientId");
+
+                    b.ToTable("Carts");
+                });
+
             modelBuilder.Entity("PastaWorld.Data.Models.Setting", b =>
                 {
                     b.Property<int>("Id")
@@ -568,6 +630,19 @@ namespace PastaWorld.Data.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("PastaWorld.Data.Models.CartItem", b =>
+                {
+                    b.HasOne("PastaWorld.Data.Models.Meal", "Meal")
+                        .WithMany()
+                        .HasForeignKey("MealId");
+
+                    b.HasOne("PastaWorld.Data.Models.Order", null)
+                        .WithMany("Items")
+                        .HasForeignKey("OrderId");
+
+                    b.Navigation("Meal");
+                });
+
             modelBuilder.Entity("PastaWorld.Data.Models.MealIngredients", b =>
                 {
                     b.HasOne("PastaWorld.Data.Models.Ingredient", "Ingredient")
@@ -613,6 +688,15 @@ namespace PastaWorld.Data.Migrations
                     b.Navigation("ApplicationUser");
                 });
 
+            modelBuilder.Entity("PastaWorld.Data.Models.Order", b =>
+                {
+                    b.HasOne("PastaWorld.Data.Models.ApplicationUser", "Client")
+                        .WithMany()
+                        .HasForeignKey("ClientId");
+
+                    b.Navigation("Client");
+                });
+
             modelBuilder.Entity("PastaWorld.Data.Models.ApplicationUser", b =>
                 {
                     b.Navigation("Claims");
@@ -630,6 +714,11 @@ namespace PastaWorld.Data.Migrations
             modelBuilder.Entity("PastaWorld.Data.Models.Meal", b =>
                 {
                     b.Navigation("MealIngredients");
+                });
+
+            modelBuilder.Entity("PastaWorld.Data.Models.Order", b =>
+                {
+                    b.Navigation("Items");
                 });
 #pragma warning restore 612, 618
         }
