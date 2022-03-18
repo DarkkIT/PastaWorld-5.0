@@ -33,7 +33,7 @@
                     <td class="font-weight-bold">@item.Meal.Price</td>
 
                     <td class="font-weight-bold">@(item.Meal.Price * @item.Quantity)</td>
-        
+
                 </tr>
 
             </tbody>
@@ -46,7 +46,9 @@
         <div class="row mr-5">
 
             <p class="text-black font-weight-bold ml-5 font" style="font-family: Ultra">
-                Цена на доставката : <span style="font-size: 25px;">
+                Цена на доставката : 
+                <span style="font-size: 25px;">
+
                     @if (@Model.Sum(x => x.Quantity * x.Meal.Price) > 0 && @Model.Sum(x => x.Quantity * x.Meal.Price) <= 25)
                     {
                         @deliveryPrice;
@@ -87,4 +89,4 @@
             <label>CVC</label>
             <input class="form-control" />
 
-    </div>
+        </div>
