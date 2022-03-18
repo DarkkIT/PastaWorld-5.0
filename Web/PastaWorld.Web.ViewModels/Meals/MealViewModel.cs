@@ -21,10 +21,11 @@
 
         public string ImageName { get; set; }
 
+        public string MainImagePath => "/images/meals/" + this.ImageName + ".jpg";
+
         public bool IsDeleted { get; set; }
 
         public DateTime DeletedOn { get; set; }
 
-        public string MainImagePath => "/images/meals/" + this.ImageName + ".jpg";
     }
 }

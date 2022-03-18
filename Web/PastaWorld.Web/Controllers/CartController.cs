@@ -24,10 +24,7 @@
 
         public IActionResult Index()
         {
-            var isCartEmpty = this
-                .HttpContext
-                .Session
-                .TryGetValue("cart", out byte[] cartContentAsByteArray);
+            var isCartEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
 
             List<CartItemViewModel> cart;
 
@@ -56,19 +53,23 @@
 
         public IActionResult Remove(int id)
         {
-            var cartExists = this.HttpContext
-                           .Session
-                           .TryGetValue("cart", out byte[] cartContentAsByteArray);
+            var cartExists = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
+
             var cart = new List<CartItemViewModel>();
+
             StreamReader streamReader;
             GetCartContent(out cart, cartContentAsByteArray, out streamReader);
 
             if (cart.Any(x => x.Meal.Id == id))
             {
                 var cartItem = cart.FirstOrDefault(x => x.Meal.Id == id);
-                if (cartItem.Quantity > 0)
+                if (cartItem.Quantity == 1)
                 {
-                 cart.FirstOrDefault(x => x.Meal.Id == id).Quantity--;
+                    cart.Remove(cartItem);
+                }
+                else if (cartItem.Quantity > 1)
+                {
+                    cartItem.Quantity--;
                 }
             }
 
@@ -87,9 +88,7 @@
 
             List<CartItemViewModel> cart;
 
-            var cartExists = this.HttpContext
-               .Session
-               .TryGetValue("cart", out byte[] result);
+            var cartExists = this.HttpContext.Session.TryGetValue("cart", out byte[] result);
 
             if (!cartExists)
             {
