@@ -9,12 +9,12 @@
 <div class="col">
 
     <div class="row col-md-12 justify-content-center">
-        <p>Admin View</p>
+        <p class="textTiile">Admin View</p>
     </div>
 
     <div class="col justify-content-center">
 
-        <div class="row justify-content-start m-4">
+        <div class="adminRow row justify-content-start m-4">
             <div class="adminItem">
                 <p class="ml-2">Добави ново ястие или напитка към менюто</p>
                 <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddMeal">Add Meal</a>
@@ -31,7 +31,7 @@
 
         <hr />
 
-        <div class="row justify-content-start m-4">
+        <div class="adminRow row justify-content-start m-4">
             <div class="adminItem">
                 <p class="ml-2 ">Управление на всички новините</p>
                 <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllNews">All News</a>
@@ -47,20 +47,34 @@
 
         <hr />
 
-        <div class="row justify-content-start m-4">
+        <div class="adminRow row justify-content-start m-4">
             <div class="adminItem mt-5">
-                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Home" asp-action="Index">НАЧАЛО</a>
+                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="UserTracking">UserTracking</a>
             </div>
             <div class="adminItem mt-5">
-                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="AllMenu" asp-action="Index">МЕНЮ</a>
+                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="AdminTrackingAll">TrackingAll</a>
             </div>
+            <div class="adminItem mt-5">
+                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="AdminTrackingAccepted">TrackAccepted</a>
+            </div>
+            <div class="adminItem mt-5">
+                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="AdminTrackingCooked">TrackCooked</a>
+            </div>
+            <div class="adminItem mt-5">
+                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="AdminTrackingOnRoad">TrackOnRoad</a>
+            </div>
+        </div>
 
+        <hr />
+
+        <div class="adminRow row justify-content-start ml-4">
             <div class="adminItem mt-5">
-                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="Index">Tracking</a>
+                <a class="adminButton3 nav-link ml-4" asp-area="" asp-controller="Home" asp-action="Index">НАЧАЛО</a>
             </div>
             <div class="adminItem mt-5">
-                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="AdminIndex">AdminTracking</a>
+                <a class="adminButton3 nav-link ml-4" asp-area="" asp-controller="AllMenu" asp-action="Index">МЕНЮ</a>
             </div>
         </div>
 
     </div>
+</div>
