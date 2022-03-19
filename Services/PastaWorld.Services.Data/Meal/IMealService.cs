@@ -36,7 +36,9 @@
 
         IEnumerable<MealViewModel> GetLastThreeMeal<T>();
 
-        MealViewModel GetById<T>(int id);
+        T GetById<T>(int id);
+
+        MealViewModel GetById(int id);
 
         Task DeleteMeal(int id);
 

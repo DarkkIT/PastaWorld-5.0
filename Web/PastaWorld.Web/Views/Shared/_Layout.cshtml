@@ -9,11 +9,13 @@
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/homeButtons.css" asp-append-version="true" />
     <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/f909b4a59b.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <header>
         <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom-0 box-shadow mb-0">
-            <div class="row col-md-12">
+
+            <div class="container-fluid">
 
                 <div class="m-0 p-0">
                     <a class="navbar-brand m-0 p-0" style="font-family: 'Pattaya', sans-serif;" asp-area="" asp-controller="Home" asp-action="Index"><h1>@GlobalConstants.SystemName</h1></a>
@@ -26,38 +28,39 @@
                     </button>
                 </div>
 
-                <div class=" row col-md-10 justify-content-between">
-                    <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row">
-                        <div>
-                            <ul class="navbar-nav flex-grow-1">
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4" asp-area="" asp-controller="Home" asp-action="Index">НАЧАЛО</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4" asp-area="" asp-controller="AllMenu" asp-action="Index">МЕНЮ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4" asp-area="" asp-controller="Information" asp-action="Index">ДОСТАВКИ</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4" asp-area="" asp-controller="Home" asp-action="Privacy">ЗА НАС</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link ml-4" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
-                                </li>
-                            </ul>
-                        </div>
-                        
-                                               
-                    </div>
 
-                    <div>
-                        <partial name="_LoginPartial" />
-                    </div>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse ml-2">
+
+                    <partial name="_LoginPartial" />
+
+                    <ul class="float-left navbar-nav mr-4">
+                        <li class="nav-item">
+                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="Cart" asp-action="Index"><i class="fas fa-shopping-cart"></i>CART</a>
+                        </li>
+                    </ul>
+
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="Home" asp-action="Index">НАЧАЛО</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="AllMenu" asp-action="Index">МЕНЮ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="Information" asp-action="Index">ДОСТАВКИ</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="Home" asp-action="Privacy">ЗА НАС</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="Admin" asp-action="Index">ADMIN</a>
+                        </li>
+                    </ul>
 
                 </div>
-                
+
             </div>
+
         </nav>
     </header>
 

@@ -5,8 +5,20 @@
     
 }
 
-.nav-link:hover{
+.button1:hover {
     color: white !important;
     background-color: red;
+    border-radius: 100px 10px / 120px;
+}
+
+.button2:hover {
+    color: white !important;
+    background-color: dodgerblue;
+    border-radius: 100px 10px / 120px;
+}
+
+.button3:hover {
+    color: white !important;
+    background-color: lightblue;
     border-radius: 100px 10px / 120px;
 }

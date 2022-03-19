@@ -18,6 +18,8 @@ namespace PastaWorld.Data.Models
 
         public DateTime NewsDate { get; set; }
 
+        public string ApplicationUserId { get; set; }
+
         public virtual ApplicationUser ApplicationUser { get; set; }
     }
 }
