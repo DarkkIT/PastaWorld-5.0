@@ -1,0 +1,48 @@
+﻿
+.adminItem {
+
+    width: 12rem;
+    height: 10rem;
+    margin-left: 1rem;
+}
+
+.adminButton2 {
+    margin-left: 1rem;
+    max-width: 10rem;
+    font-size: 1.3rem;
+    border: 3px solid dodgerblue;
+    background-color: dodgerblue;
+    color: white !important;
+    border-radius: 100px 10px / 120px;
+}
+
+    .adminButton2:hover {
+        color: dodgerblue !important;
+        background-color: white;
+        border: 3px solid dodgerblue;
+    }
+
+.adminButton {
+    margin-left: 1rem;
+    max-width: 10rem;
+    font-size: 1.3rem;
+    border: 3px solid red;
+    background-color: red;
+    color: white !important;
+    border-radius: 100px 10px / 120px;
+}
+
+    .adminButton:hover {
+        color: red !important;
+        background-color: white;
+        border: 3px solid red;
+    }
+
+.text {
+    margin-left: 3rem;
+    margin-top: 4rem;
+    color: red;
+    font-style: italic;
+    font-family: 'AmstelvarAlpha';
+    font-size: 2rem;
+}
