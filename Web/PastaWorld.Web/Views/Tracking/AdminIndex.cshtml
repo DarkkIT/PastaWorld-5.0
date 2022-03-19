@@ -1,0 +1,62 @@
+﻿@model PastaWorld.Web.ViewModels.Orders.OrdersListViewModel;
+@{
+    this.ViewData["Title"] = "Admin Tracking";
+}
+
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+
+<div class="text-hide mt-5">
+    <p>MoveDown</p>
+</div>
+
+<h1 class="text-center">Not Finalized Orders </h1>
+
+<div>
+
+    <table class="table">
+        <thead>
+            <tr>
+                @if (Model.Orders.Count() > 0)
+                {
+                    <th scope="col">Image</th>
+                    <th scope="col">Id</th>
+                    <th scope="col">Clien</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Status</th>
+                }
+                else
+                {
+                    <th class="row justify-content-center" scope="col">Orders</th>
+                }
+
+            </tr>
+        </thead>
+
+        @if (Model.Orders.Count() > 0)
+        {
+            @foreach (var order in Model.Orders)
+            {
+                <tbody>
+                    <tr>
+                        <td><img src="~/images/profils/ProfilOne.jpg" style="max-height: 60px;" alt="image" /></td>
+                        <td>@order.Id</td>
+                        <td>@order.CliendId</td>
+                        <td>@order.Address</td>
+                        <td>@order.Status</td>
+                    </tr>
+                </tbody>
+            }
+        }
+        else
+        {
+            <tr>
+                <td class=" row justify-content-center">There orders to show</td>
+            </tr>
+        }
+
+
+    </table>
+
+</div>
