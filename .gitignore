@@ -363,8 +363,11 @@ FodyWeavers.xsd
 
 # Custom ignores
 **/wwwroot/lib/
-/Data/TheDarkPortal.Data/appsettings.json
-/Web/TheDarkPortal.Web/appsettings.json
+#/Data/TheDarkPortal.Data/appsettings.json
+#/Web/TheDarkPortal.Web/appsettings.json
+/Data/PastaWorld.Data/appsettings.json
+/Web/PastaWorld.Web/appsettings.json
+/Data/PastaWorld.Data/Migrations/*.cs
 appsettings.Production.json
 appsettings.Development.json
 appsettings.Staging.json
