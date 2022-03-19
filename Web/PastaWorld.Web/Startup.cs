@@ -23,6 +23,7 @@
     using Microsoft.Extensions.Hosting;
     using PastaWorld.Services.Data.News;
     using PastaWorld.Services.Data.Meal;
+    using PastaWorld.Services.Data.Tracking;
 
     public class Startup
     {
@@ -71,6 +72,7 @@
             services.AddTransient<ISettingsService, SettingsService>();
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IMealService, MealService>();
+            services.AddTransient<ITrackingService, TrackingService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
