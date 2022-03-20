@@ -1,4 +1,8 @@
 ﻿@using PastaWorld.Common
+
+@{
+    var itemCount = ViewBag.CartItems;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +39,7 @@
 
                     <ul class="float-left navbar-nav mr-4">
                         <li class="nav-item">
-                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="Cart" asp-action="Index"><i class="fas fa-shopping-cart"></i>CART</a>
+                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="Cart" asp-action="Index"><i class="fas fa-shopping-cart"></i>CART - @itemCount</a>
                         </li>
                     </ul>
 

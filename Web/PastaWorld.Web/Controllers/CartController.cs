@@ -13,7 +13,7 @@
     using PastaWorld.Web.ViewModels.Cart;
     using PastaWorld.Web.ViewModels.Meals;
 
-    public class CartController : Controller
+    public class CartController : BaseController
     {
         private readonly IMealService mealService;
 
@@ -28,7 +28,7 @@
 
             List<CartItemViewModel> cart;
 
-            if (!cartIsNotEmpty)
+            if (cartIsNotEmpty)
             {
                 var reader = new StreamReader(new MemoryStream(cartContentAsByteArray), Encoding.Default);
 
