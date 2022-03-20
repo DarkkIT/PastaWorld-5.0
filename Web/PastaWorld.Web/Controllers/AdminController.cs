@@ -16,7 +16,7 @@
     using PastaWorld.Web.ViewModels.Meals;
     using PastaWorld.Web.ViewModels.News;
 
-    public class AdminController : Controller
+    public class AdminController : BaseController
     {
         private readonly IWebHostEnvironment webHostEnvironment;
         private readonly INewsService newsService;

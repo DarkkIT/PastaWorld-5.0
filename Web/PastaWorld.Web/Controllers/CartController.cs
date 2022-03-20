@@ -13,7 +13,7 @@
     using PastaWorld.Web.ViewModels.Cart;
     using PastaWorld.Web.ViewModels.Meals;
 
-    public class CartController : Controller
+    public class CartController : BaseController
     {
         private readonly IMealService mealService;
 
@@ -24,11 +24,11 @@
 
         public IActionResult Index()
         {
-            var isCartEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
+            var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
 
             List<CartItemViewModel> cart;
 
-            if (isCartEmpty)
+            if (cartIsNotEmpty)
             {
                 var reader = new StreamReader(new MemoryStream(cartContentAsByteArray), Encoding.Default);
 
@@ -40,13 +40,13 @@
             {
                 cart = new List<CartItemViewModel>();
                 var serializedCart = JsonConvert.SerializeObject(cart);
-                var cartAsByteArray = System.Text.Encoding.UTF8.GetBytes(serializedCart);
+                var cartAsByteArray = Encoding.UTF8.GetBytes(serializedCart);
                 this.HttpContext.Session.Set("cart", cartAsByteArray);
             }
 
             /*SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");*/
-            this.ViewBag.cart = cart;
-            this.ViewBag.total = cart.Sum(item => item.Meal.Price * item.Quantity);
+            //this.ViewBag.cart = cart;
+            //this.ViewBag.total = cart.Sum(item => item.Meal.Price * item.Quantity);
 
             return this.View(cart);
         }

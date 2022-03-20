@@ -1,8 +1,7 @@
 ﻿namespace PastaWorld.Data.Models
 {
     using System.Collections.Generic;
-    using System.Linq;
-    using DataAnnotationsExtensions;
+    using PastaWorld.Common;
     using PastaWorld.Data.Common.Models;
 
     public class Order : BaseModel<int>
@@ -13,6 +12,8 @@
         }
 
         public ICollection<CartItem> Items { get; set; }
+
+        public string City { get; set; } = GlobalConstants.DeliveryCity;
 
         public string Address { get; set; }
 
@@ -36,7 +37,8 @@
 
         public ApplicationUser Client { get; set; }
 
-        //TODO ADD PHONE, NAME, MealPrice, TotalPrice, email, status\
-        //TO FK APPUsers
+        public string DistributorId { get; set; }
+
+        public ApplicationUser Distributor { get; set; }
     }
 }

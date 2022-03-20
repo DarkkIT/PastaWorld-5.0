@@ -504,6 +504,9 @@ namespace PastaWorld.Data.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ClientId")
                         .HasColumnType("nvarchar(450)");
 
@@ -512,6 +515,9 @@ namespace PastaWorld.Data.Migrations
 
                     b.Property<decimal>("DeliveryPrice")
                         .HasColumnType("decimal(18,2)");
+
+                    b.Property<string>("DistributorId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Email")
                         .HasColumnType("nvarchar(max)");
@@ -540,6 +546,8 @@ namespace PastaWorld.Data.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("ClientId");
+
+                    b.HasIndex("DistributorId");
 
                     b.ToTable("Order");
                 });
@@ -691,7 +699,13 @@ namespace PastaWorld.Data.Migrations
                         .WithMany()
                         .HasForeignKey("ClientId");
 
+                    b.HasOne("PastaWorld.Data.Models.ApplicationUser", "Distributor")
+                        .WithMany()
+                        .HasForeignKey("DistributorId");
+
                     b.Navigation("Client");
+
+                    b.Navigation("Distributor");
                 });
 
             modelBuilder.Entity("PastaWorld.Data.Models.ApplicationUser", b =>

@@ -1,13 +1,8 @@
 ﻿namespace PastaWorld.Web.Controllers
 {
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Threading.Tasks;
-
     using Microsoft.AspNetCore.Mvc;
 
-    public class InformationController : Controller
+    public class InformationController : BaseController
     {
         public IActionResult Index()
         {
