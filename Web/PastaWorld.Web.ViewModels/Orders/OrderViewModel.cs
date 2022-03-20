@@ -29,6 +29,6 @@
 
         public string Email { get; set; }
 
-        public string CliendId { get; set; }
+        public string ClientId { get; set; }
     }
 }

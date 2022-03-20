@@ -53,7 +53,7 @@
 
         public OrderViewModel GetCurretUserOrder<T>(string userId)
         {
-            var orders = this.orderRepository.All().OrderByDescending(x => x.CreatedOn).To<OrderViewModel>().FirstOrDefault(x => x.CliendId == userId);
+            var orders = this.orderRepository.All().OrderByDescending(x => x.CreatedOn).To<OrderViewModel>().FirstOrDefault(x => x.ClientId == userId);
 
             return orders;
         }

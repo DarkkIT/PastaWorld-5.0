@@ -59,5 +59,19 @@
 
             return this.View(viewModel);
         }
+
+        public async Task<IActionResult> ChengeStatusToCooked(int Id)
+        {
+            await this.trackingService.ChangeOrderStatus(GlobalConstants.Cooked, Id);
+
+            return this.RedirectToAction(nameof(this.AdminTrackingAccepted));
+        }
+
+        public async Task<IActionResult> ChengeStatusToOnRoad(int Id)
+        {
+            await this.trackingService.ChangeOrderStatus(GlobalConstants.OnRoad, Id);
+
+            return this.RedirectToAction(nameof(this.AdminTrackingCooked));
+        }
     }
 }

@@ -35,8 +35,5 @@
         public string ClientId { get; set; }
 
         public ApplicationUser Client { get; set; }
-
-        //TODO ADD PHONE, NAME, MealPrice, TotalPrice, email, status\
-        //TO FK APPUsers
     }
 }
