@@ -12,7 +12,7 @@ body {
     list-style-type: none;
     width: 12%;
     left: 84%;
-    top: 24%;
+    top: 13%;
 }
 #image-tag1 {
     position: fixed;
@@ -78,11 +78,6 @@ body {
     max-width: 300px;
 }
 
-.buttons {
-    /*border: 1px solid grey;
-    border-radius: 5px;*/
-}
-
 #topMeals {
     border: 1px solid grey;
     border-radius: 5px;
@@ -98,4 +93,23 @@ body {
     position: absolute;
     left: 5%;
     top: 80%;
+}
+
+.itemImage1 {
+    background: url(../images/other/imageTag-4.jpg);
+    background-size: contain;
+    border-radius: 100px 10px / 120px;
+    border-color: transparent !important;
+    min-height: 5rem;
+    min-width: 10rem;
+}
+
+.itemImage2 {
+    background-image: url(/images/other/imageTag-5.jpg);
+    background-size: contain;
+    border-radius: 100px 10px / 120px;
+    border-color: transparent !important;
+    min-height: 5rem;
+    min-width: 10rem;
+    margin-top: 2rem;
 }
