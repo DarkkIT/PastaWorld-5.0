@@ -100,7 +100,11 @@
             }
 
             app.UseHttpsRedirection();
-            app.UseSession();
+            app.UseSession(new SessionOptions()
+            {
+                IdleTimeout = System.TimeSpan.FromMinutes(30),
+            });
+
             app.UseStaticFiles();
             app.UseCookiePolicy();
 

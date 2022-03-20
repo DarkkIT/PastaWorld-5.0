@@ -10,7 +10,7 @@
     using PastaWorld.Services.Data.Tracking;
     using PastaWorld.Web.ViewModels.Orders;
 
-    public class TrackingController : Controller
+    public class TrackingController : BaseController
     {
         private readonly ITrackingService trackingService;
 
