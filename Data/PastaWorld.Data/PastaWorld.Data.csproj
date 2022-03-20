@@ -44,8 +44,4 @@
     <ProjectReference Include="..\PastaWorld.Data.Models\PastaWorld.Data.Models.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Migrations\" />
-  </ItemGroup>
-
 </Project>

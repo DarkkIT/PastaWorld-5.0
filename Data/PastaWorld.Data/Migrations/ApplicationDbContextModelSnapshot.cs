@@ -504,9 +504,6 @@ namespace PastaWorld.Data.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("CliendId")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("ClientId")
                         .HasColumnType("nvarchar(450)");
 
@@ -544,7 +541,7 @@ namespace PastaWorld.Data.Migrations
 
                     b.HasIndex("ClientId");
 
-                    b.ToTable("Carts");
+                    b.ToTable("Order");
                 });
 
             modelBuilder.Entity("PastaWorld.Data.Models.Setting", b =>
