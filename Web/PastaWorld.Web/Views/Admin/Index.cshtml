@@ -2,29 +2,65 @@
     this.ViewData["Title"] = "Admin View";
 }
 
-<div>
-    
+<head>
+    <link rel="stylesheet" href="~/css/admin.css" asp-append-version="true" />
+</head>
+
+<div class="col">
+
     <div class="row col-md-12 justify-content-center">
         <p>Admin View</p>
     </div>
 
-    <div class="">
+    <div class="col justify-content-center">
 
-        <ul class="col">
-            <li class="nav-item row justify-content-center">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddNews">AddNews</a>
-            </li>
-            <li class="nav-item row justify-content-center">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllNews">All News</a>
-            </li>
-            <li class="nav-item row justify-content-center">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddMeal">Add Meal</a>
-            </li>
-            <li class="nav-item row justify-content-center">
-                <a class="nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllMeals">All Meals</a>
-            </li>
-        </ul>
+        <div class="row justify-content-start m-4">
+            <div class="adminItem">
+                <p class="ml-2">Добави ново ястие или напитка към менюто</p>
+                <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddMeal">Add Meal</a>
+            </div>
+
+            <div class="adminItem">
+                <p class="ml-2">Управление на всички ястия и напитки</p>
+                <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllMeals">All Meals</a>
+            </div>
+            <div class="text">
+                <p>Управление на ястия и напитки</p>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row justify-content-start m-4">
+            <div class="adminItem">
+                <p class="ml-2 ">Управление на всички новините</p>
+                <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllNews">All News</a>
+            </div>
+            <div class="adminItem">
+                <p class="ml-2">Добави новa новина към списъка</p>
+                <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddNews">AddNews</a>
+            </div>
+            <div class="text">
+                <p>Управление на новини</p>
+            </div>
+        </div>
+
+        <hr />
+
+        <div class="row justify-content-start m-4">
+            <div class="adminItem mt-5">
+                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Home" asp-action="Index">НАЧАЛО</a>
+            </div>
+            <div class="adminItem mt-5">
+                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="AllMenu" asp-action="Index">МЕНЮ</a>
+            </div>
+
+            <div class="adminItem mt-5">
+                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="Index">Tracking</a>
+            </div>
+            <div class="adminItem mt-5">
+                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="AdminIndex">AdminTracking</a>
+            </div>
+        </div>
 
     </div>
-
-</div>
