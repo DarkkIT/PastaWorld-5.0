@@ -1,8 +1,6 @@
 ﻿namespace PastaWorld.Data.Models
 {
     using System.Collections.Generic;
-    using System.Linq;
-    using DataAnnotationsExtensions;
     using PastaWorld.Data.Common.Models;
 
     public class Order : BaseModel<int>
