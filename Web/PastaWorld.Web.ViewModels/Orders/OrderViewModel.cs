@@ -1,4 +1,6 @@
-﻿namespace PastaWorld.Web.ViewModels.Orders
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace PastaWorld.Web.ViewModels.Orders
 {
     using System;
     using System.Collections.Generic;
@@ -11,6 +13,7 @@
     {
         public int Id { get; set; }
 
+        [Display(Name = OrderConstants.Address)]
         public string Address { get; set; }
 
         public decimal DeliveryPrice { get; set; }
@@ -21,12 +24,16 @@
 
         public string Status { get; set; }
 
+        [Display(Name = OrderConstants.PhoneNumber)]
         public string PhoneNumber { get; set; }
 
+        [Display(Name = OrderConstants.FirstName)]
         public string FirstName { get; set; }
 
+        [Display(Name = OrderConstants.FamilyName)]
         public string FamilyName { get; set; }
 
+        [Display(Name = OrderConstants.Email)]
         public string Email { get; set; }
 
         public string ClientId { get; set; }

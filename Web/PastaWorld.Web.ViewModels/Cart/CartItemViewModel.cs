@@ -2,7 +2,7 @@
 {
     using PastaWorld.Web.ViewModels.Meals;
 
-   public class CartItemViewModel
+    public class CartItemViewModel
     {
         public MealAsCartItemViewModel Meal { get; set; }
 
