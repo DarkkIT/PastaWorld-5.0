@@ -14,7 +14,7 @@
 
         public const string Email = "Email";
 
-        public const string AddressComment = "Уточнение на адрес";
+        public const string AddressComment = "Уточнение за адрес";
 
         public const string Town = "Град";
 

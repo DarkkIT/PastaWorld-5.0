@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PastaWorld.Web.ViewModels.Orders
+﻿namespace PastaWorld.Web.ViewModels.Orders
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using PastaWorld.Web.ViewModels.Cart;
 

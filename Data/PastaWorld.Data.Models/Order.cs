@@ -1,6 +1,7 @@
 ﻿namespace PastaWorld.Data.Models
 {
     using System.Collections.Generic;
+
     using PastaWorld.Common;
     using PastaWorld.Data.Common.Models;
 
@@ -16,6 +17,8 @@
         public string City { get; set; } = GlobalConstants.DeliveryCity;
 
         public string Address { get; set; }
+
+        public string AddressComment { get; set; }
 
         public decimal DeliveryPrice { get; set; }
 

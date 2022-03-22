@@ -11,7 +11,7 @@
     using PastaWorld.Web.ViewModels.Cart;
     using PastaWorld.Web.ViewModels.Orders;
 
-    public class PaymentController : Controller
+    public class PaymentController : BaseController
     {
         public IActionResult Index()
         {
