@@ -1,0 +1,71 @@
+﻿@using PastaWorld.Web.ViewModels.Orders
+
+@model OrderPaymentViewModel
+@{
+    this.ViewData["Title"] = "Payment";
+}
+
+<div style="margin-left:auto; margin-right: auto; width: 50%;">
+    <form method="post" asp-controller="Payment" asp-action="FinalyzeOrder">
+        <div class="form-group">
+            <label asp-for="FirstName"></label>
+            <input class="form-control" asp-for="FirstName">
+        </div>
+        <div class="form-group">
+            <label asp-for="FamilyName"></label>
+            <input class="form-control" asp-for="FamilyName">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="PhoneNumber"></label>
+            <input class="form-control" asp-for="PhoneNumber">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input class="form-control" type="email" asp-for="Email">
+        </div>
+
+        <div class="form-group">
+            @foreach (var address in Model.Addresses)
+            {
+                <input type="radio" asp-for="IsUserAddress" value="@address"> @address
+                <br/>
+            }
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Town"></label>
+            <input class="form-control" asp-for="Town">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input class="form-control" asp-for="Address">
+        </div>
+
+        <div class="form-group">
+            <label asp-for="AddressComment"></label>
+            <textarea asp-for="AddressComment" rows="5" cols="33" placeholder="Тук можете да опишете специфични подробности около адреса."></textarea>
+        </div>
+
+        <div class="form-group">
+            @foreach (var paymentMethod in Model.PaymentMethods)
+            {
+                <input type="radio" asp-for="IsBankCard" value="@paymentMethod"> @paymentMethod
+                <br/>
+            }
+        </div>
+
+        <div class="form-group form-check">
+            <input class="form-check-input" type="checkbox" asp-for="IsAgreedTermsAndConditions" />
+            <label class="form-check-label" asp-for="IsAgreedTermsAndConditions">Съгласен/на съм с </label>
+            <a href="#" target="_blank">Условията за ползване на сайта</a>
+        </div>
+
+        <input class="btn btn-primary" type="submit" asp-page="">
+    </form>
+</div>
+
+
+

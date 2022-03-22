@@ -365,7 +365,11 @@ FodyWeavers.xsd
 **/wwwroot/lib/
 /Data/TheDarkPortal.Data/appsettings.json
 /Web/TheDarkPortal.Web/appsettings.json
+/Data/PastaWorld.Data/Migrations/ApplicationDbContextModelSnapshot.cs
 /Data/PastaWorld.Data/Migrations/*.cs
+/Data/PastaWorld.Data/appsettings.json
+/Data/Sandbox/appsettings.json
+/Data/PastaWorld.Web/appsettings.json
 appsettings.Production.json
 appsettings.Development.json
 appsettings.Staging.json
