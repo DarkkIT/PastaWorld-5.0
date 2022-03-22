@@ -46,7 +46,7 @@
 
         public IEnumerable<OrderViewModel> GetAllUserOrders<T>(string userId)
         {
-            var orders = this.orderRepository.All().Where(x => x.CliendId == userId).To<OrderViewModel>().ToList();
+            var orders = this.orderRepository.All().Where(x => x.ClientId == userId).To<OrderViewModel>().ToList();
 
             return orders;
         }

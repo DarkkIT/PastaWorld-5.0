@@ -6,9 +6,25 @@
     margin-left: 1rem;
 }
 
-.adminButton2 {
+.adminButton3 {
     margin-left: 1rem;
     max-width: 10rem;
+    font-size: 1.3rem;
+    border: 3px solid;
+    background-color: limegreen;
+    color: white !important;
+    border-radius: 100px 10px / 120px;
+}
+
+    .adminButton3:hover {
+        color: limegreen !important;
+        background-color: white;
+        border: 3px solid limegreen;
+    }
+
+.adminButton2 {
+    margin-left: 1rem;
+    max-width: 12rem;
     font-size: 1.3rem;
     border: 3px solid dodgerblue;
     background-color: dodgerblue;
@@ -38,9 +54,23 @@
         border: 3px solid red;
     }
 
+.adminRow{
+    max-height: 8.5rem;
+}
+
 .text {
     margin-left: 3rem;
     margin-top: 4rem;
+    color: red;
+    font-style: italic;
+    font-family: 'AmstelvarAlpha';
+    font-size: 2rem;
+}
+
+.textTiile {
+    margin-left: 3rem;
+    margin-top: 0rem;
+    margin-bottom: 0rem;
     color: red;
     font-style: italic;
     font-family: 'AmstelvarAlpha';

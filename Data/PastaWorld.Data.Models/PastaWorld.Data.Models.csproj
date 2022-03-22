@@ -21,6 +21,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\..\PastaWorld.Common\PastaWorld.Common.csproj" />
     <ProjectReference Include="..\PastaWorld.Data.Common\PastaWorld.Data.Common.csproj" />
   </ItemGroup>
   

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PastaWorld.Web.Controllers
 {
-    public class AllMenuController : Controller
+    public class AllMenuController : BaseController
     {
         public IActionResult Index()
         {

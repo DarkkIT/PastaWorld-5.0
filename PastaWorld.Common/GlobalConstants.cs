@@ -18,5 +18,8 @@
         public const string NotPaid = "NotPaid ";
         public const string Finalized = "Finalized";
 
+        //Addresses
+        public const string DeliveryCity = "Varna";
+
     }
 }
