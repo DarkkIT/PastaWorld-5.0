@@ -20,6 +20,10 @@
             padding-bottom: 5%;
             padding-top: 5%;
         }
+
+        .address-spacing {
+            padding-right: 5%;
+        }
     </style>
 </head>
 
@@ -30,10 +34,10 @@
             <span>Пазаруване като гост</span>
             <span>Вход</span>
         </div>
-        
+
         <div class="d-flex">
-            
-            <div class="col-lg-6" @*style="padding-left: 0; padding-right: 0"*@>
+
+            <div class="col-lg-6">
                 <div class="form-group">
                     <label asp-for="FirstName"></label>
                     <input class="form-control" asp-for="FirstName">
@@ -58,7 +62,7 @@
                 <button>Login</button>
             </div>
         </div>
-        
+
 
         <div class="form-group">
             @foreach (var address in Model.Addresses)
@@ -69,14 +73,16 @@
             }
         </div>
 
-        <div class="form-group">
-            <label asp-for="Town"></label>
-            <input class="form-control" asp-for="Town">
-        </div>
+        <div class="d-flex">
+            <div class="form-group col-lg-6 address-spacing">
+                <label asp-for="Town"></label>
+                <input class="form-control" asp-for="Town">
+            </div>
 
-        <div class="form-group">
-            <label asp-for="Address"></label>
-            <input class="form-control" asp-for="Address">
+            <div class="form-group col-lg-6">
+                <label asp-for="Address"></label>
+                <input class="form-control" asp-for="Address">
+            </div>
         </div>
 
         <div class="form-group">
