@@ -5,71 +5,59 @@
     this.ViewData["Title"] = "Payment";
 }
 
-<head>
-    <style>
-        .d-flex {
-            justify-content: space-around;
-            align-items: center;
-        }
-
-        .col-lg-6 {
-            padding: 0;
-        }
-
-        .text-uppercase {
-            padding-bottom: 5%;
-            padding-top: 5%;
-        }
-
-        .address-spacing {
-            padding-right: 5%;
-        }
-    </style>
-</head>
-
 <div class="container">
     <div class="text-uppercase text-center">Данни за поръчка</div>
     <form method="post" asp-controller="Payment" asp-action="FinalyzeOrder">
-        <div class="d-flex">
-            <span>Пазаруване като гост</span>
-            <span>Вход</span>
+        <div class="col-lg-6 d-flex">
+            <a id="guest" class="anchor" href="javascript:void(0)" target="_blank">Пазаруване като гост</a>
+            <a id="client" class="anchor" href="javascript:void(0)" target="_blank">Вход</a>
         </div>
 
-        <div class="d-flex">
-
-            <div class="col-lg-6">
-                <div class="form-group">
+        <div>
+            <div class="col-lg-6 clientInfo">
+                <div class="form-group guest">
                     <label asp-for="FirstName"></label>
                     <input class="form-control" asp-for="FirstName">
                 </div>
-                <div class="form-group">
+                <div class="form-group guest">
                     <label asp-for="FamilyName"></label>
                     <input class="form-control" asp-for="FamilyName">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group guest">
                     <label asp-for="PhoneNumber"></label>
                     <input class="form-control" asp-for="PhoneNumber">
                 </div>
 
-                <div class="form-group">
+                <div class="form-group guest">
                     <label asp-for="Email"></label>
                     <input class="form-control" type="email" asp-for="Email">
                 </div>
             </div>
+            
+            <div class="col-lg-6 clientInfo">
+                <div class="form-group login">
+                    <label asp-for="FirstName"></label>
+                    <input class="form-control" asp-for="FirstName">
+                </div>
 
-            <div class="col-lg-6 d-flex">
-                <button>Login</button>
+                <div class="form-group login">
+                    <label asp-for="FamilyName"></label>
+                    <input class="form-control" asp-for="FamilyName">
+                </div>
+
+                <div id="button-login" class="login text-center">
+                    <button class="btn btn-primary">Login</button>
+                </div>
             </div>
         </div>
-
 
         <div class="form-group">
             @foreach (var address in Model.Addresses)
             {
-                <input type="radio" asp-for="IsUserAddress" value="@address">
+                    <input type="radio" asp-for="IsUserAddress" value="@address">
                 @address
-                <br />
+                    <br />
             }
         </div>
 
@@ -93,9 +81,9 @@
         <div class="form-group">
             @foreach (var paymentMethod in Model.PaymentMethods)
             {
-                <input type="radio" asp-for="IsBankCard" value="@paymentMethod">
+                    <input type="radio" asp-for="IsBankCard" value="@paymentMethod">
                 @paymentMethod
-                <br />
+                    <br />
             }
         </div>
 
@@ -112,10 +100,13 @@
 <aside>
     @foreach (var item in Model.Items)
     {
-        <div>@item.Meal.Name</div>
-        <div>@item.Quantity</div>
+            <div>@item.Meal.Name</div>
+            <div>@item.Quantity</div>
     }
 </aside>
 
-
+@section Scripts{
+    <link rel="stylesheet" href="~/css/payment.css" asp-append-version="true" />
+    <script src="~/js/payment.js" asp-append-version="true"></script>
+}
 

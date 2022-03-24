@@ -1,0 +1,29 @@
+﻿.d-flex {
+    justify-content: space-around;
+    align-items: center;
+}
+
+.col-lg-6 {
+    padding: 0;
+}
+
+.text-uppercase {
+    padding-bottom: 5%;
+    padding-top: 5%;
+}
+
+.address-spacing {
+    padding-right: 5%;
+}
+
+a.anchor:hover {
+    text-decoration: none;
+}
+
+div.clientInfo {
+    display: inline-block;
+}
+
+div#button-login {
+    padding-bottom: 10%;
+}
