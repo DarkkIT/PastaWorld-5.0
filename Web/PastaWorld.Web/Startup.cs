@@ -24,6 +24,7 @@
     using PastaWorld.Services.Data.News;
     using PastaWorld.Services.Data.Meal;
     using PastaWorld.Services.Data.Tracking;
+    using PastaWorld.Services.Data.Cart;
 
     public class Startup
     {
@@ -73,6 +74,7 @@
             services.AddTransient<INewsService, NewsService>();
             services.AddTransient<IMealService, MealService>();
             services.AddTransient<ITrackingService, TrackingService>();
+            services.AddTransient<ICartService, CartService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
