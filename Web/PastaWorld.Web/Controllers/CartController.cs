@@ -43,11 +43,6 @@
                 var cartAsByteArray = Encoding.UTF8.GetBytes(serializedCart);
                 this.HttpContext.Session.Set("cart", cartAsByteArray);
             }
-
-            /*SessionHelper.GetObjectFromJson<List<Item>>(HttpContext.Session, "cart");*/
-            //this.ViewBag.cart = cart;
-            //this.ViewBag.total = cart.Sum(item => item.Meal.Price * item.Quantity);
-
             return this.View(cart);
         }
 
@@ -116,7 +111,9 @@
             var cartAsByteArray = Encoding.UTF8.GetBytes(serializedCart);
             this.HttpContext.Session.Set("cart", cartAsByteArray);
 
-            return this.RedirectToAction("Index");
+            var previousUrl = this.HttpContext.Request.Headers["Referer"].ToString();
+
+            return this.Redirect(previousUrl);
         }
 
         private static void GetCartContent(out List<CartItemViewModel> cart, byte[] result, out StreamReader reader)
