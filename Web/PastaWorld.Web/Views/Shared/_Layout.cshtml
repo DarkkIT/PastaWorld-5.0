@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
     <link rel="stylesheet" href="~/css/homeButtons.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
     <link href="https://fonts.googleapis.com/css2?family=Pattaya&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/f909b4a59b.js" crossorigin="anonymous"></script>
 </head>
@@ -39,8 +40,14 @@
 
                     <ul class="float-left navbar-nav mr-4">
                         <li class="nav-item">
-                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="Cart" asp-action="Index"><i class="fas fa-shopping-cart"></i>CART - @itemCount</a>
+                            <a class="button1 nav-link ml-4 cart" asp-area="" asp-controller="Cart" asp-action="Index">
+                                @*<i class="badge fas fa-shopping-cart" value="@itemCount"></i>*@
+                                <i class="fas" style="font-size:24px">&#xf07a;</i>
+                                <span class='badge badge-warning' id='lblCartCount'> @itemCount </span>
+                            </a>
                         </li>
+
+
                     </ul>
 
                     <ul class="navbar-nav flex-grow-1">
