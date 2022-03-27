@@ -6,11 +6,11 @@
 }
 
 <div class="container">
-    <div class="text-uppercase text-center">Данни за поръчка</div>
+    <div class="text-uppercase text-header text-center">Данни за поръчка</div>
     <form method="post" asp-controller="Payment" asp-action="FinalyzeOrder">
         <div class="col-lg-6 d-flex">
-            <a id="guest" class="anchor" href="javascript:void(0)" target="_blank">Пазаруване като гост</a>
-            <a id="client" class="anchor" href="javascript:void(0)" target="_blank">Вход</a>
+            <a id="guest" class="anchor" href="javascript:void(0)">Пазаруване като гост</a>
+            <a id="client" class="anchor" href="javascript:void(0)">Вход</a>
         </div>
 
         <div>
@@ -34,7 +34,7 @@
                     <input class="form-control" type="email" asp-for="Email">
                 </div>
             </div>
-            
+
             <div class="col-lg-6 clientInfo">
                 <div class="form-group login">
                     <label asp-for="FirstName"></label>
@@ -55,25 +55,33 @@
         <div class="form-group">
             @foreach (var address in Model.Addresses)
             {
-                    <input type="radio" asp-for="IsUserAddress" value="@address">
+                if (address.Contains("Доставка до адрес"))
+                {
+                    <input class="user-address" type="radio" asp-for="IsUserAddress" value="@address" checked>
+                }
+                else
+                {
+                    <input class="user-address" type="radio" asp-for="IsUserAddress" value="@address">
+                }
+
                 @address
-                    <br />
+                <br />
             }
         </div>
 
         <div class="d-flex">
-            <div class="form-group col-lg-6 address-spacing">
+            <div class="form-group col-lg-6 address-spacing address-none">
                 <label asp-for="Town"></label>
                 <input class="form-control" asp-for="Town">
             </div>
 
-            <div class="form-group col-lg-6">
+            <div class="form-group col-lg-6 address-none">
                 <label asp-for="Address"></label>
                 <input class="form-control" asp-for="Address">
             </div>
         </div>
 
-        <div class="form-group">
+        <div class="form-group address-none">
             <label asp-for="AddressComment"></label>
             <textarea class="form-control" asp-for="AddressComment" rows="5" cols="33" placeholder="Тук можете да опишете специфични подробности около адреса."></textarea>
         </div>
@@ -81,9 +89,17 @@
         <div class="form-group">
             @foreach (var paymentMethod in Model.PaymentMethods)
             {
+                if (paymentMethod.Contains("Наложен платеж"))
+                {
+                    <input type="radio" asp-for="IsBankCard" value="@paymentMethod" checked>
+                }
+                else
+                {
                     <input type="radio" asp-for="IsBankCard" value="@paymentMethod">
+                }
+
                 @paymentMethod
-                    <br />
+                <br />
             }
         </div>
 
@@ -100,8 +116,8 @@
 <aside>
     @foreach (var item in Model.Items)
     {
-            <div>@item.Meal.Name</div>
-            <div>@item.Quantity</div>
+        <div>@item.Meal.Name</div>
+        <div>@item.Quantity</div>
     }
 </aside>
 
