@@ -13,13 +13,18 @@
             this.PaymentMethods = new List<string> { OrderConstants.CashОnDelivery, OrderConstants.WithBankCard };
         }
 
+        [Required]
         public bool IsUserAddress { get; set; }
 
+        [Required]
         public bool IsBankCard { get; set; }
 
+        [Required]
         public bool IsAgreedTermsAndConditions { get; set; }
 
         [Display(Name = OrderConstants.Town)]
+        [Required]
+        [MaxLength(30)]
         public string Town { get; set; }
 
         [Display(Name = OrderConstants.AddressComment)]

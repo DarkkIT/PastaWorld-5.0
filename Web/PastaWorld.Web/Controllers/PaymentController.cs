@@ -1,11 +1,12 @@
-﻿namespace PastaWorld.Web.Controllers
+﻿using Microsoft.EntityFrameworkCore;
+
+namespace PastaWorld.Web.Controllers
 {
     using System.Collections.Generic;
     using System.IO;
     using System.Text;
 
     using Microsoft.AspNetCore.Mvc;
-
     using Newtonsoft.Json;
 
     using PastaWorld.Web.ViewModels.Cart;
@@ -34,9 +35,34 @@
         }
 
         [HttpPost]
-        public IActionResult FinalyzeOrder()
+        public IActionResult Index(OrderPaymentViewModel model)
         {
-            return this.View();
+            if (!this.ModelState.IsValid)
+            {
+                var isCartEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
+
+                var cart = new List<CartItemViewModel>();
+
+                if (!isCartEmpty)
+                {
+                    this.InitializeCart(out cart, out isCartEmpty, out cartContentAsByteArray);
+                }
+
+                var reader = new StreamReader(new MemoryStream(cartContentAsByteArray), Encoding.Default);
+                cart = new Newtonsoft.Json.JsonSerializer().Deserialize<List<CartItemViewModel>>(new JsonTextReader(reader));
+
+                var order = new OrderPaymentViewModel();
+                order.Items = cart;
+
+                return this.View(order);
+            }
+
+            return RedirectToAction(nameof(this.Success));
+        }
+
+        public IActionResult Success()
+        {
+            return View();
         }
 
         private void InitializeCart(out List<CartItemViewModel> cart, out bool cartExists, out byte[] result)

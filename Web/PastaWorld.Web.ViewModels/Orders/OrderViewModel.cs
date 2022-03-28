@@ -25,15 +25,19 @@ namespace PastaWorld.Web.ViewModels.Orders
         public string Status { get; set; }
 
         [Display(Name = OrderConstants.PhoneNumber)]
+        [Required]
         public string PhoneNumber { get; set; }
 
         [Display(Name = OrderConstants.FirstName)]
+        [Required]
         public string FirstName { get; set; }
 
         [Display(Name = OrderConstants.FamilyName)]
+        [Required]
         public string FamilyName { get; set; }
 
         [Display(Name = OrderConstants.Email)]
+        [Required]
         public string Email { get; set; }
 
         public string CliendId { get; set; }

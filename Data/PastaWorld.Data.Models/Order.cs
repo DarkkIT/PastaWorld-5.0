@@ -36,6 +36,12 @@
 
         public string Email { get; set; }
 
+        public bool IsUserAddress { get; set; }
+
+        public bool IsBankCard { get; set; }
+
+        public bool IsAgreedTermsAndConditions { get; set; }
+
         public string ClientId { get; set; }
 
         public ApplicationUser Client { get; set; }
