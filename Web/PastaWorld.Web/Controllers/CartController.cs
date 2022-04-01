@@ -46,7 +46,7 @@
 
             var cart = new List<CartItemViewModel>();
 
-            this.cartService.DeserializeCartContent(cartContentAsByteArray);
+            cart = this.cartService.DeserializeCartContent(cartContentAsByteArray);
             cart = this.cartService.RemoveItemFromCart(id, cart);
 
             this.HttpContext.Session.Set("cart", this.cartService.SerializeCartContent(cart));
