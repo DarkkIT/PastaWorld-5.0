@@ -1,35 +1,54 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿
+using System.Data;
 
 namespace PastaWorld.Web.Controllers
 {
     using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
 
     using Microsoft.AspNetCore.Mvc;
     using Newtonsoft.Json;
 
+    using PastaWorld.Services.Data.Cart;
     using PastaWorld.Web.ViewModels.Cart;
     using PastaWorld.Web.ViewModels.Orders;
 
     public class PaymentController : BaseController
     {
+        private readonly ICartService cartService;
+
+        public PaymentController(ICartService cartService)
+        {
+            this.cartService = cartService;
+        }
+
         public IActionResult Index()
         {
-            var isCartEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
+            var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
 
             var cart = new List<CartItemViewModel>();
 
-            if (!isCartEmpty)
+            if (cartIsNotEmpty)
             {
-                this.InitializeCart(out cart, out isCartEmpty, out cartContentAsByteArray);
+                cart = this.cartService.DeserializeCartContent(cartContentAsByteArray);
+            }
+            else
+            {
+                byte[] cartAsByteArray = this.cartService.SerializeCartContent(cart);
+                this.HttpContext.Session.Set("cart", cartAsByteArray);
             }
 
-            var reader = new StreamReader(new MemoryStream(cartContentAsByteArray), Encoding.Default);
-            cart = new Newtonsoft.Json.JsonSerializer().Deserialize<List<CartItemViewModel>>(new JsonTextReader(reader));
+            var order = new OrderPaymentViewModel
+            {
+                Items = cart,
+            };
 
-            var order = new OrderPaymentViewModel();
-            order.Items = cart;
+            foreach (var item in cart)
+            {
+                order.CurrentPrice += item.Meal.Price * item.Quantity;
+            }
+
+            order.DeliveryPrice = 5.0m;
+            order.MealsPrice = order.DeliveryPrice + order.CurrentPrice;
 
             return this.View(order);
         }
@@ -39,40 +58,34 @@ namespace PastaWorld.Web.Controllers
         {
             if (!this.ModelState.IsValid)
             {
-                var isCartEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
+                var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
 
                 var cart = new List<CartItemViewModel>();
 
-                if (!isCartEmpty)
+                if (cartIsNotEmpty)
                 {
-                    this.InitializeCart(out cart, out isCartEmpty, out cartContentAsByteArray);
+                    cart = this.cartService.DeserializeCartContent(cartContentAsByteArray);
+                }
+                else
+                {
+                    byte[] cartAsByteArray = this.cartService.SerializeCartContent(cart);
+                    this.HttpContext.Session.Set("cart", cartAsByteArray);
                 }
 
-                var reader = new StreamReader(new MemoryStream(cartContentAsByteArray), Encoding.Default);
-                cart = new Newtonsoft.Json.JsonSerializer().Deserialize<List<CartItemViewModel>>(new JsonTextReader(reader));
-
-                var order = new OrderPaymentViewModel();
-                order.Items = cart;
+                var order = new OrderPaymentViewModel
+                {
+                    Items = cart,
+                };
 
                 return this.View(order);
             }
 
-            return RedirectToAction(nameof(this.Success));
+            return this.RedirectToAction(nameof(this.Success));
         }
 
         public IActionResult Success()
         {
             return View();
-        }
-
-        private void InitializeCart(out List<CartItemViewModel> cart, out bool cartExists, out byte[] result)
-        {
-            cart = new List<CartItemViewModel>();
-            var serializedCart1 = JsonConvert.SerializeObject(cart);
-            var cartAsByteArray1 = System.Text.Encoding.UTF8.GetBytes(serializedCart1);
-            this.HttpContext.Session.Set("cart", cartAsByteArray1);
-            this.ViewBag.cart = cart;
-            cartExists = this.HttpContext.Session.TryGetValue("cart", out result);
         }
     }
 }

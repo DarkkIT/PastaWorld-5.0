@@ -13,44 +13,85 @@
             <a id="client" class="anchor" href="javascript:void(0)">Вход</a>
         </div>
 
-        <div>
-            <div class="col-lg-6 clientInfo">
-                <div class="form-group guest">
-                    <label asp-for="FirstName"></label>
-                    <input class="form-control" asp-for="FirstName">
-                </div>
-                <div class="form-group guest">
-                    <label asp-for="FamilyName"></label>
-                    <input class="form-control" asp-for="FamilyName">
-                </div>
+        <aside style="width: 36%;
+                      float: right;
+                        margin: 20px">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Вашата поръчка</h5>
+                    
+                    @foreach (var item in Model.Items)
+                    {
+                        <div style="    border-bottom: 2px groove #d3dce5;
+                                    margin-bottom: 2%;">
+                            <div style="width: 50%;display: inline-block; margin-bottom: 2%">
+                                <img class="card-img" src="@item.Meal.MainImagePath" alt="news">
+                            </div>
+                            <div style="width: 48%;display: inline-block;">
+                                <a class="" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@item.Meal.Id">@item.Meal.Name</a>
+                                <br />
+                                <span>x @item.Quantity</span>
+                                <span style="display: table;margin-left: 63px;">@item.Meal.Price лв.</span>
+                            </div>
+                        </div>
+                    }
 
-                <div class="form-group guest">
-                    <label asp-for="PhoneNumber"></label>
-                    <input class="form-control" asp-for="PhoneNumber">
-                </div>
+                    <div>
+                        <span class="card-text">Междинна цена</span>
+                        <span class="card-text">@Model.CurrentPrice лв.</span>
+                    </div>
 
-                <div class="form-group guest">
-                    <label asp-for="Email"></label>
-                    <input class="form-control" type="email" asp-for="Email">
+                    <div>
+                        <span class="card-text">Доставка</span>
+                        <span class="card-text">@Model.DeliveryPrice лв.</span>
+                    </div>
+
+                    <div>
+                        <span class="card-text">Крайна цена</span>
+                        <span class="card-text">@Model.MealsPrice лв.</span>
+                    </div>
                 </div>
             </div>
+        </aside>
 
-            <div class="col-lg-6 clientInfo">
-                <div class="form-group login">
-                    <label asp-for="FirstName"></label>
-                    <input class="form-control" asp-for="FirstName">
-                </div>
+        <div class="col-lg-6 clientInfo">
+            <div class="form-group guest">
+                <label asp-for="FirstName"></label>
+                <input class="form-control" asp-for="FirstName">
+            </div>
+            <div class="form-group guest">
+                <label asp-for="FamilyName"></label>
+                <input class="form-control" asp-for="FamilyName">
+            </div>
 
-                <div class="form-group login">
-                    <label asp-for="FamilyName"></label>
-                    <input class="form-control" asp-for="FamilyName">
-                </div>
+            <div class="form-group guest">
+                <label asp-for="PhoneNumber"></label>
+                <input class="form-control" asp-for="PhoneNumber">
+            </div>
 
-                <div id="button-login" class="login text-center">
-                    <button class="btn btn-primary">Login</button>
-                </div>
+            <div class="form-group guest">
+                <label asp-for="Email"></label>
+                <input class="form-control" type="email" asp-for="Email">
             </div>
         </div>
+
+        <div class="col-lg-6 clientInfo">
+            <div class="form-group login">
+                <label asp-for="FirstName"></label>
+                <input class="form-control" asp-for="FirstName">
+            </div>
+
+            <div class="form-group login">
+                <label asp-for="FamilyName"></label>
+                <input class="form-control" asp-for="FamilyName">
+            </div>
+
+            <div id="button-login" class="login text-center">
+                <button class="btn btn-primary">Login</button>
+            </div>
+        </div>
+
+
 
         <div class="form-group">
             @foreach (var address in Model.Addresses)
@@ -112,14 +153,6 @@
         <input class="btn btn-primary" type="submit" asp-page="" value="Напред">
     </form>
 </div>
-
-<aside>
-    @foreach (var item in Model.Items)
-    {
-        <div>@item.Meal.Name</div>
-        <div>@item.Quantity</div>
-    }
-</aside>
 
 @section Scripts{
     <link rel="stylesheet" href="~/css/payment.css" asp-append-version="true" />

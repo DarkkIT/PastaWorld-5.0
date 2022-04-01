@@ -16,6 +16,8 @@
         [Required]
         public bool IsUserAddress { get; set; }
 
+        public decimal CurrentPrice { get; set; }
+
         [Required]
         public bool IsBankCard { get; set; }
 
