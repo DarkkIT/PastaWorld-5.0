@@ -52,7 +52,7 @@ function setDisplayProperty(elements, display) {
     return elements;
 }
 
-// Payment form delievery fields
+// Payment form delivery fields
 let toAddress = 'Доставка до адрес';
 let toRestaurant = 'В наш ресторант';
 
@@ -76,3 +76,30 @@ for (let i = 0; i < checkboxElements.length; i++) {
         }
     );
 }
+
+//
+let anchorToggle = document.getElementById('product-toggle');
+let angleDown = document.createElement('i');
+angleDown.className = 'fa-solid fa-angle-down';
+
+let expandableElements = document.getElementById('expandable');
+expandableElements.style['display'] = 'none';
+
+anchorToggle.addEventListener('click',
+    function(event) {
+        let icon = anchorToggle.getElementsByTagName('i')[0];
+
+        if (icon.style['display'] === 'none') {
+            icon.style['display'] = '';
+            angleDown.style['display'] = 'none';
+
+            expandableElements.style['display'] = 'none';
+        } else {
+            anchorToggle.appendChild(angleDown);
+            icon.style['display'] = 'none';
+            angleDown.style['display'] = '';
+
+            expandableElements.style['display'] = '';
+        }
+    }
+);

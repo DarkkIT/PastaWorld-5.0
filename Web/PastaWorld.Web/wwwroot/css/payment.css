@@ -1,4 +1,21 @@
-﻿.d-flex {
+﻿h4, h5 {
+    font-family: 'Pattaya', sans-serif;
+    font-size: xx-large;
+}
+
+.aside {
+    width: 36%;
+    float: right;
+    margin: 20px;
+    margin-bottom: 10%
+}
+
+.text-center-align {
+    display: table;
+    margin-left: 63px;
+}
+
+.d-flex {
     justify-content: space-around;
     align-items: center;
 }
@@ -7,9 +24,24 @@
     padding: 0;
 }
 
+.image-style {
+    width: 50%;
+    display: inline-block;
+    margin-bottom: 2%
+}
+
+.card-text {
+    width: 48%;
+    display: inline-block;
+}
+
 .text-uppercase {
     padding-bottom: 5%;
     padding-top: 5%;
+}
+
+.bottom-space-small {
+    margin-bottom: 2%;
 }
 
 .address-spacing {
@@ -27,3 +59,97 @@ div.clientInfo {
 div#button-login {
     padding-bottom: 10%;
 }
+
+.button {
+    background-color: white;
+    border-radius: 100px 10px / 120px;
+    border-color: red;
+}
+
+.button:hover {
+    color: white !important;
+    background-color: red;
+    border-radius: 100px 10px / 120px;
+}
+
+.login-button {
+    background-color: white;
+    border-radius: 100px 10px / 120px;
+    border-color: dodgerblue;
+}
+
+.login-button:hover {
+    color: black !important;
+    background-color: dodgerblue;
+    border-radius: 100px 10px / 120px;
+}
+
+.fa-solid {
+    font-family: 'Font Awesome 5 Free';
+    font-style: normal;
+    font-weight: 900;
+}
+
+@media only screen and (min-width: 260px) and (max-width: 768px) {
+    .aside {
+        width: 100%;
+        margin: 0%;
+        margin-bottom: 10%;
+    }
+
+    .align-center {
+        text-align: center;
+    }
+
+    .text-center-align {
+        text-align: center;
+        margin-left: 0;
+        display: block;
+    }
+
+    .image-style {
+        width: 100%;
+        display: inline-block;
+        margin-bottom: 2%;
+    }
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1000px) {
+    .aside {
+        width: 100%;
+        margin: 0%;
+        margin-bottom: 10%;
+    }
+
+    .align-center {
+        text-align: center;
+    }
+
+    .text-center-align {
+        text-align: center;
+        margin-left: 0;
+        display: block;
+    }
+    
+    .image-style {
+        width: 40%;
+        display: inline-block;
+        margin-bottom: 2%;
+        margin-bottom: 2%;
+    }
+
+    .card-text {
+        font-size: x-large;
+    }
+
+    .col-lg-6 {
+        -ms-flex: 0 0 50%;
+        flex: 0 0 50%;
+        max-width: 100%;
+    }
+
+    .container {
+        max-width: 80%;
+    }
+}
+

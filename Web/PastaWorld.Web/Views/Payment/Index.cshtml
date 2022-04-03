@@ -6,35 +6,33 @@
 }
 
 <div class="container">
-    <div class="text-uppercase text-header text-center">Данни за поръчка</div>
-    <form method="post" asp-controller="Payment" asp-action="Index">
-        <div class="col-lg-6 d-flex">
-            <a id="guest" class="anchor" href="javascript:void(0)">Пазаруване като гост</a>
-            <a id="client" class="anchor" href="javascript:void(0)">Вход</a>
-        </div>
-
-        <aside style="width: 36%;
-                      float: right;
-                        margin: 20px">
+    <h4 class="text-uppercase text-header text-center">Данни за поръчка</h4>
+    <form class="align-center" method="post" asp-controller="Payment" asp-action="Index">
+        <aside class="aside">
             <div class="card">
                 <div class="card-body">
                     <h5 class="card-title">Вашата поръчка</h5>
-                    
-                    @foreach (var item in Model.Items)
-                    {
-                        <div style="    border-bottom: 2px groove #d3dce5;
-                                    margin-bottom: 2%;">
-                            <div style="width: 50%;display: inline-block; margin-bottom: 2%">
-                                <img class="card-img" src="@item.Meal.MainImagePath" alt="news">
+                    <p>@Model.Items.Count ястия</p>
+                    <p>
+                        <a id="product-toggle" href="javascript:void(0)" class="anchor">по-подробно <i class="fa-solid fa-angle-up"></i></a>
+                    </p>
+
+                    <div id="expandable">
+                        @foreach (var item in Model.Items)
+                        {
+                            <div class="bottom-space-small">
+                                <div class="image-style">
+                                    <img class="card-img" src="@item.Meal.MainImagePath" alt="news">
+                                </div>
+                                <div class="card-text">
+                                    <a class="anchor" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@item.Meal.Id">@item.Meal.Name</a>
+                                    <br />
+                                    <span>x @item.Quantity</span>
+                                    <p class="text-center-align">@item.Meal.Price лв.</p>
+                                </div>
                             </div>
-                            <div style="width: 48%;display: inline-block;">
-                                <a class="" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@item.Meal.Id">@item.Meal.Name</a>
-                                <br />
-                                <span>x @item.Quantity</span>
-                                <span style="display: table;margin-left: 63px;">@item.Meal.Price лв.</span>
-                            </div>
-                        </div>
-                    }
+                        }
+                    </div>
 
                     <div>
                         <span class="card-text">Междинна цена</span>
@@ -53,6 +51,11 @@
                 </div>
             </div>
         </aside>
+        
+        <div class="col-lg-6 d-flex">
+            <a id="guest" class="anchor" href="javascript:void(0)">Пазаруване като гост</a>
+            <a id="client" class="anchor" href="javascript:void(0)">Вход</a>
+        </div>
 
         <div class="col-lg-6 clientInfo">
             <div class="form-group guest">
@@ -87,11 +90,9 @@
             </div>
 
             <div id="button-login" class="login text-center">
-                <button class="btn btn-primary">Login</button>
+                <button class="login-button">Вход</button>
             </div>
         </div>
-
-
 
         <div class="form-group">
             @foreach (var address in Model.Addresses)
@@ -121,11 +122,14 @@
                 <input class="form-control" asp-for="Address">
             </div>
         </div>
-
-        <div class="form-group address-none">
-            <label asp-for="AddressComment"></label>
-            <textarea class="form-control" asp-for="AddressComment" rows="5" cols="33" placeholder="Тук можете да опишете специфични подробности около адреса."></textarea>
+        <label class="address-none" asp-for="AddressComment"></label>
+        <div class="d-flex">
+            <div class="form-group address-none">
+                
+                <textarea class="form-control" asp-for="AddressComment" rows="5" cols="150" placeholder="Тук можете да опишете специфични подробности около адреса."></textarea>
+            </div>
         </div>
+        
 
         <div class="form-group">
             @foreach (var paymentMethod in Model.PaymentMethods)
@@ -150,7 +154,7 @@
             <a href="#" target="_blank">Условията за ползване на сайта</a>
         </div>
 
-        <input class="btn btn-primary" type="submit" asp-page="" value="Напред">
+        <input class="button" type="submit" asp-page="" value="Напред">
     </form>
 </div>
 
