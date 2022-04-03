@@ -14,12 +14,12 @@
         }
 
         [Required]
-        public bool IsUserAddress { get; set; }
+        public string UserOrOtherAddress { get; set; }
 
         public decimal CurrentPrice { get; set; }
 
         [Required]
-        public bool IsBankCard { get; set; }
+        public string BankCard { get; set; }
 
         [Required]
         public bool IsAgreedTermsAndConditions { get; set; }
@@ -27,7 +27,7 @@
         [Display(Name = OrderConstants.Town)]
         [Required]
         [MaxLength(30)]
-        public string Town { get; set; }
+        public string Town { get; set; } = "Варна";
 
         [Display(Name = OrderConstants.AddressComment)]
         public string AddressComment { get; set; }

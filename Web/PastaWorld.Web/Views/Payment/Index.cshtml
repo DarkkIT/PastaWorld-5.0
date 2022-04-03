@@ -99,11 +99,11 @@
             {
                 if (address.Contains("Доставка до адрес"))
                 {
-                    <input class="user-address" type="radio" asp-for="IsUserAddress" value="@address" checked>
+                    <input class="user-address" type="radio" asp-for="UserOrOtherAddress" value="@address" checked>
                 }
                 else
                 {
-                    <input class="user-address" type="radio" asp-for="IsUserAddress" value="@address">
+                    <input class="user-address" type="radio" asp-for="UserOrOtherAddress" value="@address">
                 }
 
                 @address
@@ -114,18 +114,17 @@
         <div class="d-flex">
             <div class="form-group col-lg-6 address-spacing address-none">
                 <label asp-for="Town"></label>
-                <input class="form-control" asp-for="Town">
+                <input class="form-control" asp-for="Town" value="@Model.Town" disabled="disabled" />
             </div>
 
             <div class="form-group col-lg-6 address-none">
                 <label asp-for="Address"></label>
-                <input class="form-control" asp-for="Address">
+                <input class="form-control" asp-for="Address" />
             </div>
         </div>
         <label class="address-none" asp-for="AddressComment"></label>
         <div class="d-flex">
             <div class="form-group address-none">
-                
                 <textarea class="form-control" asp-for="AddressComment" rows="5" cols="150" placeholder="Тук можете да опишете специфични подробности около адреса."></textarea>
             </div>
         </div>
@@ -136,11 +135,11 @@
             {
                 if (paymentMethod.Contains("Наложен платеж"))
                 {
-                    <input type="radio" asp-for="IsBankCard" value="@paymentMethod" checked>
+                    <input type="radio" asp-for="BankCard" value="@paymentMethod" checked />
                 }
                 else
                 {
-                    <input type="radio" asp-for="IsBankCard" value="@paymentMethod">
+                    <input type="radio" asp-for="BankCard" value="@paymentMethod" />
                 }
 
                 @paymentMethod
@@ -154,7 +153,7 @@
             <a href="#" target="_blank">Условията за ползване на сайта</a>
         </div>
 
-        <input class="button" type="submit" asp-page="" value="Напред">
+        <input class="button" type="submit" asp-page="" value="Напред" />
     </form>
 </div>
 

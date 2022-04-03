@@ -1,13 +1,9 @@
-﻿
-using System.Data;
-
-namespace PastaWorld.Web.Controllers
+﻿namespace PastaWorld.Web.Controllers
 {
     using System.Collections.Generic;
+    using System.Linq;
 
     using Microsoft.AspNetCore.Mvc;
-    using Newtonsoft.Json;
-
     using PastaWorld.Services.Data.Cart;
     using PastaWorld.Web.ViewModels.Cart;
     using PastaWorld.Web.ViewModels.Orders;
@@ -27,14 +23,14 @@ namespace PastaWorld.Web.Controllers
 
             var cart = new List<CartItemViewModel>();
 
-            if (cartIsNotEmpty)
+            if (cartIsNotEmpty && cartContentAsByteArray.Count() > 2)
             {
                 cart = this.cartService.DeserializeCartContent(cartContentAsByteArray);
             }
             else
             {
-                byte[] cartAsByteArray = this.cartService.SerializeCartContent(cart);
-                this.HttpContext.Session.Set("cart", cartAsByteArray);
+                // It should be changed 
+                return this.Redirect("/Home/Error");
             }
 
             var order = new OrderPaymentViewModel
@@ -47,7 +43,6 @@ namespace PastaWorld.Web.Controllers
                 order.CurrentPrice += item.Meal.Price * item.Quantity;
             }
 
-            order.DeliveryPrice = 5.0m;
             order.MealsPrice = order.DeliveryPrice + order.CurrentPrice;
 
             return this.View(order);
@@ -56,29 +51,33 @@ namespace PastaWorld.Web.Controllers
         [HttpPost]
         public IActionResult Index(OrderPaymentViewModel model)
         {
+            // Change const with Enum
+            if (model.UserOrOtherAddress.Equals(OrderConstants.DeliveryToOurRestaurant))
+            {
+                model.Address = "N/A";
+                model.AddressComment = "N/A";
+            }
+
             if (!this.ModelState.IsValid)
             {
-                var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
-
-                var cart = new List<CartItemViewModel>();
-
-                if (cartIsNotEmpty)
-                {
-                    cart = this.cartService.DeserializeCartContent(cartContentAsByteArray);
-                }
-                else
-                {
-                    byte[] cartAsByteArray = this.cartService.SerializeCartContent(cart);
-                    this.HttpContext.Session.Set("cart", cartAsByteArray);
-                }
-
-                var order = new OrderPaymentViewModel
-                {
-                    Items = cart,
-                };
-
-                return this.View(order);
+                return this.View(model);
             }
+
+            var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
+
+            var cart = new List<CartItemViewModel>();
+
+            if (cartIsNotEmpty && cartContentAsByteArray.Count() > 2)
+            {
+                cart = this.cartService.DeserializeCartContent(cartContentAsByteArray);
+            }
+            else
+            {
+                // It should be changed
+                return this.Redirect("/Home/Error");
+            }
+
+            model.Items = cart;
 
             return this.RedirectToAction(nameof(this.Success));
         }
