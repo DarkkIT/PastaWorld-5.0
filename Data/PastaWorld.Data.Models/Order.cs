@@ -1,6 +1,7 @@
 ﻿namespace PastaWorld.Data.Models
 {
     using System.Collections.Generic;
+
     using PastaWorld.Common;
     using PastaWorld.Data.Common.Models;
 
@@ -17,6 +18,8 @@
 
         public string Address { get; set; }
 
+        public string AddressComment { get; set; }
+
         public decimal DeliveryPrice { get; set; }
 
         public decimal TotalPrice { get; set; }
@@ -32,6 +35,12 @@
         public string FamilyName { get; set; }
 
         public string Email { get; set; }
+
+        public bool IsUserAddress { get; set; }
+
+        public bool IsBankCard { get; set; }
+
+        public bool IsAgreedTermsAndConditions { get; set; }
 
         public string ClientId { get; set; }
 
