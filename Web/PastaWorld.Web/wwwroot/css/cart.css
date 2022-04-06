@@ -24,3 +24,24 @@
     display:flex;
     align-items:center;
 }
+
+.arrow-up, .arrow-down{
+    width:1rem;
+}
+
+.arrow-down{
+    color:red;
+}
+.arrow-up{
+    color:green;
+}
+.arrow-down:hover{
+    font-size:larger
+}
+.arrow-up:hover {
+    font-size: larger
+}
+
+.arrow-container:hover {
+    text-decoration: none;
+}

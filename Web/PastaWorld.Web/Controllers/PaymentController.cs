@@ -1,52 +1,90 @@
 ﻿namespace PastaWorld.Web.Controllers
 {
     using System.Collections.Generic;
-    using System.IO;
-    using System.Text;
+    using System.Linq;
 
     using Microsoft.AspNetCore.Mvc;
-
-    using Newtonsoft.Json;
-
+    using PastaWorld.Services.Data.Cart;
     using PastaWorld.Web.ViewModels.Cart;
     using PastaWorld.Web.ViewModels.Orders;
 
-    public class PaymentController : Controller
+    public class PaymentController : BaseController
     {
+        private readonly ICartService cartService;
+
+        public PaymentController(ICartService cartService)
+        {
+            this.cartService = cartService;
+        }
+
         public IActionResult Index()
         {
-            var isCartEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
+            var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
 
             var cart = new List<CartItemViewModel>();
 
-            if (!isCartEmpty)
+            if (cartIsNotEmpty && cartContentAsByteArray.Count() > 2)
             {
-                this.InitializeCart(out cart, out isCartEmpty, out cartContentAsByteArray);
+                cart = this.cartService.DeserializeCartContent(cartContentAsByteArray);
+            }
+            else
+            {
+                // It should be changed 
+                return this.Redirect("/Home/Error");
             }
 
-            var reader = new StreamReader(new MemoryStream(cartContentAsByteArray), Encoding.Default);
-            cart = new Newtonsoft.Json.JsonSerializer().Deserialize<List<CartItemViewModel>>(new JsonTextReader(reader));
+            var order = new OrderPaymentViewModel
+            {
+                Items = cart,
+            };
 
-            var order = new OrderPaymentViewModel();
-            order.Items = cart;
+            foreach (var item in cart)
+            {
+                order.CurrentPrice += item.Meal.Price * item.Quantity;
+            }
+
+            order.MealsPrice = order.DeliveryPrice + order.CurrentPrice;
 
             return this.View(order);
         }
 
         [HttpPost]
-        public IActionResult FinalyzeOrder()
+        public IActionResult Index(OrderPaymentViewModel model)
         {
-            return this.View();
+            // Change const with Enum
+            if (model.UserOrOtherAddress.Equals(OrderConstants.DeliveryToOurRestaurant))
+            {
+                model.Address = "N/A";
+                model.AddressComment = "N/A";
+            }
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
+
+            var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
+
+            var cart = new List<CartItemViewModel>();
+
+            if (cartIsNotEmpty && cartContentAsByteArray.Count() > 2)
+            {
+                cart = this.cartService.DeserializeCartContent(cartContentAsByteArray);
+            }
+            else
+            {
+                // It should be changed
+                return this.Redirect("/Home/Error");
+            }
+
+            model.Items = cart;
+
+            return this.RedirectToAction(nameof(this.Success));
         }
 
-        private void InitializeCart(out List<CartItemViewModel> cart, out bool cartExists, out byte[] result)
+        public IActionResult Success()
         {
-            cart = new List<CartItemViewModel>();
-            var serializedCart1 = JsonConvert.SerializeObject(cart);
-            var cartAsByteArray1 = System.Text.Encoding.UTF8.GetBytes(serializedCart1);
-            this.HttpContext.Session.Set("cart", cartAsByteArray1);
-            this.ViewBag.cart = cart;
-            cartExists = this.HttpContext.Session.TryGetValue("cart", out result);
+            return View();
         }
     }
 }

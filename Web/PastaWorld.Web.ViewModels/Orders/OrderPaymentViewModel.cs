@@ -1,8 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PastaWorld.Web.ViewModels.Orders
+﻿namespace PastaWorld.Web.ViewModels.Orders
 {
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
 
     using PastaWorld.Web.ViewModels.Cart;
 
@@ -14,14 +13,21 @@ namespace PastaWorld.Web.ViewModels.Orders
             this.PaymentMethods = new List<string> { OrderConstants.CashОnDelivery, OrderConstants.WithBankCard };
         }
 
-        public bool IsUserAddress { get; set; }
+        [Required]
+        public string UserOrOtherAddress { get; set; }
 
-        public bool IsBankCard { get; set; }
+        public decimal CurrentPrice { get; set; }
 
+        [Required]
+        public string BankCard { get; set; }
+
+        [Required]
         public bool IsAgreedTermsAndConditions { get; set; }
 
         [Display(Name = OrderConstants.Town)]
-        public string Town { get; set; }
+        [Required]
+        [MaxLength(30)]
+        public string Town { get; set; } = "Варна";
 
         [Display(Name = OrderConstants.AddressComment)]
         public string AddressComment { get; set; }

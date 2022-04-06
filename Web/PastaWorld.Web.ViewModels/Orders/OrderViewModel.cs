@@ -1,9 +1,8 @@
-﻿using System.ComponentModel.DataAnnotations;
-
-namespace PastaWorld.Web.ViewModels.Orders
+﻿namespace PastaWorld.Web.ViewModels.Orders
 {
     using System;
     using System.Collections.Generic;
+    using System.ComponentModel.DataAnnotations;
     using System.Text;
 
     using PastaWorld.Data.Models;
@@ -25,15 +24,19 @@ namespace PastaWorld.Web.ViewModels.Orders
         public string Status { get; set; }
 
         [Display(Name = OrderConstants.PhoneNumber)]
+        [Required]
         public string PhoneNumber { get; set; }
 
         [Display(Name = OrderConstants.FirstName)]
+        [Required]
         public string FirstName { get; set; }
 
         [Display(Name = OrderConstants.FamilyName)]
+        [Required]
         public string FamilyName { get; set; }
 
         [Display(Name = OrderConstants.Email)]
+        [Required]
         public string Email { get; set; }
 
         public string ClientId { get; set; }
