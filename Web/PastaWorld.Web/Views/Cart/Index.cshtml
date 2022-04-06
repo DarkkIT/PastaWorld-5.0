@@ -26,10 +26,16 @@
                     <tr>
                         <td><img src="@item.Meal.MainImagePath" style="max-height: 60px;" alt="image" /></td>
                         <td class="font-weight-bold">@item.Meal.Name</td>
-                        <td class="font-weight-bold">
-                            <a class="btn btn-sm btn-danger" style="width:2rem" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Meal.Id">-</a>
-                            @item.Quantity
-                            <a class="btn btn-sm btn-success" style="width:2rem" asp-controller="Cart" asp-action="Add" asp-route-id="@item.Meal.Id">+</a>
+                        <td class="font-weight-bold flex-row justify-content-start">
+                            <a class="arrow-container text-center" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Meal.Id">
+                                <i class=" fa-solid fa-arrow-down arrow-down"></i>
+                            </a>
+                            <span class="mx-2">
+                                @item.Quantity
+                            </span>
+                            <a class="arrow-container text-center" asp-controller="Cart" asp-action="Add" asp-route-id="@item.Meal.Id">
+                                <i class="fa-solid fa-arrow-up arrow-up"></i>
+                            </a>
                         </td>
                         <td class="font-weight-bold">@item.Meal.Price</td>
 
@@ -44,11 +50,11 @@
 
     <div class="row justify-content-end">
 
-        <div class="row mr-5">
+        <div class="row mr-3">
 
-            <p class="text-black font-weight-bold ml-5 font" style="font-family: Ultra">
+            <p class="text-black font-weight-bold ml-5 font">
                 Цена на доставката :
-                <span style="font-size: 25px;">
+                <span style="font-size: 1rem">
 
                     @if (@Model.Sum(x => x.Quantity * x.Meal.Price) > 0 && @Model.Sum(x => x.Quantity * x.Meal.Price) <= 25)
                     {
@@ -59,13 +65,12 @@
                         deliveryPrice = 0;
                         @deliveryPrice;
                     }
-                    <i class="fas fa-euro-sign"></i>
                 </span>
             </p>
 
-            <p class="text-black font-weight-bold ml-5 font" style="font-family: Ultra">
+            <p class="text-black font-weight-bold ml-5 font">
                 Крайна сума :
-                <span style="font-size: 25px;">
+                <span style="font-size: 1rem">
                     @if (Model.Sum(x => x.Quantity * x.Meal.Price) > 0 && Model.Sum(x => x.Quantity * x.Meal.Price) <= 25)
                     {
                         @(Model.Sum(x => x.Quantity * x.Meal.Price) + @deliveryPrice)
@@ -74,27 +79,13 @@
                     {
                         @(Model.Sum(x => x.Quantity * x.Meal.Price))
                     }
-                    <i class="fas fa-euro-sign"></i>
                 </span>
             </p>
         </div>
     </div>
-
-    <div class="row">
-        <div class="col-md-6">
-            <div class="font-weight-bold">
-                <p class="">Credit Card Info</p>
-            </div>
-
-            <label>Credit Card Number</label>
-            <input class="form-control" />
-
-            <label>Expiry Date</label>
-            <input class="form-control" />
-
-            <label>CVC</label>
-            <input class="form-control" />
-
+    <div class="row justify-content-end">
+        <div class="row mr-3">
+            <a class="btn btn-primary" asp-controller="" asp-action="" asp-route-id="">завърши поръчката</a>
         </div>
     </div>
 </div>
