@@ -26,11 +26,16 @@
                     <tr>
                         <td><img src="@item.Meal.MainImagePath" style="max-height: 60px;" alt="image" /></td>
                         <td class="font-weight-bold">@item.Meal.Name</td>
-                        <td class="font-weight-bold">
-                            <a class="btn btn-sm btn-danger" style="width:2rem" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Meal.Id">-</a>
-                            @item.Quantity
-                            <a class="btn btn-sm btn-success" style="width:2rem" asp-controller="Cart" asp-action="Add" asp-route-id="@item.Meal.Id">+</a>
-                            <a class="" style="width:2rem" asp-controller="Cart" asp-action="Add" asp-route-id="@item.Meal.Id">премахни</a>
+                        <td class="font-weight-bold flex-row justify-content-start">
+                            <a class="arrow-container text-center" asp-controller="Cart" asp-action="Remove" asp-route-id="@item.Meal.Id">
+                                <i class=" fa-solid fa-arrow-down arrow-down"></i>
+                            </a>
+                            <span class="mx-2">
+                                @item.Quantity
+                            </span>
+                            <a class="arrow-container text-center" asp-controller="Cart" asp-action="Add" asp-route-id="@item.Meal.Id">
+                                <i class="fa-solid fa-arrow-up arrow-up"></i>
+                            </a>
                         </td>
                         <td class="font-weight-bold">@item.Meal.Price</td>
 
@@ -76,6 +81,11 @@
                     }
                 </span>
             </p>
+        </div>
+    </div>
+    <div class="row justify-content-end">
+        <div class="row mr-3">
+            <a class="btn btn-primary" asp-controller="" asp-action="" asp-route-id="">завърши поръчката</a>
         </div>
     </div>
 </div>
