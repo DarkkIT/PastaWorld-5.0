@@ -5,7 +5,7 @@
 
     using PastaWorld.Web.ViewModels.Cart;
 
-    public class OrderPaymentViewModel : OrderViewModel
+    public class OrderPaymentViewModel : OrderViewModel, IValidatableObject
     {
         public OrderPaymentViewModel()
         {
@@ -37,5 +37,12 @@
         public IList<string> PaymentMethods { get; set; }
 
         public IList<CartItemViewModel> Items { get; set; }
+
+        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
+        {
+            if (!this.IsAgreedTermsAndConditions) {
+                yield return new ValidationResult("You SUCK! Баси тъпака/чка си!!!! Мри в кофите!");
+            }
+        }
     }
 }

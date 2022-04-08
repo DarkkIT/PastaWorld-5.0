@@ -103,3 +103,20 @@ anchorToggle.addEventListener('click',
         }
     }
 );
+
+//Errors
+let submitButton = document.getElementById('submit');
+
+submitButton.addEventListener('click',
+    function(event) {
+        event.preventDefault();
+        let form = document.getElementById('form');
+        let formData = new FormData(form);
+        let isAgreedField = formData.get('IsAgreedTermsAndConditions');
+
+        if (isAgreedField === 'false') {
+            alert('Съгласете се с Условията за ползване на сайта!');
+        }
+    });
+
+

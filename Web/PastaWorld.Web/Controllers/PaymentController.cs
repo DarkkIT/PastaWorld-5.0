@@ -29,7 +29,7 @@
             }
             else
             {
-                // It should be changed 
+                // It should be changed
                 return this.Redirect("/Home/Error");
             }
 
@@ -58,11 +58,6 @@
                 model.AddressComment = "N/A";
             }
 
-            if (!this.ModelState.IsValid)
-            {
-                return this.View(model);
-            }
-
             var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
 
             var cart = new List<CartItemViewModel>();
@@ -78,6 +73,11 @@
             }
 
             model.Items = cart;
+
+            if (!this.ModelState.IsValid)
+            {
+                return this.View(model);
+            }
 
             return this.RedirectToAction(nameof(this.Success));
         }

@@ -64,6 +64,8 @@ div#button-login {
     background-color: white;
     border-radius: 100px 10px / 120px;
     border-color: red;
+    padding-left: 9px;
+    padding-right: 9px;
 }
 
 .button:hover {
@@ -76,10 +78,12 @@ div#button-login {
     background-color: white;
     border-radius: 100px 10px / 120px;
     border-color: dodgerblue;
+    padding-left: 9px;
+    padding-right: 9px;
 }
 
 .login-button:hover {
-    color: black !important;
+    color: white !important;
     background-color: dodgerblue;
     border-radius: 100px 10px / 120px;
 }
@@ -130,7 +134,7 @@ div#button-login {
         margin-left: 0;
         display: block;
     }
-    
+
     .image-style {
         width: 40%;
         display: inline-block;
@@ -152,4 +156,3 @@ div#button-login {
         max-width: 80%;
     }
 }
-
