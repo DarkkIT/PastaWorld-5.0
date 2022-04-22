@@ -53,8 +53,9 @@
         {
             if (model.UserOrOtherAddress.Equals(OrderConstants.DeliveryToOurRestaurant))
             {
-                model.Address = null;
+                model.Address = "N/A";
                 model.AddressComment = "Без доставка. Поръчката ще се вземе от ресторанта!";
+                this.ModelState.ClearValidationState(nameof(model.Address));
             }
 
             var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
@@ -77,7 +78,9 @@
             model.DeliveryPrice = this.paymentService.GetDeliveryPrice(model.MealsPrice);
             model.TotalPrice = this.paymentService.GetTotalPriceWithDelivery(model.DeliveryPrice, model.MealsPrice);
 
-            if (!this.ModelState.IsValid)
+            var isValid = this.TryValidateModel(model);
+
+            if (!isValid)
             {
                 return this.View(model);
             }
@@ -93,7 +96,7 @@
 
             this.HttpContext.Session.Set("cart", this.cartService.SerializeCartContent(cart));
 
-            return View();
+            return this.View();
         }
     }
 }
