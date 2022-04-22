@@ -8,17 +8,19 @@ let loginElements = document.getElementsByClassName('login');
 let displayNone = 'none';
 let displayAll = '';
 
-anchorGuest.classList.add('clicked');
-setDisplayProperty(loginElements, displayNone);
+if (anchorGuest && anchorClient) {
+    anchorGuest.classList.add('clicked');
+    setDisplayProperty(loginElements, displayNone);
 
-anchorGuest.addEventListener('click',
-    function (event) {
-        event.preventDefault();
-        setElementsClass(anchorGuest, anchorClient);
+    anchorGuest.addEventListener('click',
+        function (event) {
+            event.preventDefault();
+            setElementsClass(anchorGuest, anchorClient);
 
-        setDisplayProperty(guestElements, displayAll);
-        setDisplayProperty(loginElements, displayNone);
-    });
+            setDisplayProperty(guestElements, displayAll);
+            setDisplayProperty(loginElements, displayNone);
+        });
+}
 
 //anchorClient.addEventListener('click',
 //    function (event) {

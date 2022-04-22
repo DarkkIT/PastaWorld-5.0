@@ -69,8 +69,11 @@
             </aside>
 
             <div class="col-lg-6 d-flex">
-                <a id="guest" class="anchor" href="javascript:void(0)">Пазаруване като гост</a>
-                <a id="client" class="anchor" href="/Identity/Account/Login">Вход</a>
+                @if (!User.Identity.IsAuthenticated)
+                {
+                    <a id="guest" class="anchor" href="javascript:void(0)">Пазаруване като гост</a>
+                    <a id="client" class="anchor" asp-area="Identity" asp-controller="Account" asp-action="Login">Вход</a>
+                }
             </div>
 
             <div class="col-lg-6 clientInfo">
@@ -97,22 +100,6 @@
                     <span asp-validation-for="Email" class="text-danger"></span>
                 </div>
             </div>
-
-            @*<div class="col-lg-6 clientInfo">
-                <div class="form-group login">
-                <label asp-for="FirstName"></label>
-                <input class="form-control" asp-for="FirstName">
-                </div>
-
-                <div class="form-group login">
-                <label asp-for="FamilyName"></label>
-                <input class="form-control" asp-for="FamilyName">
-                </div>
-
-                <div id="button-login" class="login text-center">
-                <a href=# class="anchor login-button login">Вход</a>
-                </div>
-                </div>*@
 
             <div class="form-group">
                 @foreach (var address in Model.Addresses)

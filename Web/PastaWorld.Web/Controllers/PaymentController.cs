@@ -45,6 +45,14 @@
             order.TotalPrice = this.paymentService.GetTotalPriceWithDelivery(order.DeliveryPrice, order.MealsPrice);
             order.HasItemsInCart = true;
 
+            if (this.User.Identity.IsAuthenticated)
+            {
+                //todo get User data from database
+                order.PhoneNumber = "08877137460";
+                order.Address = "Drujba 1";
+                order.Email = "asd@ds.ds";
+            }
+
             return this.View(order);
         }
 
@@ -77,6 +85,7 @@
             model.MealsPrice = this.paymentService.GetAllMealsCurrentPrice(cart);
             model.DeliveryPrice = this.paymentService.GetDeliveryPrice(model.MealsPrice);
             model.TotalPrice = this.paymentService.GetTotalPriceWithDelivery(model.DeliveryPrice, model.MealsPrice);
+            model.HasItemsInCart = true;
 
             var isValid = this.TryValidateModel(model);
 
