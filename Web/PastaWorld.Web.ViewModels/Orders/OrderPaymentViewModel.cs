@@ -3,9 +3,11 @@
     using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
+    using PastaWorld.Common;
+    using PastaWorld.Web.ViewModels.Attributes;
     using PastaWorld.Web.ViewModels.Cart;
 
-    public class OrderPaymentViewModel : OrderViewModel, IValidatableObject
+    public class OrderPaymentViewModel : OrderViewModel
     {
         public OrderPaymentViewModel()
         {
@@ -16,18 +18,18 @@
         [Required]
         public string UserOrOtherAddress { get; set; }
 
-        public decimal CurrentPrice { get; set; }
+        public bool HasItemsInCart { get; set; }
 
-        [Required]
-        public string BankCard { get; set; }
+        //[Required]
+        //public string BankCard { get; set; }
 
-        [Required]
+        [CheckBoxRequired(ErrorMessage = "Моля, съгласете се с Условията на сайта, за да продължите нататък!")]
         public bool IsAgreedTermsAndConditions { get; set; }
 
         [Display(Name = OrderConstants.Town)]
         [Required]
         [MaxLength(30)]
-        public string Town { get; set; } = "Варна";
+        public string Town { get; set; } = GlobalConstants.DeliveryCityBg;
 
         [Display(Name = OrderConstants.AddressComment)]
         public string AddressComment { get; set; }
@@ -37,12 +39,5 @@
         public IList<string> PaymentMethods { get; set; }
 
         public IList<CartItemViewModel> Items { get; set; }
-
-        public IEnumerable<ValidationResult> Validate(ValidationContext validationContext)
-        {
-            if (!this.IsAgreedTermsAndConditions) {
-                yield return new ValidationResult("You SUCK! Баси тъпака/чка си!!!! Мри в кофите!");
-            }
-        }
     }
 }

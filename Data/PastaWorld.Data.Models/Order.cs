@@ -5,7 +5,7 @@
     using PastaWorld.Common;
     using PastaWorld.Data.Common.Models;
 
-    public class Order : BaseModel<int>
+    public class Order : BaseDeletableModel<int>
     {
         public Order()
         {

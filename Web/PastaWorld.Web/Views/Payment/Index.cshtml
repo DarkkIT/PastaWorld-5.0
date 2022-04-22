@@ -7,158 +7,182 @@
 
 <div class="container">
     <h4 class="text-uppercase text-header text-center">Данни за поръчка</h4>
-    <form id="form" class="align-center" method="post" asp-controller="Payment" asp-action="Index">
-        <aside class="aside">
-            <div class="card">
-                <div class="card-body">
-                    <h5 class="card-title">Вашата поръчка</h5>
-                    <p>@Model.Items.Count ястия</p>
-                    <p>
-                        <a id="product-toggle" href="javascript:void(0)" class="anchor">по-подробно <i class="fa-solid fa-angle-up"></i></a>
-                    </p>
 
-                    <div id="expandable">
-                        @foreach (var item in Model.Items)
+    @if (!Model.HasItemsInCart)
+    {
+        <h4><a class="anchor" asp-controller="AllMenu" asp-action="Index">Няма ястия в количката! Моля добавете поне едно ястие, за да продължите!</a></h4>
+
+    }
+    else
+    {
+        <form id="form" class="align-center" method="post" asp-controller="Payment" asp-action="Index">
+            <aside class="aside">
+                <div class="card">
+                    <div class="card-body">
+                        <h5 class="card-title">Вашата поръчка</h5>
+                        @if (Model.Items.Count == 1)
                         {
-                            <div class="bottom-space-small">
-                                <div class="image-style">
-                                    <img class="card-img" src="@item.Meal.MainImagePath" alt="news">
-                                </div>
-                                <div class="card-text">
-                                    <a class="anchor" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@item.Meal.Id">@item.Meal.Name</a>
-                                    <br />
-                                    <span>x @item.Quantity</span>
-                                    <p class="text-center-align">@item.Meal.Price лв.</p>
-                                </div>
-                            </div>
+                            <p>@Model.Items.Count ястие</p>
                         }
-                    </div>
+                        else
+                        {
+                            <p>@Model.Items.Count ястия</p>
+                        }
 
-                    <div>
-                        <span class="card-text">Междинна цена</span>
-                        <span class="card-text">@Model.CurrentPrice лв.</span>
-                    </div>
+                        <p>
+                            <a id="product-toggle" href="javascript:void(0)" class="anchor">по-подробно <i class="fa-solid fa-angle-up"></i></a>
+                        </p>
 
-                    <div>
-                        <span class="card-text">Доставка</span>
-                        <span class="card-text">@Model.DeliveryPrice лв.</span>
-                    </div>
+                        <div id="expandable">
+                            @foreach (var item in Model.Items)
+                            {
+                                <div class="bottom-space-small">
+                                    <div class="image-style">
+                                        <img class="card-img" src="@item.Meal.MainImagePath" alt="news">
+                                    </div>
+                                    <div class="card-text">
+                                        <a class="anchor" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@item.Meal.Id">@item.Meal.Name</a>
+                                        <br />
+                                        <span>x @item.Quantity</span>
+                                        <p class="text-center-align">@item.Meal.Price лв.</p>
+                                    </div>
+                                </div>
+                            }
+                        </div>
 
-                    <div>
-                        <span class="card-text">Крайна цена</span>
-                        <span class="card-text">@Model.MealsPrice лв.</span>
+                        <div>
+                            <span class="card-text">Междинна цена</span>
+                            <span class="card-text">@Model.MealsPrice лв.</span>
+                        </div>
+
+                        <div>
+                            <span class="card-text">Доставка</span>
+                            <span class="card-text">@Model.DeliveryPrice лв.</span>
+                        </div>
+
+                        <div>
+                            <span class="card-text">Крайна цена</span>
+                            <span class="card-text">@Model.MealsPrice лв.</span>
+                        </div>
                     </div>
                 </div>
-            </div>
-        </aside>
-        
-        <div class="col-lg-6 d-flex">
-            <a id="guest" class="anchor" href="javascript:void(0)">Пазаруване като гост</a>
-            <a id="client" class="anchor" href="javascript:void(0)">Вход</a>
-        </div>
+            </aside>
 
-        <div class="col-lg-6 clientInfo">
-            <div class="form-group guest">
+            <div class="col-lg-6 d-flex">
+                <a id="guest" class="anchor" href="javascript:void(0)">Пазаруване като гост</a>
+                <a id="client" class="anchor" href="/Identity/Account/Login">Вход</a>
+            </div>
+
+            <div class="col-lg-6 clientInfo">
+                <div id="name" class="form-group guest">
+                    <label asp-for="FirstName"></label>
+                    <input class="form-control" asp-for="FirstName">
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <div id="lastName" class="form-group guest">
+                    <label asp-for="FamilyName"></label>
+                    <input class="form-control" asp-for="FamilyName">
+                    <span asp-validation-for="FamilyName" class="text-danger"></span>
+                </div>
+
+                <div id="phone" class="form-group guest">
+                    <label asp-for="PhoneNumber"></label>
+                    <input class="form-control" asp-for="PhoneNumber">
+                    <span asp-validation-for="PhoneNumber" class="text-danger"></span>
+                </div>
+
+                <div id="email" class="form-group guest">
+                    <label asp-for="Email"></label>
+                    <input class="form-control" type="email" asp-for="Email">
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+            </div>
+
+            @*<div class="col-lg-6 clientInfo">
+                <div class="form-group login">
                 <label asp-for="FirstName"></label>
                 <input class="form-control" asp-for="FirstName">
-            </div>
-            <div class="form-group guest">
+                </div>
+
+                <div class="form-group login">
                 <label asp-for="FamilyName"></label>
                 <input class="form-control" asp-for="FamilyName">
-            </div>
+                </div>
 
-            <div class="form-group guest">
-                <label asp-for="PhoneNumber"></label>
-                <input class="form-control" asp-for="PhoneNumber">
-            </div>
+                <div id="button-login" class="login text-center">
+                <a href=# class="anchor login-button login">Вход</a>
+                </div>
+                </div>*@
 
-            <div class="form-group guest">
-                <label asp-for="Email"></label>
-                <input class="form-control" type="email" asp-for="Email">
-            </div>
-        </div>
-
-        <div class="col-lg-6 clientInfo">
-            <div class="form-group login">
-                <label asp-for="FirstName"></label>
-                <input class="form-control" asp-for="FirstName">
-            </div>
-
-            <div class="form-group login">
-                <label asp-for="FamilyName"></label>
-                <input class="form-control" asp-for="FamilyName">
-            </div>
-
-            <div id="button-login" class="login text-center">
-                <button class="login-button">Вход</button>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @foreach (var address in Model.Addresses)
-            {
-                if (address.Contains("Доставка до адрес"))
+            <div class="form-group">
+                @foreach (var address in Model.Addresses)
                 {
-                    <input class="user-address" type="radio" asp-for="UserOrOtherAddress" value="@address" checked>
+                    if (address.Contains("Доставка до адрес"))
+                    {
+                        <input class="user-address" type="radio" asp-for="UserOrOtherAddress" value="@address" checked>
+                    }
+                    else
+                    {
+                        <input class="user-address" type="radio" asp-for="UserOrOtherAddress" value="@address">
+                    }
+
+                    @address
+                    <br />
                 }
-                else
+            </div>
+
+            <div class="d-flex">
+                <div class="form-group col-lg-6 address-spacing address-none">
+                    <label asp-for="Town"></label>
+                    <input class="form-control" asp-for="Town" value="@Model.Town" disabled="disabled" />
+                    <span asp-validation-for="Town" class="text-danger"></span>
+                </div>
+
+                <div id="address" class="form-group col-lg-6 address-none">
+                    <label asp-for="Address"></label>
+                    <input class="form-control" asp-for="Address" />
+                    <span asp-validation-for="Address" class="text-danger"></span>
+                </div>
+            </div>
+            <label class="address-none" asp-for="AddressComment"></label>
+            <div class="d-flex">
+                <div class="form-group address-none">
+                    <textarea class="form-control" asp-for="AddressComment" rows="5" cols="150" placeholder="Тук можете да опишете специфични подробности около адреса."></textarea>
+                </div>
+            </div>
+
+            @* <div class="form-group">
+                @foreach (var paymentMethod in Model.PaymentMethods)
                 {
-                    <input class="user-address" type="radio" asp-for="UserOrOtherAddress" value="@address">
-                }
-
-                @address
-                <br />
-            }
-        </div>
-
-        <div class="d-flex">
-            <div class="form-group col-lg-6 address-spacing address-none">
-                <label asp-for="Town"></label>
-                <input class="form-control" asp-for="Town" value="@Model.Town" disabled="disabled" />
-            </div>
-
-            <div class="form-group col-lg-6 address-none">
-                <label asp-for="Address"></label>
-                <input class="form-control" asp-for="Address" />
-            </div>
-        </div>
-        <label class="address-none" asp-for="AddressComment"></label>
-        <div class="d-flex">
-            <div class="form-group address-none">
-                <textarea class="form-control" asp-for="AddressComment" rows="5" cols="150" placeholder="Тук можете да опишете специфични подробности около адреса."></textarea>
-            </div>
-        </div>
-        
-
-        <div class="form-group">
-            @foreach (var paymentMethod in Model.PaymentMethods)
-            {
                 if (paymentMethod.Contains("Наложен платеж"))
                 {
-                    <input type="radio" asp-for="BankCard" value="@paymentMethod" checked />
+                <input type="radio" asp-for="BankCard" value="@paymentMethod" checked />
+                <span asp-validation-for="BankCard" class="text-danger"></span>
                 }
                 else
                 {
-                    <input type="radio" asp-for="BankCard" value="@paymentMethod" />
+                <input type="radio" hidden asp-for="BankCard" value="@paymentMethod" />
+                <span asp-validation-for="BankCard" class="text-danger"></span>
                 }
 
                 @paymentMethod
                 <br />
-            }
-        </div>
+                }
+                </div>*@
 
-        <div class="form-group form-check">
-            <input class="form-check-input" type="checkbox" asp-for="IsAgreedTermsAndConditions" />
-            <label class="form-check-label" asp-for="IsAgreedTermsAndConditions">Съгласен/на съм с </label>
-            <a href="#" target="_blank">Условията за ползване на сайта</a>
-        </div>
+            <div id="terms-and-conditions" class="form-group form-check">
+                <input class="form-check-input" type="checkbox" asp-for="IsAgreedTermsAndConditions" />
+                <label class="form-check-label" asp-for="IsAgreedTermsAndConditions">Съгласен/на съм с <a href="#" target="_blank">Условията за ползване на сайта</a></label>
+                <span asp-validation-for="IsAgreedTermsAndConditions" class="text-danger"></span>
+            </div>
 
-        <input id="submit" class="button" type="submit" asp-page="" value="Напред" />
-    </form>
+            <input id="submit" class="button" type="submit" asp-page="" value="Напред" />
+        </form>
+    }
 </div>
 
 @section Scripts{
-    <link rel="stylesheet" href="~/css/payment.css" asp-append-version="true" />
-    <script src="~/js/payment.js" asp-append-version="true"></script>
+<link rel="stylesheet" href="~/css/payment.css" asp-append-version="true" />
+<script src="~/js/payment.js" asp-append-version="true"></script>
 }
 

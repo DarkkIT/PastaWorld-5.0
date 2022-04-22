@@ -504,6 +504,9 @@ namespace PastaWorld.Data.Migrations
                     b.Property<string>("Address")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("AddressComment")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("City")
                         .HasColumnType("nvarchar(max)");
 
@@ -511,6 +514,9 @@ namespace PastaWorld.Data.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
                         .HasColumnType("datetime2");
 
                     b.Property<decimal>("DeliveryPrice")
@@ -527,6 +533,18 @@ namespace PastaWorld.Data.Migrations
 
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsAgreedTermsAndConditions")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsBankCard")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("IsUserAddress")
+                        .HasColumnType("bit");
 
                     b.Property<decimal>("MealsPrice")
                         .HasColumnType("decimal(18,2)");
@@ -548,6 +566,8 @@ namespace PastaWorld.Data.Migrations
                     b.HasIndex("ClientId");
 
                     b.HasIndex("DistributorId");
+
+                    b.HasIndex("IsDeleted");
 
                     b.ToTable("Order");
                 });

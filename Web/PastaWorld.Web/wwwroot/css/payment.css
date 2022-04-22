@@ -44,12 +44,28 @@
     margin-bottom: 2%;
 }
 
+.clicked {
+    color: rgb(25 25 25);
+    font-weight: bold;
+}
+
+.not-clicked {
+    color: rgb(3 102 214);
+    font-weight: normal;
+}
+
 .address-spacing {
     padding-right: 5%;
 }
 
 a.anchor:hover {
     text-decoration: none;
+}
+
+a.login {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: 2px solid dodgerblue;
 }
 
 div.clientInfo {
