@@ -1,5 +1,20 @@
-﻿
-@{
+﻿@{
+    this.ViewData["Title"] = "Success";
 }
 
-<div>Success!</div>
+<div class="text-center success">
+    <div class="icon-success">
+        <i class="fa-solid fa-circle-check fa-2xl"></i>
+    </div>
+    <h3>
+        Благодарим за вашата поръчка!
+    </h3>
+    <p class="info">Ще получите email с детайлите и линк за тракване на доставката.</p>
+    <div class="info"><a class="anchor" asp-controller="AllMenu" asp-action="Index">Продължете с пазаруването</a></div>
+
+</div>
+
+@section Scripts{
+    <link rel="stylesheet" href="~/css/success.css" asp-append-version="true" />
+}
+

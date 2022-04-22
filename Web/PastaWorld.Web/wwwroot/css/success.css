@@ -1,0 +1,36 @@
+﻿h3 {
+    font-family: 'Pattaya', sans-serif;
+    font-size: xx-large;
+}
+
+.success {
+    padding-top: 12rem;
+}
+
+.icon-success {
+    margin-bottom: 2rem;
+}
+
+.info {
+    padding-top: 2rem;
+}
+
+.anchor {
+    background-color: white;
+    border-radius: 100px 5px / 120px;
+    border-style: solid;
+    border-width: 2px;
+    border-color: #28a745;
+    padding-left: 9px;
+    padding-right: 9px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    color: black;
+}
+
+.anchor:hover {
+    color: white;
+    background-color: #28a745;
+    border-radius: 100px 10px / 120px;
+    text-decoration: none;
+}
