@@ -1,8 +1,9 @@
 ﻿namespace PastaWorld.Services.Data.Cart
 {
+    using System.Collections.Generic;
+
     using PastaWorld.Web.ViewModels.Cart;
     using PastaWorld.Web.ViewModels.Meals;
-    using System.Collections.Generic;
 
     public interface ICartService
     {

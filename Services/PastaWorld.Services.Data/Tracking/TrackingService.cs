@@ -1,15 +1,14 @@
 ﻿namespace PastaWorld.Services.Data.Tracking
 {
+    using System.Collections.Generic;
+    using System.Linq;
+    using System.Threading.Tasks;
+
     using PastaWorld.Common;
     using PastaWorld.Data.Common.Repositories;
     using PastaWorld.Data.Models;
     using PastaWorld.Services.Mapping;
     using PastaWorld.Web.ViewModels.Orders;
-    using System;
-    using System.Collections.Generic;
-    using System.Linq;
-    using System.Text;
-    using System.Threading.Tasks;
 
     public class TrackingService : ITrackingService
     {

@@ -21,5 +21,7 @@
         //Addresses
         public const string DeliveryCity = "Varna";
 
+        public const string DeliveryCityBg = "Варна";
+
     }
 }

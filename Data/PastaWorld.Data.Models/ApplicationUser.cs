@@ -4,9 +4,8 @@ namespace PastaWorld.Data.Models
     using System;
     using System.Collections.Generic;
 
-    using PastaWorld.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using PastaWorld.Data.Common.Models;
 
     public class ApplicationUser : IdentityUser, IAuditInfo, IDeletableEntity
     {
@@ -17,6 +16,10 @@ namespace PastaWorld.Data.Models
             this.Claims = new HashSet<IdentityUserClaim<string>>();
             this.Logins = new HashSet<IdentityUserLogin<string>>();
         }
+
+        public string Town { get; set; }
+
+        public string Address { get; set; }
 
         // Audit info
         public DateTime CreatedOn { get; set; }

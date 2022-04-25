@@ -8,41 +8,39 @@ let loginElements = document.getElementsByClassName('login');
 let displayNone = 'none';
 let displayAll = '';
 
-setDisplayProperty(loginElements, displayNone);
-let blackColor = "rgb(25 25 25)";
-let blueColor = "rgb(3 102 214)";
-let bold = 'bold';
-let normal = 'normal';
+if (anchorGuest && anchorClient) {
+    anchorGuest.classList.add('clicked');
+    setDisplayProperty(loginElements, displayNone);
 
-anchorGuest.style['color'] = blackColor;
-anchorGuest.style['fontWeight'] = bold;
+    anchorGuest.addEventListener('click',
+        function (event) {
+            event.preventDefault();
+            setElementsClass(anchorGuest, anchorClient);
 
-anchorGuest.addEventListener('click',
-    function (event) {
-        event.preventDefault();
-        anchorGuest.style['color'] = blackColor;
-        anchorClient.style['color'] = blueColor;
+            setDisplayProperty(guestElements, displayAll);
+            setDisplayProperty(loginElements, displayNone);
+        });
+}
 
-        anchorGuest.style['fontWeight'] = bold;
-        anchorClient.style['fontWeight'] = normal;
+//anchorClient.addEventListener('click',
+//    function (event) {
+//        event.preventDefault();
+//        setElementsClass(anchorClient, anchorGuest);
 
-        setDisplayProperty(guestElements, displayAll);
-        setDisplayProperty(loginElements, displayNone);
-    });
+//        setDisplayProperty(loginElements, displayAll);
+//        setDisplayProperty(guestElements, displayNone);
+//    }
+//);
 
-anchorClient.addEventListener('click',
-    function (event) {
-        event.preventDefault();
-        anchorClient.style['color'] = blackColor;
-        anchorGuest.style['color'] = blueColor;
-
-        anchorClient.style['fontWeight'] = bold;
-        anchorGuest.style['fontWeight'] = normal;
-
-        setDisplayProperty(guestElements, displayNone);
-        setDisplayProperty(loginElements, displayAll);
+function setElementsClass(firstElement, secondElement) {
+    if (!firstElement.classList.contains('clicked')) {
+        firstElement.classList.add('clicked');
+        secondElement.classList.remove('clicked');
+    } else {
+        firstElement.classList.remove('clicked');
     }
-);
+}
+
 
 function setDisplayProperty(elements, display) {
     for (var i = 0; i < elements.length; i++) {
@@ -77,7 +75,6 @@ for (let i = 0; i < checkboxElements.length; i++) {
     );
 }
 
-//
 let anchorToggle = document.getElementById('product-toggle');
 let angleDown = document.createElement('i');
 angleDown.className = 'fa-solid fa-angle-down';
@@ -86,7 +83,7 @@ let expandableElements = document.getElementById('expandable');
 expandableElements.style['display'] = 'none';
 
 anchorToggle.addEventListener('click',
-    function(event) {
+    function (event) {
         let icon = anchorToggle.getElementsByTagName('i')[0];
 
         if (icon.style['display'] === 'none') {
@@ -103,3 +100,5 @@ anchorToggle.addEventListener('click',
         }
     }
 );
+
+

@@ -44,12 +44,28 @@
     margin-bottom: 2%;
 }
 
+.clicked {
+    color: rgb(25 25 25);
+    font-weight: bold;
+}
+
+.not-clicked {
+    color: rgb(3 102 214);
+    font-weight: normal;
+}
+
 .address-spacing {
     padding-right: 5%;
 }
 
 a.anchor:hover {
     text-decoration: none;
+}
+
+a.login {
+    padding-bottom: 5px;
+    padding-top: 5px;
+    border: 2px solid dodgerblue;
 }
 
 div.clientInfo {
@@ -64,6 +80,8 @@ div#button-login {
     background-color: white;
     border-radius: 100px 10px / 120px;
     border-color: red;
+    padding-left: 9px;
+    padding-right: 9px;
 }
 
 .button:hover {
@@ -76,10 +94,12 @@ div#button-login {
     background-color: white;
     border-radius: 100px 10px / 120px;
     border-color: dodgerblue;
+    padding-left: 9px;
+    padding-right: 9px;
 }
 
 .login-button:hover {
-    color: black !important;
+    color: white !important;
     background-color: dodgerblue;
     border-radius: 100px 10px / 120px;
 }
@@ -130,7 +150,7 @@ div#button-login {
         margin-left: 0;
         display: block;
     }
-    
+
     .image-style {
         width: 40%;
         display: inline-block;
@@ -152,4 +172,3 @@ div#button-login {
         max-width: 80%;
     }
 }
-

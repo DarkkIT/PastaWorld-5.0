@@ -13,7 +13,7 @@
     @if (this.SignInManager.IsSignedIn(this.User))
     {
         <li class="nav-item">
-            <a class="button3 nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-family: Ultra">Hello @((this.User.Identity.Name).Substring(0, (this.User.Identity.Name).IndexOf("@")))!</a>
+            <a class="button3 nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage" style="font-family: Ultra">Hello @((this.User.Identity.Name)@*.Substring(0, (this.User.Identity.Name).IndexOf("@"))*@)!</a>
         </li>
         if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
         {

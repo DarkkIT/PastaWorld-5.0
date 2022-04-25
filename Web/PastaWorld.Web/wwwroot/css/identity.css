@@ -1,0 +1,14 @@
+﻿.center {
+    flex: auto;
+    justify-content: center;
+    align-items: center;
+}
+
+.text-center {
+    padding-top: 2rem;
+}
+
+.left-top-padding-identity {
+    padding: 2rem;
+    padding-bottom: 1rem;
+}

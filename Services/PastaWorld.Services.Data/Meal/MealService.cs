@@ -1,9 +1,7 @@
 ﻿namespace PastaWorld.Services.Data.Meal
 {
-    using System;
     using System.Collections.Generic;
     using System.Linq;
-    using System.Text;
     using System.Threading.Tasks;
 
     using PastaWorld.Data.Common.Repositories;
