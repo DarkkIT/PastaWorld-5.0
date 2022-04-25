@@ -46,6 +46,7 @@
 
             order.FirstName = model.FirstName;
             order.FamilyName = model.FamilyName;
+            order.ClientId = model.CliendId;
 
             order.IsAgreedTermsAndConditions = model.IsAgreedTermsAndConditions;
             order.IsBankCard = false;
