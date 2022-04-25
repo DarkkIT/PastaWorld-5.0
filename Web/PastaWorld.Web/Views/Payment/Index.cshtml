@@ -72,7 +72,7 @@
                 @if (!User.Identity.IsAuthenticated)
                 {
                     <a id="guest" class="anchor" href="javascript:void(0)">Пазаруване като гост</a>
-                    <a id="client" class="anchor" asp-area="Identity" asp-controller="Account" asp-action="Login">Вход</a>
+                    <a id="client" class="anchor" asp-area="Identity" asp-controller="Account" asp-action="Login" asp-route-returnUrl="/Payment/Index">Вход</a>
                 }
             </div>
 
