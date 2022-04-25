@@ -59,5 +59,27 @@
 
             return this.View(viewModel);
         }
+
+        public async Task<IActionResult> ChangeStatus(string status, int orderId)
+        {
+            await this.trackingService.ChangeOrderStatus(status, orderId);
+
+            if (status == "Cooked")
+            {
+                return this.RedirectToAction("AdminTrackingAccepted");
+            }
+            else if (status == "OnRoad")
+            {
+                return this.RedirectToAction("AdminTrackingCooked");
+            }
+            else if (status == "Delivered")
+            {
+                return this.RedirectToAction("AdminTrackingOnRoad");
+            }
+            else
+            {
+                return this.RedirectToAction("AdminTrackingAll");
+            }
+        }
     }
 }

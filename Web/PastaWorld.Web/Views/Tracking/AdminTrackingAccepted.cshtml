@@ -25,6 +25,7 @@
                     <th scope="col">Clien</th>
                     <th scope="col">Address</th>
                     <th scope="col">Status</th>
+                    <th scope="col">Action</th>
                 }
                 else
                 {
@@ -45,6 +46,9 @@
                         <td>@order.CliendId</td>
                         <td>@order.Address</td>
                         <td>@order.Status</td>
+                        <td>
+                            <a class="button1 nav-link ml-4" asp-controller="Tracking" asp-action="ChangeStatus" asp-route-orderId="@order.Id" asp-route-status="Cooked">Cocked</a>
+                        </td>
                     </tr>
                 </tbody>
             }
