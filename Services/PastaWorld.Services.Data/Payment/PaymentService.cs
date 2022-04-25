@@ -37,8 +37,12 @@
 
             var order = new Order();
 
-            order.Address = model.Address;
-            order.AddressComment = model.AddressComment;
+            if (model.UserOrOtherAddress.Equals(OrderConstants.DeliveryToCustomerAddress))
+            {
+                order.Address = model.Address;
+                order.AddressComment = model.AddressComment;
+                order.IsUserAddress = true;
+            }
 
             order.PhoneNumber = model.PhoneNumber;
             order.City = model.Town;
