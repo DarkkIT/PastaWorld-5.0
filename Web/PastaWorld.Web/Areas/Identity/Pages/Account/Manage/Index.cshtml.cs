@@ -27,6 +27,12 @@ namespace PastaWorld.Web.Areas.Identity.Pages.Account.Manage
 
         public string Username { get; set; }
 
+        [Display(Name = "Собствено име")]
+        public string FirstName { get; set; }
+
+        [Display(Name = "Фамилно име")]
+        public string LastName { get; set; }
+
         [Display(Name = "Град")]
         public string Town { get; set; }
 
@@ -53,8 +59,12 @@ namespace PastaWorld.Web.Areas.Identity.Pages.Account.Manage
 
             var userAdress = user.Address;
             var userTown = user.Town;
+            var firstName = user.FirstName;
+            var lastName = user.LastName;
 
             this.Username = userName;
+            this.FirstName = firstName;
+            this.LastName = lastName;
             this.Town = userTown;
             this.Address = userAdress;
 
@@ -76,7 +86,7 @@ namespace PastaWorld.Web.Areas.Identity.Pages.Account.Manage
             return this.Page();
         }
 
-        public async Task<IActionResult> OnPostAsync(string userName, string address, string town)
+        public async Task<IActionResult> OnPostAsync(string userName, string address, string town, string firstName, string lastName)
         {
             var user = await this.userManager.GetUserAsync(this.User);
             if (user == null)
@@ -103,6 +113,8 @@ namespace PastaWorld.Web.Areas.Identity.Pages.Account.Manage
 
             user.NormalizedUserName = userName.ToUpper();
             user.UserName = userName;
+            user.FirstName = firstName;
+            user.LastName = lastName;
             user.Town = town;
             user.Address = address;
 
