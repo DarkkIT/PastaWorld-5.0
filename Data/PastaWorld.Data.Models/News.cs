@@ -1,11 +1,10 @@
-﻿using PastaWorld.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Text;
-
-namespace PastaWorld.Data.Models
+﻿namespace PastaWorld.Data.Models
 {
+    using System;
+    using System.ComponentModel.DataAnnotations;
+
+    using PastaWorld.Data.Common.Models;
+
     public class News : BaseDeletableModel<int>
     {
         [Required]

@@ -1,10 +1,7 @@
-﻿using PastaWorld.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PastaWorld.Data.Models
+﻿namespace PastaWorld.Data.Models
 {
+    using PastaWorld.Data.Common.Models;
+
     public class MealIngredients : BaseModel<int>
     {
         public int MealId { get; set; }
