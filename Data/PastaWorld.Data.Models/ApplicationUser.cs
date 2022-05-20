@@ -1,5 +1,4 @@
-﻿// ReSharper disable VirtualMemberCallInConstructor
-namespace PastaWorld.Data.Models
+﻿namespace PastaWorld.Data.Models
 {
     using System;
     using System.Collections.Generic;

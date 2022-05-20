@@ -1,10 +1,9 @@
-﻿using PastaWorld.Data.Common.Models;
-using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace PastaWorld.Data.Models
+﻿namespace PastaWorld.Data.Models
 {
+    using System.Collections.Generic;
+
+    using PastaWorld.Data.Common.Models;
+
     public class Ingredient : BaseDeletableModel<int>
     {
         public Ingredient()

@@ -9,6 +9,7 @@
         public Meal()
         {
             this.MealIngredients = new HashSet<MealIngredients>();
+            this.CartItems = new HashSet<CartItem>();
         }
 
         public string Name { get; set; }
@@ -24,5 +25,7 @@
         public bool IsTop { get; set; }
 
         public virtual ICollection<MealIngredients> MealIngredients { get; set; }
+
+        public virtual ICollection<CartItem> CartItems { get; set; }
     }
 }
