@@ -48,7 +48,7 @@
             order.TotalPrice = this.paymentService.GetTotalPriceWithDelivery(order.DeliveryPrice, order.MealsPrice);
             order.HasItemsInCart = true;
 
-            var user = await this.userManager.GetUserAsync(this.User);
+            var user = await this.userManager.FindByNameAsync(this.User.Identity.Name);
 
             if (this.User.Identity.IsAuthenticated)
             {
