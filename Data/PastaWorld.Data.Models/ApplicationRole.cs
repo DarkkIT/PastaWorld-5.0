@@ -1,11 +1,9 @@
-﻿// ReSharper disable VirtualMemberCallInConstructor
-namespace PastaWorld.Data.Models
+﻿namespace PastaWorld.Data.Models
 {
     using System;
 
-    using PastaWorld.Data.Common.Models;
-
     using Microsoft.AspNetCore.Identity;
+    using PastaWorld.Data.Common.Models;
 
     public class ApplicationRole : IdentityRole, IAuditInfo, IDeletableEntity
     {
