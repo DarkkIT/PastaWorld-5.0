@@ -13,10 +13,12 @@
     public class TrackingService : ITrackingService
     {
         private readonly IRepository<Order> orderRepository;
+        private readonly IRepository<Meal> mealRepository;
 
-        public TrackingService(IRepository<Order> orderRepository)
+        public TrackingService(IRepository<Order> orderRepository, IRepository<Meal> mealRepository)
         {
             this.orderRepository = orderRepository;
+            this.mealRepository = mealRepository;
         }
 
         public async Task ChangeOrderStatus(string newStatus, int orderId)
@@ -59,7 +61,7 @@
 
         public IEnumerable<OrderViewModel> GetOrdersByStatus<T>(string status)
         {
-            var orders = this.orderRepository.All().OrderByDescending(x => x.CreatedOn).To<OrderViewModel>().Where(x => x.Status == status);
+            var orders = this.orderRepository.All().OrderByDescending(x => x.CreatedOn).To<OrderViewModel>().Where(x => x.Status == status).ToList();
 
             return orders;
         }

@@ -41,4 +41,6 @@
     <ProjectReference Include="..\PastaWorld.Web.Infrastructure\PastaWorld.Web.Infrastructure.csproj" />
     <ProjectReference Include="..\PastaWorld.Web.ViewModels\PastaWorld.Web.ViewModels.csproj" />
   </ItemGroup>
+
+  <ProjectExtensions><VisualStudio><UserProperties appsettings_1json__JsonSchema="" /></VisualStudio></ProjectExtensions>
 </Project>
