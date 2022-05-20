@@ -155,8 +155,8 @@ body {
     top: 8%;
 }
 .proposalOfTheWeek {
-    border: 1px solid grey;
-    border-radius: 5px;
+    /*border: 1px solid grey;
+    border-radius: 5px;*/
     width: 30%;
     height: 55%;
     position: absolute;
@@ -166,13 +166,18 @@ body {
 }
 
 .comercial {
-    border: 1px solid grey;
-    border-radius: 5px;
+    /*border: 1px solid grey;
+    border-radius: 5px;*/
     width: 45%;
     height: 10%;
     position: absolute;
     z-index: 99999;
     left: 10%;
     top: 57%;
+}
+
+#anchor-6 {
+    font-family: 'Pattaya', sans-serif;
+    font-size: 2vw;
 }
 

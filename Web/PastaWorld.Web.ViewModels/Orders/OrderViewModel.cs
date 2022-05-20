@@ -1,5 +1,6 @@
 ﻿namespace PastaWorld.Web.ViewModels.Orders
 {
+    using System.Collections.Generic;
     using System.ComponentModel.DataAnnotations;
 
     using PastaWorld.Data.Models;
@@ -39,5 +40,9 @@
         public string Email { get; set; }
 
         public string CliendId { get; set; }
+
+        public List<string> Meals { get; set; }
+
+        public ICollection<CartItem> Items { get; set; }
     }
 }

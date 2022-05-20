@@ -71,15 +71,11 @@
                         <div class="body col justify-content-center m-3">
                             <h4>@meal.Name</h4>
                             <p>
-                                @meal.Description + TestTestTest TestTestTest
-                                TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest TestTestTest
+                                @meal.Description
                             </p>
                         </div>
                         <div class="buttons col-md-1 col justify-end-center m-3">
-                            <div class="row justify-content-center mt-4">
-                                <a class="btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
-                            </div>
-                            <div class="row justify-content-center mt-3 mb-3">
+                            <div class="row justify-content-center mt-3 mb-3 ">
                                 <a class="btn btn-success" asp-controller="Cart" asp-action="Add" asp-route-id="@meal.Id">Add to Cart</a>
                             </div>
                         </div>
