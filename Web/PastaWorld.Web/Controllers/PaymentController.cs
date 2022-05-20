@@ -3,9 +3,10 @@
     using System.Collections.Generic;
     using System.Linq;
     using System.Threading.Tasks;
-
+    using Microsoft.AspNetCore.Identity;
     using Microsoft.AspNetCore.Mvc;
     using PastaWorld.Common;
+    using PastaWorld.Data.Models;
     using PastaWorld.Services.Data.Cart;
     using PastaWorld.Services.Data.Payment;
     using PastaWorld.Web.ViewModels.Cart;
@@ -15,14 +16,16 @@
     {
         private readonly ICartService cartService;
         private readonly IPaymentService paymentService;
+        private readonly UserManager<ApplicationUser> userManager;
 
-        public PaymentController(ICartService cartService, IPaymentService paymentService)
+        public PaymentController(ICartService cartService, IPaymentService paymentService, UserManager<ApplicationUser> userManager)
         {
             this.cartService = cartService;
             this.paymentService = paymentService;
+            this.userManager = userManager;
         }
 
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             var cartIsNotEmpty = this.HttpContext.Session.TryGetValue("cart", out byte[] cartContentAsByteArray);
 
@@ -45,12 +48,15 @@
             order.TotalPrice = this.paymentService.GetTotalPriceWithDelivery(order.DeliveryPrice, order.MealsPrice);
             order.HasItemsInCart = true;
 
+            var user = await this.userManager.GetUserAsync(this.User);
+
             if (this.User.Identity.IsAuthenticated)
             {
-                //todo get User data from database
-                order.PhoneNumber = "08877137460";
-                order.Address = "Drujba 1";
-                order.Email = "asd@ds.ds";
+                order.FirstName = user.FirstName;
+                order.FamilyName = user.LastName;
+                order.PhoneNumber = user.PhoneNumber;
+                order.Address = user.Address;
+                order.Email = user.Email;
             }
 
             return this.View(order);
@@ -81,7 +87,7 @@
             }
 
             model.Items = cart;
-            model.Status = GlobalConstants.Ordered;
+            model.Status = GlobalConstants.Accepted;
             model.MealsPrice = this.paymentService.GetAllMealsCurrentPrice(cart);
             model.DeliveryPrice = this.paymentService.GetDeliveryPrice(model.MealsPrice);
             model.TotalPrice = this.paymentService.GetTotalPriceWithDelivery(model.DeliveryPrice, model.MealsPrice);
@@ -92,6 +98,13 @@
             if (!isValid)
             {
                 return this.View(model);
+            }
+
+            var user = await this.userManager.GetUserAsync(this.User);
+
+            if (user != null)
+            {
+                model.CliendId = user.Id;
             }
 
             await this.paymentService.AddOrder(model);
