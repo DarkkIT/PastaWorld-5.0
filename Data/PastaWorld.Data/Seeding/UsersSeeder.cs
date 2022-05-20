@@ -11,7 +11,6 @@
     using PastaWorld.Data.Models;
     using PastaWorld.Data.Seeding;
 
-
     public class UsersSeeder : ISeeder
     {
         public async Task SeedAsync(ApplicationDbContext dbContext, IServiceProvider serviceProvider)
