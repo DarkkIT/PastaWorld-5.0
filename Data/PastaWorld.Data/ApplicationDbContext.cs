@@ -42,6 +42,8 @@
 
         public DbSet<Order> Orders { get; set; }
 
+        public DbSet<SiteSetting> SiteSettings { get; set; }
+
         public override int SaveChanges() => this.SaveChanges(true);
 
         public override int SaveChanges(bool acceptAllChangesOnSuccess)
