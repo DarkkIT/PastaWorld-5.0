@@ -5,6 +5,9 @@
         public const string SystemName = "PastaWorld";
 
         public const string AdministratorRoleName = "Administrator";
+        public const string ChefRoleName = "Chef";
+        public const string DeliveryManRoleName = "DeliveryMan";
+        public const string BartenderRoleName = "Bartender";
 
         public const int ItemsPerPage = 6;
 

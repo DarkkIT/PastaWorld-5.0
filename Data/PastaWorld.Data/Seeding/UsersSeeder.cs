@@ -41,7 +41,6 @@
                     result = userManager.CreateAsync(appUser, "trqvna@83da").Result;
                 }
 
-
                 if (result.Succeeded)
                 {
                     if (userName == "pastaworld@abv.bg" || userName == "tzl_bul@yahoo.com")
