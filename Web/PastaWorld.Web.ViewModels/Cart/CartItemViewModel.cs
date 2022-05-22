@@ -1,10 +1,16 @@
 ﻿namespace PastaWorld.Web.ViewModels.Cart
 {
-    using PastaWorld.Web.ViewModels.Meals;
-
     public class CartItemViewModel
     {
-        public MealAsCartItemViewModel Meal { get; set; }
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public decimal Price { get; set; }
+
+        public string ImageName { get; set; }
+
+        public string MainImagePath => "/images/meals/" + this.ImageName + ".jpg";
 
         public int Quantity { get; set; }
     }

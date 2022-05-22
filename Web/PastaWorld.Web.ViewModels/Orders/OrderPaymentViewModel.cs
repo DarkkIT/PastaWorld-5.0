@@ -5,7 +5,6 @@
 
     using PastaWorld.Common;
     using PastaWorld.Web.ViewModels.Attributes;
-    using PastaWorld.Web.ViewModels.Cart;
 
     public class OrderPaymentViewModel : OrderViewModel
     {
@@ -19,9 +18,6 @@
         public string UserOrOtherAddress { get; set; }
 
         public bool HasItemsInCart { get; set; }
-
-        //[Required]
-        //public string BankCard { get; set; }
 
         [CheckBoxRequired(ErrorMessage = "Моля, съгласете се с Условията на сайта, за да продължите нататък!")]
         public bool IsAgreedTermsAndConditions { get; set; }
@@ -37,7 +33,5 @@
         public IList<string> Addresses { get; set; }
 
         public IList<string> PaymentMethods { get; set; }
-
-        public IList<CartItemViewModel> Items { get; set; }
     }
 }

@@ -6,8 +6,13 @@
     using PastaWorld.Data.Models;
     using PastaWorld.Services.Mapping;
 
-    public class MealViewModel : BaseMealViewModel, IMapFrom<Meal>
+    public class MealViewModel : IMapFrom<Meal>
     {
+        public int Id { get; set; }
+
+        public string Name { get; set; }
+
+        public decimal Price { get; set; }
 
         public string Description { get; set; }
 
