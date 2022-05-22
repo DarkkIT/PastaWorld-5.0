@@ -1,0 +1,27 @@
+﻿
+.addrres {
+    background-color: pink;
+    font-size: 1vw;
+    font-weight: bold;
+}
+
+.button-tracker-list {
+    border: 4px solid limegreen;
+    border-radius: 2%;
+    border-radius: 100px 10px / 120px;
+    text-decoration: none;
+    padding: 15px;
+    background-color: limegreen;
+    color: white !important;
+    font-size: 1.2vw;
+    max-width: 7rem;
+}
+
+    .button-tracker-list:hover {
+        background-color: white;
+        color: limegreen !important;
+    }
+
+.phone {
+    background-color: lemonchiffon;
+}

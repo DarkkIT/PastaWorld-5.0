@@ -9,15 +9,15 @@
 
     public interface ITrackingService
     {
-        IEnumerable<OrderViewModel> GetAllOrders<T>();
+        IEnumerable<OrderTrackingViewModel> GetAllOrders<T>();
 
-        IEnumerable<OrderViewModel> GetAllUserOrders<T>(string userId);
+        IEnumerable<OrderTrackingViewModel> GetAllUserOrders<T>(string userId);
 
-        OrderViewModel GetCurretUserOrder<T>(string userId);
+        OrderTrackingViewModel GetCurretUserOrder<T>(string userId);
 
-        IEnumerable<OrderViewModel> GetOrdersByStatus<T>(string status);
+        IEnumerable<OrderTrackingViewModel> GetOrdersByStatus<T>(string status);
 
-        IEnumerable<OrderViewModel> GetAllOrdersWithNoFinalizedStatus<T>();
+        IEnumerable<OrderTrackingViewModel> GetAllOrdersWithNoFinalizedStatus<T>();
 
         Task ChangeOrderStatus(string newStatus, int orderId);
     }

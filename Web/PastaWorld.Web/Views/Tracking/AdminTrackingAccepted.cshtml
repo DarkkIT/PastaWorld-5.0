@@ -5,6 +5,7 @@
 
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/trackingListsAccepted.css" asp-append-version="true" />
 </head>
 
 <div class="text-hide mt-5">
@@ -15,7 +16,7 @@
 
 <div>
 
-    <table class="table">
+    <table class="table table-striped">
         <thead>
             <tr>
                 @if (Model.Orders.Count() > 0)
@@ -23,6 +24,7 @@
                     <th scope="col">Image</th>
                     <th scope="col">Id</th>
                     <th scope="col">Clien</th>
+                    <th scope="col">ClienPhone</th>
                     <th scope="col">Address</th>
                     <th scope="col">Status</th>
                     <th scope="col">Meals</th>
@@ -42,16 +44,21 @@
             {
                 <tbody>
                     <tr>
-                        <td><img src="~/images/profils/ProfilOne.jpg" style="max-height: 60px;" alt="image" /></td>
+                        <td>
+                            <a class="close-button" asp-controller="Tracking" asp-action="ChangeStatus" asp-route-orderId="@order.Id" asp-route-status="Canceled">X</a>
+                        </td>
                         <td>@order.Id</td>
-                        <td>@order.CliendId</td>
+                        <td>@order.FirstName @order.FamilyName</td>
+                        <td>@order.PhoneNumber</td>
                         <td>@order.Address</td>
                         <td>@order.Status</td>
                         <td>
-                            @*@String.Join(" ", order.Items.Select(x => new {x.Meal.Name}))*@
+                            <pre class="meal-list" style="white-space: pre-line;">
+                                @order.Meals
+                                            </pre>
                         </td>
                         <td>
-                            <a class="button1 nav-link ml-4" asp-controller="Tracking" asp-action="ChangeStatus" asp-route-orderId="@order.Id" asp-route-status="Cooked">Cocked</a>
+                            <a class="button1 button-tracker-list nav-link ml-4" asp-controller="Tracking" asp-action="ChangeStatus" asp-route-orderId="@order.Id" asp-route-status="Cooked">Done</a>
                         </td>
                     </tr>
                 </tbody>
