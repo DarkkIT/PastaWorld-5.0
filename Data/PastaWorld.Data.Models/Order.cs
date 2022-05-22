@@ -12,8 +12,6 @@
             this.Items = new HashSet<CartItem>();
         }
 
-        public ICollection<CartItem> Items { get; set; }
-
         public string City { get; set; } = GlobalConstants.DeliveryCity;
 
         public string Address { get; set; }
@@ -49,5 +47,7 @@
         public string DistributorId { get; set; }
 
         public ApplicationUser Distributor { get; set; }
+
+        public ICollection<CartItem> Items { get; set; }
     }
 }

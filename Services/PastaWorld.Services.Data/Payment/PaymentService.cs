@@ -11,10 +11,12 @@
     public class PaymentService : IPaymentService
     {
         private readonly IDeletableEntityRepository<Order> orderRepository;
+        private readonly IDeletableEntityRepository<SiteSetting> siteSettingRepository;
 
-        public PaymentService(IDeletableEntityRepository<Order> orderRepository)
+        public PaymentService(IDeletableEntityRepository<Order> orderRepository, IDeletableEntityRepository<SiteSetting> siteSettingRepository)
         {
             this.orderRepository = orderRepository;
+            this.siteSettingRepository = siteSettingRepository;
         }
 
         public async Task AddOrder(OrderPaymentViewModel model)
@@ -23,13 +25,8 @@
 
             foreach (var item in model.Items)
             {
-                var meal = new Meal();
-                meal.ImageName = item.Meal.ImageName;
-                meal.Name = item.Meal.Name;
-                meal.Price = item.Meal.Price;
-
                 var cartItem = new CartItem();
-                cartItem.Meal = meal;
+                cartItem.MealId = item.Id;
                 cartItem.Quantity = item.Quantity;
 
                 cartItems.Add(cartItem);
@@ -75,6 +72,8 @@
 
         public decimal GetDeliveryPrice(decimal currentPrice)
         {
+            //siteSettingRepository.
+
             var deliveryPrice = 0m;
 
             if (currentPrice < 10)
@@ -91,7 +90,7 @@
 
             foreach (var item in cart)
             {
-                mealsCurrentPrice += this.GetMealTotalPrice(item.Meal.Price, item.Quantity);
+                mealsCurrentPrice += this.GetMealTotalPrice(item.Price, item.Quantity);
             }
 
             return mealsCurrentPrice;
