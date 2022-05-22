@@ -1,0 +1,17 @@
+﻿
+
+.accepted {
+    background-color: lightgreen;
+}
+
+.cooked {
+    background-color: khaki;
+}
+
+.delivered {
+    background-color: cornflowerblue;
+}
+
+.canceled {
+    background-color: orangered;
+}

@@ -59,12 +59,10 @@
 }
 
 .text {
-    margin-left: 3rem;
-    margin-top: 4rem;
     color: red;
     font-style: italic;
     font-family: 'AmstelvarAlpha';
-    font-size: 2rem;
+    font-size: 1.8rem;
 }
 
 .textTiile {

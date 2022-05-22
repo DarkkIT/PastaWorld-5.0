@@ -16,6 +16,7 @@
     using PastaWorld.Web.ViewModels.Meals;
     using PastaWorld.Web.ViewModels.News;
 
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class AdminController : BaseController
     {
         private readonly IWebHostEnvironment webHostEnvironment;

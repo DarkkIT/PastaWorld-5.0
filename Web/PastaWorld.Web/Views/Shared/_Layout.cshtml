@@ -62,9 +62,14 @@
                         <li class="nav-item">
                             <a class="button1 nav-link ml-4" asp-area="" asp-controller="Home" asp-action="Privacy">ЗА НАС</a>
                         </li>
-                        <li class="nav-item">
-                            <a class="button1 nav-link ml-4" asp-area="" asp-controller="Admin" asp-action="Index">ADMIN</a>
-                        </li>
+
+                        @if (this.User.IsInRole(GlobalConstants.AdministratorRoleName))
+                        {
+                            <li class="nav-item">
+                                <a class="button1 nav-link ml-4" asp-area="" asp-controller="Admin" asp-action="Index">ADMIN</a>
+                            </li>
+                        }
+
                     </ul>
                 </div>
             </div>

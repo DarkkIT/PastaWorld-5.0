@@ -22,3 +22,17 @@
     background-color: lightblue;
     border-radius: 100px 10px / 120px;
 }
+
+.close-button {
+    color: red !important;
+    font-size: 1.9vw;
+    max-height: 30px;
+    max-width: 30px;
+    text-decoration: none !important;
+    
+}
+
+.close-button:hover {
+    background-color: red;
+    color: white !important;
+}

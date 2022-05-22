@@ -271,13 +271,13 @@ namespace PastaWorld.Data.Migrations
                     b.Property<bool>("IsDeleted")
                         .HasColumnType("bit");
 
-                    b.Property<int?>("MealId")
+                    b.Property<int>("MealId")
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("ModifiedOn")
                         .HasColumnType("datetime2");
 
-                    b.Property<int?>("OrderId")
+                    b.Property<int>("OrderId")
                         .HasColumnType("int");
 
                     b.Property<int>("Quantity")
@@ -616,6 +616,65 @@ namespace PastaWorld.Data.Migrations
                     b.ToTable("Settings");
                 });
 
+            modelBuilder.Entity("PastaWorld.Data.Models.SiteSetting", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Address")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Bulstat")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CompanyName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("CreatedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime?>("DeletedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DeliveryTime")
+                        .HasColumnType("int");
+
+                    b.Property<string>("HomePageImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HomePageSecondImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HomePageSubImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("HomePageThirdImageTitle")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime?>("ModifiedOn")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Mol")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("PriceDelivery")
+                        .HasColumnType("float");
+
+                    b.Property<string>("WorkingHours")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("IsDeleted");
+
+                    b.ToTable("SiteSettings");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("PastaWorld.Data.Models.ApplicationRole", null)
@@ -670,14 +729,20 @@ namespace PastaWorld.Data.Migrations
             modelBuilder.Entity("PastaWorld.Data.Models.CartItem", b =>
                 {
                     b.HasOne("PastaWorld.Data.Models.Meal", "Meal")
-                        .WithMany()
-                        .HasForeignKey("MealId");
+                        .WithMany("CartItems")
+                        .HasForeignKey("MealId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
-                    b.HasOne("PastaWorld.Data.Models.Order", null)
+                    b.HasOne("PastaWorld.Data.Models.Order", "Order")
                         .WithMany("Items")
-                        .HasForeignKey("OrderId");
+                        .HasForeignKey("OrderId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.Navigation("Meal");
+
+                    b.Navigation("Order");
                 });
 
             modelBuilder.Entity("PastaWorld.Data.Models.MealIngredients", b =>
@@ -756,6 +821,8 @@ namespace PastaWorld.Data.Migrations
 
             modelBuilder.Entity("PastaWorld.Data.Models.Meal", b =>
                 {
+                    b.Navigation("CartItems");
+
                     b.Navigation("MealIngredients");
                 });
 

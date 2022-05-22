@@ -26,7 +26,7 @@
 
         public IActionResult AdminTrackingAll()
         {
-            var orders = this.trackingService.GetAllOrdersWithNoFinalizedStatus<OrderViewModel>();
+            var orders = this.trackingService.GetAllOrdersWithNoFinalizedStatus<OrderTrackingViewModel>();
 
             var viewModel = new OrdersListViewModel { Orders = orders };
 
@@ -35,7 +35,7 @@
 
         public IActionResult AdminTrackingAccepted()
         {
-            var orders = this.trackingService.GetOrdersByStatus<OrderViewModel>(GlobalConstants.Accepted);
+            var orders = this.trackingService.GetOrdersByStatus<OrderTrackingViewModel>(GlobalConstants.Accepted);
 
             var viewModel = new OrdersListViewModel { Orders = orders };
 
@@ -44,7 +44,7 @@
 
         public IActionResult AdminTrackingCooked()
         {
-            var orders = this.trackingService.GetOrdersByStatus<OrderViewModel>(GlobalConstants.Cooked);
+            var orders = this.trackingService.GetOrdersByStatus<OrderTrackingViewModel>(GlobalConstants.Cooked);
 
             var viewModel = new OrdersListViewModel { Orders = orders };
 
@@ -53,7 +53,7 @@
 
         public IActionResult AdminTrackingOnRoad()
         {
-            var orders = this.trackingService.GetOrdersByStatus<OrderViewModel>(GlobalConstants.OnRoad);
+            var orders = this.trackingService.GetOrdersByStatus<OrderTrackingViewModel>(GlobalConstants.OnRoad);
 
             var viewModel = new OrdersListViewModel { Orders = orders };
 
@@ -74,7 +74,11 @@
             }
             else if (status == "Delivered")
             {
-                return this.RedirectToAction("AdminTrackingOnRoad");
+                return this.RedirectToAction("AdminTrackingCooked");
+            }
+            else if (status == "Canceled")
+            {
+                return this.RedirectToAction("AdminTrackingAccepted");
             }
             else
             {

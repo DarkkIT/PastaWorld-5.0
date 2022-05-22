@@ -4,6 +4,6 @@
 
     public class OrdersListViewModel
     {
-        public IEnumerable<OrderViewModel> Orders { get; set; }
+        public IEnumerable<OrderTrackingViewModel> Orders { get; set; }
     }
 }

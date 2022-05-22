@@ -13,36 +13,37 @@
     </div>
 
     <div class="col justify-content-center">
+        <div class="row">
+            <div>
+                <div class="text row justify-content-center">
+                    <p>Управление на ястия и напитки</p>
+                </div>
+                <div class="adminRow row justify-content-start m-4">
+                    <div class="adminItem">
+                        <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddMeal">Add Meal</a>
+                    </div>
 
-        <div class="adminRow row justify-content-start m-4">
-            <div class="adminItem">
-                <p class="ml-2">Добави ново ястие или напитка към менюто</p>
-                <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddMeal">Add Meal</a>
+                    <div class="adminItem">
+                        <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllMeals">All Meals</a>
+                    </div>
+                </div>
             </div>
 
-            <div class="adminItem">
-                <p class="ml-2">Управление на всички ястия и напитки</p>
-                <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllMeals">All Meals</a>
-            </div>
-            <div class="text">
-                <p>Управление на ястия и напитки</p>
-            </div>
-        </div>
+            <div>
+                <div class="text row justify-content-center">
+                    <p>Управление на новини</p>
+                </div>
+                <div class="adminRow row justify-content-start m-4">
+                    <div class="adminItem">
+                        <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllNews">All News</a>
+                    </div>
+                    <div class="adminItem">
+                        <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddNews">AddNews</a>
+                    </div>
 
-        <hr />
+                </div>
+            </div>
 
-        <div class="adminRow row justify-content-start m-4">
-            <div class="adminItem">
-                <p class="ml-2 ">Управление на всички новините</p>
-                <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AllNews">All News</a>
-            </div>
-            <div class="adminItem">
-                <p class="ml-2">Добави новa новина към списъка</p>
-                <a class="adminButton nav-link text-dark" asp-area="" asp-controller="Admin" asp-action="AddNews">AddNews</a>
-            </div>
-            <div class="text">
-                <p>Управление на новини</p>
-            </div>
         </div>
 
         <hr />
@@ -60,9 +61,9 @@
             <div class="adminItem mt-5">
                 <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="AdminTrackingCooked">TrackCooked</a>
             </div>
-            <div class="adminItem mt-5">
-                <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="AdminTrackingOnRoad">TrackOnRoad</a>
-            </div>
+            @*<div class="adminItem mt-5">
+            <a class="adminButton2 nav-link ml-4" asp-area="" asp-controller="Tracking" asp-action="AdminTrackingOnRoad">TrackOnRoad</a>
+            </div>*@
         </div>
 
         <hr />

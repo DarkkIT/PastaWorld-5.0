@@ -9,7 +9,10 @@
     using PastaWorld.Web.ViewModels.Settings;
 
     using Microsoft.AspNetCore.Mvc;
+    using Microsoft.AspNetCore.Authorization;
+    using PastaWorld.Common;
 
+    [Authorize(Roles = GlobalConstants.AdministratorRoleName)]
     public class SettingsController : BaseController
     {
         private readonly ISettingsService settingsService;
