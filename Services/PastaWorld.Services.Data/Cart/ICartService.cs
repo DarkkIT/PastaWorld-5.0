@@ -11,7 +11,7 @@
 
         byte[] SerializeCartContent(List<CartItemViewModel> cart);
 
-        List<CartItemViewModel> AddItemToCart(MealAsCartItemViewModel meal, List<CartItemViewModel> cart);
+        List<CartItemViewModel> AddItemToCart(MealViewModel meal, List<CartItemViewModel> cart);
 
         List<CartItemViewModel> RemoveItemFromCart(int id, List<CartItemViewModel> cart);
     }

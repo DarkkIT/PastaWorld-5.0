@@ -11,19 +11,23 @@
 
     public class CartService : ICartService
     {
-        public List<CartItemViewModel> AddItemToCart(MealAsCartItemViewModel meal, List<CartItemViewModel> cart)
+        public List<CartItemViewModel> AddItemToCart(MealViewModel meal, List<CartItemViewModel> cart)
         {
-            if (cart.Any(x => x.Meal.Id == meal.Id))
+            if (cart.Any(x => x.Id == meal.Id))
             {
-                cart.FirstOrDefault(x => x.Meal.Id == meal.Id).Quantity++;
+                cart.FirstOrDefault(x => x.Id == meal.Id).Quantity++;
             }
             else
             {
                 var cartItem = new CartItemViewModel
                 {
-                    Meal = meal,
+                    Id = meal.Id,
+                    ImageName = meal.ImageName,
+                    Name = meal.Name,
+                    Price = meal.Price,
                     Quantity = 1,
                 };
+
                 cart.Add(cartItem);
             }
 
@@ -40,9 +44,10 @@
 
         public List<CartItemViewModel> RemoveItemFromCart(int id, List<CartItemViewModel> cart)
         {
-            if (cart.Any(x => x.Meal.Id == id))
+            if (cart.Any(x => x.Id == id))
             {
-                var cartItem = cart.FirstOrDefault(x => x.Meal.Id == id);
+                var cartItem = cart.FirstOrDefault(x => x.Id == id);
+
                 if (cartItem.Quantity == 1)
                 {
                     cart.Remove(cartItem);

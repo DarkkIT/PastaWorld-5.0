@@ -5,6 +5,7 @@
 
     using PastaWorld.Data.Models;
     using PastaWorld.Services.Mapping;
+    using PastaWorld.Web.ViewModels.Cart;
 
     public class OrderViewModel : IMapFrom<Order>
     {
@@ -43,6 +44,6 @@
 
         public List<string> Meals { get; set; }
 
-        public ICollection<CartItem> Items { get; set; }
+        public ICollection<CartItemViewModel> Items { get; set; }
     }
 }

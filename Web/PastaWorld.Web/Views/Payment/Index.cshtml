@@ -38,13 +38,13 @@
                             {
                                 <div class="bottom-space-small">
                                     <div class="image-style">
-                                        <img class="card-img" src="@item.Meal.MainImagePath" alt="news">
+                                        <img class="card-img" src="@item.MainImagePath" alt="news">
                                     </div>
                                     <div class="card-text">
-                                        <a class="anchor" href="javascript: void(0)">@item.Meal.Name</a>
+                                        <a class="anchor" href="javascript: void(0)">@item.Name</a>
                                         <br />
                                         <span>x @item.Quantity</span>
-                                        <p class="text-center-align">@item.Meal.Price лв.</p>
+                                        <p class="text-center-align">@item.Price лв.</p>
                                     </div>
                                 </div>
                             }
@@ -163,7 +163,7 @@
                 <span asp-validation-for="IsAgreedTermsAndConditions" class="text-danger"></span>
             </div>
 
-            <input id="submit" class="button" type="submit" asp-page="" value="Напред" />
+            <input id="submit" class="button" type="submit" asp-page="" value="Завършване поръчка" />
         </form>
     }
 </div>
