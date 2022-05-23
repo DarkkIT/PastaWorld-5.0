@@ -63,3 +63,7 @@
         background-color: white;
         color: red !important;
     }
+
+.text {
+    font-family: 'Pattaya', sans-serif;
+}
