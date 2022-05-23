@@ -26,6 +26,7 @@
     using PastaWorld.Services.Data.Tracking;
     using PastaWorld.Services.Data.Cart;
     using PastaWorld.Services.Data.Payment;
+    using PastaWorld.Services.Data.SiteSettings;
 
     public class Startup
     {
@@ -77,6 +78,7 @@
             services.AddTransient<ITrackingService, TrackingService>();
             services.AddTransient<ICartService, CartService>();
             services.AddTransient<IPaymentService, PaymentService>();
+            services.AddTransient<ISiteSettingsService, SiteSettingsService>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
