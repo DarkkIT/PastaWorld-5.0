@@ -16,6 +16,12 @@
 
         IEnumerable<MealViewModel> GetAllMeals<T>(int page, int itemsPerPage);
 
+        IEnumerable<MealViewModel> GetAllPasta<T>(int page, int itemsPerPage);
+
+        IEnumerable<MealViewModel> GetAllPizza<T>(int page, int itemsPerPage);
+
+        IEnumerable<MealViewModel> GetAllSalads<T>(int page, int itemsPerPage);
+
         IEnumerable<MealViewModel> GetAllDrinks<T>(int page, int itemsPerPage);
 
         IEnumerable<MealViewModel> GetAllDesserts<T>(int page, int itemsPerPage);
@@ -25,6 +31,12 @@
         IEnumerable<MealViewModel> GetAllMealWithDeleted<T>(int page, int itemsPerPage, string adminPageName);
 
         IEnumerable<MealViewModel> GetAllSearchedMeals<T>(int page, int itemsPerPage, string searchString);
+
+        IEnumerable<MealViewModel> GetAllSearchedPasta<T>(int page, int itemsPerPage, string searchString);
+
+        IEnumerable<MealViewModel> GetAllSearchedPizza<T>(int page, int itemsPerPage, string searchString);
+
+        IEnumerable<MealViewModel> GetAllSearchedSalads<T>(int page, int itemsPerPage, string searchString);
 
         IEnumerable<MealViewModel> GetAllSearchedDrinks<T>(int page, int itemsPerPage, string searchString);
 

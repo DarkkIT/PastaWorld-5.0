@@ -118,7 +118,31 @@
             return this.View(viewModel);
         }
 
+        public IActionResult GetMain(string adminPageName)
+        {
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, adminPageName);
+            var viewModel = new MealListViewModel { TypeName = adminPageName, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+            return this.View(viewModel);
+        }
+
         public IActionResult GetPasta(string adminPageName)
+        {
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, adminPageName);
+            var viewModel = new MealListViewModel { TypeName = adminPageName, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult GetPizza(string adminPageName)
+        {
+            var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, adminPageName);
+            var viewModel = new MealListViewModel { TypeName = adminPageName, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };
+
+            return this.View(viewModel);
+        }
+
+        public IActionResult GetSalads(string adminPageName)
         {
             var meals = this.mealService.GetAllMealWithDeleted<MealViewModel>(1, 1000, adminPageName);
             var viewModel = new MealListViewModel { TypeName = adminPageName, MealList = meals, PageNumber = 1, MotorBikeCount = this.newsService.GetCount(), ItemsPerPage = GlobalConstants.ItemsPerPage };

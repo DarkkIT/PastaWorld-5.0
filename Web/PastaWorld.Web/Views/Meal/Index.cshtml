@@ -14,7 +14,7 @@
 
 <div class="base row justify-content-between">
 
-    <div class="col-md-10 col justify-content-start">
+    <div class=" col justify-content-start">
 
         <div class="text-header row justify-content-center">
             <h1 class="display-4" style="font-family: 'Pattaya', sans-serif; font-size: 3vw;">@Model.PageName</h1>
@@ -24,7 +24,7 @@
         <div class="filter row justify-content-center col-md-11 mt-2">
             <form asp-action="Index" method="get">
                 <div class="form-actions no-color row justify-content-center">
-                    <p class="mr-3">Намери по име</p>
+                    <p class="mr-3"><i class="fa-solid fa-magnifying-glass"></i></p>
                     <p>
                         <input type="text" name="SearchString" id="meal" value="@ViewData["CurrentFilter"]" />
                         <input type="submit" name="typeName" value="@Model.TypeName" hidden />
@@ -34,7 +34,42 @@
         </div>
 
 
-        <div id="topMealList" class="row justify-content-start col-md-12 ml-5">
+        <div class=" row justify-content-center">
+
+            <ul class="navbar nav">
+                <li class="item1 mr-3">
+                    <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="meal">ОСНОВНИ</a>
+                </li>
+                <li class="item1 mr-3">
+                    <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="pizza">ПИЦА</a>
+                </li>
+                <li class="item1 mr-3">
+                    <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="pasta">ПАСТА</a>
+                </li>
+                <li class="item1 mr-3">
+                    <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="salad">САЛАТА</a>
+                </li>
+                <li class="item2 mr-3">
+                    <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="drink">НАПИТКИ</a>
+                </li>
+                <li class="item3 mr-3">
+                    <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="dessert">ДЕСЕРТИ</a>
+                </li>
+                <li class="item4 mr-3">
+                    <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="kids">ДЕТСКО</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link-menu-blue item btn btn-light btn-block btn-lg" asp-area="" asp-controller="Information" asp-action="Index">ДОСТАВКИ</a>
+                </li>
+                <li class="nav-item mr-3">
+                    <a class="nav-link-menu-blue item btn btn-light btn-block btn-lg" asp-area="" asp-controller="Home" asp-action="Privacy">ЗА НАС</a>
+                </li>
+            </ul>
+        </div>
+
+        <hr />
+
+        <div id="topMealList" class="row justify-content-center col-md-12 mb-5">
 
             @if (Model.MealList != null)
             {
@@ -45,6 +80,7 @@
                         <div id="topMeals" class="card m-2 mt-5">
                             <div class="thumbnail">
                                 <img class="card-img" src=@meal.MainImagePath alt="news">
+                                <p class="topMeal-name justify-content-center">@meal.Name</p>
                                 <a class="topMeal-button btn btn-success" asp-controller="Cart" asp-action="Add" asp-route-id="@meal.Id">Add to Cart</a>
                             </div>
 
@@ -63,19 +99,20 @@
 
                 @foreach (var meal in Model.MealList)
                 {
-                    <div class="meal row justify-content-start m-5">
-                        <div class="image col-md-2 m-3">
+                    <div class="meal row justify-content-start m-0">
+                        <div class="image col-md-2">
                             <img class="card-img" src="@meal.MainImagePath" alt="news">
                         </div>
 
-                        <div class="body col justify-content-center m-3">
-                            <h4>@meal.Name</h4>
-                            <p>
+                        <div class="body col justify-content-center m-1">
+                            <h4 class="menu-title"><i class="fa-solid fa-plate-wheat"></i> @meal.Name</h4>
+                            <p class="menu-text">
+                                <i class="fa-solid fa-leaf"></i>
                                 @meal.Description
                             </p>
                         </div>
-                        <div class="buttons col-md-1 col justify-end-center m-3">
-                            <div class="row justify-content-center mt-3 mb-3 ">
+                        <div class="buttons col-md-1 col justify-end-center m-1">
+                            <div class="row justify-content-center mt-1 mb-1 ">
                                 <a class="btn btn-success" asp-controller="Cart" asp-action="Add" asp-route-id="@meal.Id">Add to Cart</a>
                             </div>
                         </div>
@@ -87,37 +124,6 @@
             }
         </div>
 
-    </div>
-
-    <div class=" col-md-2 col justify-content-start">
-
-        <ul class="base-list">
-            <li class="">
-                <div class="itemImage1 btn btn-light btn-block btn-lg">
-                </div>
-            </li>
-            <li class="item1">
-                <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="meal">ПАСТА</a>
-            </li>
-            <li class="item2">
-                <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="drink">НАПИТКИ</a>
-            </li>
-            <li class="item3">
-                <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="dessert">ДЕСЕРТИ</a>
-            </li>
-            <li class="item4">
-                <a class="nav-link-menu item btn btn-light btn-block btn-lg" asp-controller="Meal" asp-action="Index" asp-route-typeName="kids">ДЕТСКО</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link-menu-blue item btn btn-light btn-block btn-lg" asp-area="" asp-controller="Information" asp-action="Index">ДОСТАВКИ</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link-menu-blue item btn btn-light btn-block btn-lg" asp-area="" asp-controller="Home" asp-action="Privacy">ЗА НАС</a>
-            </li>
-            <li class="">
-                <div class="itemImage2 btn btn-light btn-block btn-lg"></div>
-            </li>
-        </ul>
     </div>
 
 </div>

@@ -47,6 +47,11 @@
             return this.View();
         }
 
+        public IActionResult Contacts()
+        {
+            return this.View();
+        }
+
         public IActionResult Gdpr()
         {
             return this.View("Gdpr");
