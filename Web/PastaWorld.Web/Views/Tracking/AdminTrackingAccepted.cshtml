@@ -6,6 +6,7 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="~/css/trackingListsAccepted.css" asp-append-version="true" />
+    <meta http-equiv="refresh" content="30;" />
 </head>
 
 <div class="text-hide mt-5">
@@ -55,7 +56,7 @@
                         <td>
                             <pre class="meal-list" style="white-space: pre-line;">
                                 @order.Meals
-                                            </pre>
+                                                    </pre>
                         </td>
                         <td>
                             <a class="button1 button-tracker-list nav-link ml-4" asp-controller="Tracking" asp-action="ChangeStatus" asp-route-orderId="@order.Id" asp-route-status="Cooked">Done</a>

@@ -45,7 +45,7 @@
                         <div id="topMeals" class="card m-2 mt-5">
                             <div class="thumbnail">
                                 <img class="card-img" src=@meal.MainImagePath alt="news">
-                                <a class="topMeal-button btn btn-success" asp-controller="Meal" asp-action="MealDetails" asp-route-id="@meal.Id">Read More</a>
+                                <a class="topMeal-button btn btn-success" asp-controller="Cart" asp-action="Add" asp-route-id="@meal.Id">Add to Cart</a>
                             </div>
 
                         </div>
@@ -81,6 +81,8 @@
                         </div>
 
                     </div>
+
+                    <hr />
                 }
             }
         </div>

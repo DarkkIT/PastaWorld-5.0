@@ -5,6 +5,11 @@
     this.ViewData["Title"] = "Payment";
 }
 
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="~/css/paymentButton.css" asp-append-version="true" />
+</head>
+
 <div class="container">
     <h4 class="text-uppercase text-header text-center">Данни за поръчка</h4>
 
@@ -163,7 +168,7 @@
                 <span asp-validation-for="IsAgreedTermsAndConditions" class="text-danger"></span>
             </div>
 
-            <input id="submit" class="button" type="submit" asp-page="" value="Завършване поръчка" />
+            <input id="submit" class="button-finish" type="submit" asp-page="" value="Завърши поръчката" />
         </form>
     }
 </div>

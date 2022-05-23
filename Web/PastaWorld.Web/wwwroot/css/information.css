@@ -29,3 +29,8 @@
 .adress{
 
 }
+.text-row {
+    font-family: 'IBM Plex Sans', sans-serif;
+    /*font-weight: 100;*/
+    font-size: 17px;
+}

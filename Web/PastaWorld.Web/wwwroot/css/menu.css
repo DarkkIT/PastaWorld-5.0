@@ -67,8 +67,8 @@ body {
 }
 
 .meal {
-    border: 1px solid grey;
-    border-radius: 5px;
+    /*border: 1px solid grey;
+    border-radius: 5px;*/
     align-items: center
 }
 
@@ -80,8 +80,8 @@ body {
 }
 
 #topMeals {
-    border: 1px solid grey;
-    border-radius: 5px;
+    /*border: 1px solid grey;
+    border-radius: 5px;*/
     max-width: 17.4rem;
     max-height: 12rem;
 }
