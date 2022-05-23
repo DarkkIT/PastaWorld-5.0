@@ -47,6 +47,16 @@
             return this.View();
         }
 
+        public IActionResult Contacts()
+        {
+            return this.View();
+        }
+
+        public IActionResult Gdpr()
+        {
+            return this.View("Gdpr");
+        }
+
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

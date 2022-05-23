@@ -1,0 +1,27 @@
+﻿.text {
+    font-family: 'Pattaya', sans-serif;
+}
+
+.contact-text-image{
+    margin-left: 2%;
+    margin-top: 2%;
+}
+
+.contact-text {
+    margin-top: 2%;
+}
+
+.image-one {
+    border-radius: 50% 50%;
+    background-image: url("/images/other/LaloLogo.png");
+    background-color: #cccccc;
+    height: 200px;
+    width: 200px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.image-two {
+    border-radius: 50% 50%;
+}

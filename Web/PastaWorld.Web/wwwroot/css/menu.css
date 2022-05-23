@@ -5,6 +5,7 @@ body {
 
 .base{
     position: relative;
+    margin: 1%;
 }
 
 .base-list {
@@ -13,11 +14,6 @@ body {
     width: 12%;
     left: 84%;
     top: 13%;
-}
-#image-tag1 {
-    position: fixed;
-    left: 86%;
-    top: 10%;
 }
 
 .nav-link-menu {
@@ -56,8 +52,15 @@ body {
     font-size: 10vw;
 }
 
-.menu-list {
+.menu-title {
+    font-family: Pattaya, sans-serif;
+}
 
+
+
+.menu-text {
+
+    font-family: 'IBM Plex Sans', sans-serif;
 }
 
 .body {
@@ -67,8 +70,8 @@ body {
 }
 
 .meal {
-    border: 1px solid grey;
-    border-radius: 5px;
+    /*border: 1px solid grey;
+    border-radius: 5px;*/
     align-items: center
 }
 
@@ -80,37 +83,28 @@ body {
 }
 
 #topMeals {
-    border: 1px solid grey;
-    border-radius: 5px;
+    /*border: 1px solid grey;
+    border-radius: 5px;*/
     max-width: 17.4rem;
     max-height: 12rem;
 }
 
-#topMealList {
-
-}
-
 .topMeal-button{
     position: absolute;
-    left: 5%;
+    left: 55%;
     top: 80%;
 }
 
-.itemImage1 {
-    background: url(../images/other/imageTag-4.jpg);
-    background-size: contain;
-    border-radius: 100px 10px / 120px;
-    border-color: transparent !important;
-    min-height: 5rem;
-    min-width: 10rem;
+.topMeal-name {
+    position: absolute;
+    border-radius: 10%;
+    background-color: darkorange;
+    color: white;
+    font-weight: bold;
+    left: 5%;
+    top: 5%;
 }
 
-.itemImage2 {
-    background-image: url(/images/other/imageTag-5.jpg);
-    background-size: contain;
-    border-radius: 100px 10px / 120px;
-    border-color: transparent !important;
-    min-height: 5rem;
-    min-width: 10rem;
-    margin-top: 2rem;
+.filter{
+    margin-left: 2.5%;
 }

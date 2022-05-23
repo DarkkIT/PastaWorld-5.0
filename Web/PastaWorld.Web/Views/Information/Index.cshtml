@@ -1,5 +1,4 @@
-﻿
-@{
+﻿@{
     this.ViewData["Title"] = "Information Page";
 }
 
@@ -11,24 +10,43 @@
 <div id="information" class="col-md-12">
 
     <div class="row col-md-12 justify-content-center">
-        <h2 class="text m-4">Информация за територията на доставки и адрес на ресторанта за времане от място</h2>
+        <h2 class="text m-4">Адрес, територията на доставки и работно време</h2>
     </div>
     <div class="row justify-content-center">
         <div class="col-md-6">
             <div class="google-maps">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20134.04325707549!2d27.88460256682237!3d43.214940159174525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a454751e94eedb%3A0x57ee9fb8a5ea89be!2sCenter%2C%20Varna!5e0!3m2!1sen!2sbg!4v1637350499208!5m2!1sen!2sbg" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                @*<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20134.04325707549!2d27.88460256682237!3d43.214940159174525!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x40a454751e94eedb%3A0x57ee9fb8a5ea89be!2sCenter%2C%20Varna!5e0!3m2!1sen!2sbg!4v1637350499208!5m2!1sen!2sbg" width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>*@
+                <iframe width="100%" height="600" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?width=100%25&amp;height=600&amp;hl=en&amp;q=Bulgaria,%20Varna,%20zdravko%20chakyrov%209+(%D0%9F%D1%80%D0%B8%20%D0%9B%D0%B0%D0%BB%D0%BE)&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"><a href="https://www.gps.ie/wearable-gps/">adventure gps</a></iframe>
             </div>
         </div>
 
         <div class="adress col-md-5">
-            <h3 class="text row justify-content-center mt-5">Вземете от място на адрес:</h3>
-            <h5 class="row justify-content-center">Варна, ул. ..........</h5>
-            <h3 class=" text row justify-content-center mt-5">В монета се разработва </h3>
-            <h3 class="text row justify-content-center">В монета се разработва</h3>
-            <h5 class="row justify-content-center">В монета се разработва</h5>
-            <h5 class="row justify-content-center">В монета се разработва</h5>
-            <h5 class="row justify-content-center">В монета се разработва</h5>
-            <h5 class="row justify-content-center">В монета се разработва</h5>
+            <h3 class="text row justify-content-center mt-3">Адрес на ресторанта,</h3>
+            <h5 class="text-row row justify-content-center">гр. Варна, ул. Здравко Чакъров №9</h5>
+
+
+            <h3 class="text row justify-content-center mt-4">Работно време</h3>
+            <h5 class="text-row row justify-content-center">Понеделник - Петък</h5>
+            <h5 class="text-row row justify-content-center">От - 10:00 До - 20:00</h5>
+            <h5 class="text-row row justify-content-center mt-3">Събота</h5>
+            <h5 class="text-row row justify-content-center">От - 12:00 До - 20:00</h5>
+            <h5 class="text-row row justify-content-center mt-3">Неделя - почивен ден</h5>
+
+            <h3 class="text row justify-content-center mt-4">Доставяме до квартали:</h3>
+            <h5 class="text-row row justify-content-center">Кайсиева Градина, Трошево</h5>
+            <h5 class="text-row row justify-content-center">Възраждане, Младост</h5>
+
+            <h5 class="text-row row justify-content-center mt-4">Доставки се извършват само до посочените квартали.</h5>
+            <h5 class="text-row row justify-content-center">Поръчки се приемат от понеделник до петък от 11:30 до 19:00.</h5>
+            <h5 class="text-row row justify-content-center">и в събота от 12:00 до 19:00, неделя - повивен ден.</h5>
+            <h5 class="text-row row justify-content-center">Времето за доставка е до 1 час от направената поръчка.</h5>
+            <h5 class="text-row row justify-content-center">За допълнителна имформация, моля прочетете</h5>
+            <h5 class="text-row row justify-content-center">Условия за ползване на сайта:</h5>
+            <h5 class="text-row row justify-content-center"><a href="https://localhost:44319/Home/Privacy">https://localhost:44319/Home/Privacy</a>.</h5>
+
+
+            <h5 class="text row justify-content-center mt-4">Бладодарим ви че използвате нашите услуги</h5>
+            <h5 class="text row justify-content-center mt-1">Успешен и усмихнат Ден</h5>
 
         </div>
 

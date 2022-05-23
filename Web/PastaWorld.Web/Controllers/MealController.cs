@@ -32,6 +32,18 @@
                 {
                     meals = this.mealService.GetAllSearchedMeals<MealViewModel>(id, 100, searchString);
                 }
+                else if (typeName == "pizza")
+                {
+                    meals = this.mealService.GetAllSearchedPizza<MealViewModel>(id, 100, searchString);
+                }
+                else if (typeName == "pasta")
+                {
+                    meals = this.mealService.GetAllSearchedPasta<MealViewModel>(id, 100, searchString);
+                }
+                else if (typeName == "salad")
+                {
+                    meals = this.mealService.GetAllSearchedSalads<MealViewModel>(id, 100, searchString);
+                }
                 else if (typeName == "drink")
                 {
                     meals = this.mealService.GetAllSearchedDrinks<MealViewModel>(id, 100, searchString);
@@ -51,6 +63,18 @@
                 {
                     meals = this.mealService.GetAllMeals<MealViewModel>(id, 100);
                 }
+                else if (typeName == "pasta")
+                {
+                    meals = this.mealService.GetAllPasta<MealViewModel>(id, 100);
+                }
+                else if (typeName == "pizza")
+                {
+                    meals = this.mealService.GetAllPizza<MealViewModel>(id, 100);
+                }
+                else if(typeName == "salad")
+                {
+                    meals = this.mealService.GetAllSalads<MealViewModel>(id, 100);
+                }
                 else if (typeName == "drink")
                 {
                     meals = this.mealService.GetAllDrinks<MealViewModel>(id, 100);
@@ -69,19 +93,31 @@
 
             if (typeName == "meal")
             {
-                viewModel.PageName = "Направено с Любов за Вас";
+                viewModel.PageName = "Основни";
+            }
+            else if (typeName == "pasta")
+            {
+                viewModel.PageName = "Паста";
+            }
+            else if (typeName == "pizza")
+            {
+                viewModel.PageName = "Пица";
+            }
+            else if (typeName == "salad")
+            {
+                viewModel.PageName = "Салати";
             }
             else if (typeName == "drink")
             {
-                viewModel.PageName = "За по пълноценна вечеря";
+                viewModel.PageName = "Напитки";
             }
             else if (typeName == "dessert")
             {
-                viewModel.PageName = "Наслада за завършек";
+                viewModel.PageName = "Десрти";
             }
             else if (typeName == "kids")
             {
-                viewModel.PageName = "За най-малките с любов";
+                viewModel.PageName = "Детски Меню";
             }
 
             return this.View(viewModel);
