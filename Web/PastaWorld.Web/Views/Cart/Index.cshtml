@@ -10,7 +10,7 @@
     <link rel="stylesheet" href="~/css/cart.css" asp-append-version="true" />
 </head>
 
-<div class="container">
+<div class="container text">
 
     <div>
         <table class="table">
@@ -59,32 +59,9 @@
         <div class="row mr-3">
 
             <p class="text-black font-weight-bold ml-5 font">
-                Цена на доставката :
+                Обща сума :
                 <span style="font-size: 1rem">
-
-                    @if (@Model.Sum(x => x.Quantity * x.Price) > 0 && @Model.Sum(x => x.Quantity * x.Price) <= 25)
-                    {
-                        @deliveryPrice;
-                    }
-                    else
-                    {
-                        deliveryPrice = 0;
-                        @deliveryPrice;
-                    }
-                </span>
-            </p>
-
-            <p class="text-black font-weight-bold ml-5 font">
-                Крайна сума :
-                <span style="font-size: 1rem">
-                    @if (Model.Sum(x => x.Quantity * x.Price) > 0 && Model.Sum(x => x.Quantity * x.Price) <= 25)
-                    {
-                        @(Model.Sum(x => x.Quantity * x.Price) + @deliveryPrice)
-                    }
-                    else if (Model.Sum(x => x.Quantity * x.Price) > 25)
-                    {
-                        @(Model.Sum(x => x.Quantity * x.Price))
-                    }
+                    @(Model.Sum(x => x.Quantity * x.Price))
                 </span>
             </p>
         </div>
